@@ -38,8 +38,10 @@
   }
   
   header {
-    padding: 30px;
     background-color:white;
+    vertical-align: middle;
+    text-align: center;
+    min-height: 50px;
   }
   
   main {
