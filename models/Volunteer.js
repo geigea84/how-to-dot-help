@@ -68,11 +68,12 @@ Volunteer.init(
             }
         },
         sequelize,
+        //adjust/add timestamps here or elsewhere?----------------------------------------------
         timestamps: false,
         freezeTableName: true,
         //nature of sql utilizes underscored rather than camel/pascal
         underscored: true,
-        modelName: "volunteer"   
+        modelName: "volunteer"
     }
 );
 
