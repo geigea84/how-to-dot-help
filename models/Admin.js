@@ -1,35 +1,48 @@
 const {Model, DataTypes} = require("sequelize");
 const sequelize = require("../config/connection");
 const bcrypt = require("bcrypt");
+const { beforeCreate } = require("./Volunteer");
 
-//create our User model
-class User extends Model {
+class Admin extends Model {
     checkPassword(loginPw) {
         return bcrypt.compareSync(loginPw, this.password);
     }
 }
 
-//define table columns and configuration
-User.init(
+//anticipating more requests for input from HTDH
+Admin.init(
     {
-        //define columns
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
         },
-        username: {
+        first_name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        last_name: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true
+        },
+        bio: {
+            type: DataTypes.STRING(2000),
+            allowNull: true
+        },
+        phone_number: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            validate: {
+                len: [10, 20]
+            }
         },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
             validate: {
-                isEmail: true
+                isEmail: true,
             }
         },
         password: {
@@ -43,21 +56,21 @@ User.init(
     },
     {
         hooks: {
-            async beforeCreate(newUserData) {
-                newUserData.password = await bcrypt.hash(newUserData.password, 12);
-                return newUserData;
+            async beforeCreate(newAdminData) {
+                newAdminData.password = await bcrypt.hash(newAdminData.password, 12);
+                return newAdminData;
             },
-            async beforeCreate(updatedUserData) {
-                updatedUserData.password = await bcrypt.hash(updatedUserData, 12);
+            async beforeCreate(updatedAdminData) {
+                updatedAdminData.password = await bcrypt.hash(updatedAdminData.password, 12);
+                return updatedAdminData;
             }
         },
         sequelize,
         timestamps: false,
         freezeTableName: true,
-        //nature of sql utilizes underscored rather than camel/pascal
         underscored: true,
-        modelName: "user"   
+        modelName: "admin"
     }
 );
 
-module.exports = User;
+module.exports = Admin;
