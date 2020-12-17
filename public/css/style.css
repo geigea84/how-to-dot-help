@@ -16,14 +16,20 @@
   h4,
   h5,
   h6 {
-    font-weight: 700;
     margin: 0;
+    font-weight: 700;
     color: var(--secondary);
     line-height: 1.25;
   }
   
   h2 a {
     color: var(--tertiary);
+  }
+
+  h2 {
+    color: var(--tertiary);
+    text-decoration: none;
+    font-size: 30px;
   }
   
   a {
@@ -50,7 +56,7 @@
     margin: 0px;
     background-color: var(--primary);
     padding: 0;
-    font-family: sans-serif;
+    font-family: 'Montserrat', sans-serif;
     color: var(--secondary);
     line-height: 1.5;
     font-size: 14px; 
@@ -76,6 +82,45 @@
     display: flex;
     flex-wrap: wrap;
   }
+
+  .center {
+      text-align: center;
+  }
+
+  .pad {
+      padding: 40px;
+  }
+  .homehead {
+      font-size: 40px;
+  }
+
+  .secondary {
+      color: var(--secondary);
+      font-weight: 600;
+  }
+  .tertiary {
+      color: black;
+      font-weight: 600;
+  }
+
+  .bgblue {
+      background-color: #a9e9de;
+  }
+  .bgblue h2 {
+    color: var(--tertiary);
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 1.5;
+  }
+
+  .home-head-image {
+    width:100%;
+    margin-bottom:-6px;
+    padding:0;
+    min-height:100%;
+    border-right: solid 10px var(--secondary);
+}
 
 /*NAV*/
 .navbar {
@@ -151,7 +196,7 @@
 /*FOOTER*/
 
   footer {
-    position: absolute;
+    position: fixed;
     display: flex;
     justify-content: right;
     align-items: center;
@@ -332,4 +377,52 @@
     flex: 0 0 100%;
   }
   
-  
+  @media screen and (max-width: 700px) {
+    .col-1 {
+        flex: 0 0 calc(100% * 6 / 12 - 2%);
+      }
+      
+      .col-2 {
+        flex: 0 0 calc(100% * 6 / 12 - 2%);
+      }
+      
+      .col-3 {
+        flex: 0 0 100%;      
+    }
+      
+      .col-4 {
+        flex: 0 0 100%;      
+    }
+      
+      .col-5 {
+        flex: 0 0 100%;      
+    }
+      
+      .col-6 {
+        flex: 0 0 100%;
+    }
+      
+      .col-7 {
+        flex: 0 0 100%;      
+    }
+      
+      .col-8 {
+        flex: 0 0 100%;      
+    }
+      
+      .col-9 {
+        flex: 0 0 100%;      
+    }
+      
+      .col-10 {
+        flex: 0 0 100%;
+    }
+      
+      .col-11 {
+        flex: 0 0 100%;
+    }
+      
+      .col-12 {
+        flex: 0 0 100%;
+    }
+    }    
