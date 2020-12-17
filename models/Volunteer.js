@@ -27,6 +27,14 @@ Volunteer.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        city: {
+            type: DataTypes.STRING(25),
+            allowNull: false
+        },
+        state: {
+            type: DataTypes.STRING(14),
+            allowNull: false
+        },
         bio: {
             type: DataTypes.STRING(500),
             allowNull: true,
@@ -34,10 +42,10 @@ Volunteer.init(
         //https://sequelize.org/master/manual/validations-and-constraints.html
         //allowNull interaction with other validators
         phone_number: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: true,
             validate: {
-                len: [10, 20]
+                len: [10]
             }
         },
         email: {
@@ -52,9 +60,11 @@ Volunteer.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [8]
+                min: 8
             }
         }
+
+        //placeholder for logo column here
 
     },
     {
@@ -69,7 +79,9 @@ Volunteer.init(
         },
         sequelize,
         //adjust/add timestamps here or elsewhere?----------------------------------------------
-        timestamps: false,
+        timestamps: true,
+        createdAt: true,
+        updatedAt: true,
         freezeTableName: true,
         //nature of sql utilizes underscored rather than camel/pascal
         underscored: true,

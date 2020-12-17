@@ -1,6 +1,5 @@
 const {Model, DataTypes} = require("sequelize");
 const sequelize = require("../config/connection");
-const bcrypt = require("bcrypt");
 
 class NFP extends Model {}
 
@@ -15,12 +14,63 @@ NFP.init(
         nfp_name: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true
         },
-        phone_number: {
+        site_link: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
             validate: {
-                len: [10, 20]
+                isUrl: true
+            }
+        },
+        cause: {
+            type: DataTypes.STRING(30),
+            allowNull: false,
+        },
+        tags: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        description: {
+            type: DataTypes.STRING(1000),
+            allowNull: false
+        },
+        size: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        founding_year: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
+                len: [4]
+            }
+        },
+        reported_net_assets: {
+            type: DataTypes.DECIMAL,
+            allowNull: true
+        },
+        city: {
+            type: DataTypes.STRING(25),
+            allowNull: false
+        },
+        state: {
+            type: DataTypes.STRING(14),
+            allowNull: false
+        },
+        zip: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            validate: {
+                len: [5]
+            }
+        },
+        phone_number: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
+                len: [10]
             }
         },
         email: {
@@ -31,23 +81,18 @@ NFP.init(
                 isEmail: true
             }
         },
-        site_link: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true,
-            validate: {
-                isUrl: true
-            }
-        }
+        
         //placeholder for logo column here
     },
     {
         sequelize,
         //adjust/add timestamps here or elsewhere?----------------------------------------------
-        timestamps: false,
+        timestamps: true,
+        createdAt: true,
+        updatedAt: true,
         freezeTableName: true,
         underscored: true,
-        modelName: "NFP"
+        modelName: "nfp"
     }
 );
 

@@ -1,7 +1,6 @@
 const {Model, DataTypes} = require("sequelize");
 const sequelize = require("../config/connection");
 const bcrypt = require("bcrypt");
-const { beforeCreate } = require("./Volunteer");
 
 class Admin extends Model {
     checkPassword(loginPw) {
@@ -18,25 +17,6 @@ Admin.init(
             primaryKey: true,
             autoIncrement: true
         },
-        first_name: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        last_name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        bio: {
-            type: DataTypes.STRING(2000),
-            allowNull: true
-        },
-        phone_number: {
-            type: DataTypes.STRING,
-            allowNull: true,
-            validate: {
-                len: [10, 20]
-            }
-        },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -49,10 +29,9 @@ Admin.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [8]
+                min: 8
             }
         }
-
     },
     {
         hooks: {
