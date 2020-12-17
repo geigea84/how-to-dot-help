@@ -39,7 +39,25 @@
   a:hover {
     text-decoration: underline;
   }
-  
+
+  button {
+    text-decoration: none;
+    color: var(--primary);
+    background-color: var(--tertiary);
+    padding: 10px 20px;
+    width:200px;
+    border: none;
+    font-size: 18px;
+    border-radius: 3px;
+    transition: width 2s, transform 3s;
+
+  }
+    button:hover {
+            width: 400px;
+            transform: grow(200%); 
+            color: white;
+          }
+          
   p {
     font-size: 1.2rem;
   }
@@ -149,14 +167,38 @@
   }
   
   .navbody a:hover {
-    color: white;
-    text-decoration: underline;
+    background-color: var(--secondary);
+    animation-name: example;
+    animation-duration: 1.5s;
   }
   
+  @keyframes example {
+    from {background-color: var(--secondary); color: var(--tertiary); }
+    to {background-color: var(--primary); color: var(--tertiary);}
+  }
+
   main {
     margin-left: 200px;
   }
   
+/*NAV*/
+.navheader {
+    background-color: var(--tertiary);
+    font-size: 20px;
+    color: var(--primary); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70px;
+    width:100%;
+  }
+  .navheader a {
+    color: var(--primary); 
+  }
+  .navheader a:hover {
+    color: white; 
+  }
+
   @media screen and (max-width: 700px) {
     .navbar {
       width: 100%;
@@ -168,6 +210,12 @@
         display: inline ;
     }
     main {margin-left: 0;}
+    .navheader {
+        min-height: 50px;
+    }
+    .navbar {
+        min-height: 95px;
+    }
   }
   
   @media screen and (max-width: 400px) {
@@ -176,22 +224,6 @@
     }
   }
       
-      .navheader {
-        background-color: var(--tertiary);
-        font-size: 20px;
-        color: var(--primary); 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 70px;
-        width:100%;
-      }
-      .navheader a {
-        color: var(--primary); 
-      }
-      .navheader a:hover {
-        color: white; 
-      }
 
 /*FOOTER*/
 
@@ -226,6 +258,7 @@
     width: 100%;
     text-align: center;
   }
+
   /*BUTTONS*/
   .btn-reachout {
     font-size: 1.6rem;
@@ -247,19 +280,6 @@
     box-shadow: 2px 2px darkgray;
   }
   
-  .btn-primary {
-    text-decoration: none;
-    padding: 6px 4px;
-    color: var(--secondary);
-    background-color: var(--white);
-    box-shadow: none;
-    transform: translate(-1px, -1px);
-  }
-
-  .btn-primary:hover{
-    transform: translate(0, 0);
-    box-shadow: 2px 2px darkgray;
-  }
   
   /* FORM -----------------IN PROGRESS */
   .form-label,
