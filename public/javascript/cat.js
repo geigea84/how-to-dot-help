@@ -6,7 +6,12 @@ var phone = localStorage.getItem("phone")
 var info = localStorage.getItem("info")
 var contact = localStorage.getItem("contact")
 
-//on load: 
+
+
+//---------------------------------//
+//-------------LOAD----------------//
+//--------------------------------//
+//------------------------------------------------reformat phone
 let formatPhoneNumber = (P) => {
     //Filter only numbers from the input
     let cleaned = ('' + P).replace(/\D/g, '');
@@ -20,7 +25,7 @@ let formatPhoneNumber = (P) => {
     return "unlisted"
   };
 
-
+//------------------------------------------------load all form
 $(document).ready(function () {
 
     let formatedPhone = formatPhoneNumber(phone)
