@@ -7,17 +7,36 @@ var info = localStorage.getItem("info")
 var contact = localStorage.getItem("contact")
 
 //on load: 
+let formatPhoneNumber = (P) => {
+    //Filter only numbers from the input
+    let cleaned = ('' + P).replace(/\D/g, '');
+    
+    //Check if the input is of correct length
+    let match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+  
+    if (match) {
+      return '(' + match[1] + ') ' + match[2] + '-' + match[3]
+    }; 
+    return "unlisted"
+  };
+
+
 $(document).ready(function () {
-//cound have writen the following section as :
-//$( "#9am #text").html(localStorage.getItem("9am"));
+
+    let formatedPhone = formatPhoneNumber(phone)
+
       $("#first-name").html( firstName );
       $("#last-name").html( lastName );
       $("#email").html( email );
-      $("#phone").html( phone );
+      $("#phone").html( formatedPhone );
       $("#info").html( info );
       $("#contact").html( contact );
 })
 
+//---------------------------------//
+//-------------SAVE----------------//
+//--------------------------------//
+//------------------------------------------------validate/reformat
 const ValidateEmail = function(E) {
     if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(E))
     {
@@ -26,12 +45,30 @@ const ValidateEmail = function(E) {
     }
     else
     {
-    alert("You have entered an invalid email address!");
-    return false;
+    alert("invalid email provided");
+    return email;
     }
     }
 
-//save it! 
+const ValidatePhone = function(P) {
+    let cleaned = ('' + P).replace(/\D/g, '');
+
+        if(/^\d{10}$/.test(cleaned))
+              {
+            console.log("valid phone")      
+            return cleaned;
+              }
+        else if (P == "unlisted"){
+                return "unlisted";
+            }
+        else {
+              alert("not a valid phone number");
+              return "unlisted";
+              }
+}
+
+//------------------------------------------------save
+
 $("#save").on("click", function() {
     console.log("click happend")
     //collect text
@@ -43,20 +80,22 @@ $("#save").on("click", function() {
     C = $("#contact").val()
 
     let validE = ValidateEmail(E)
+    let validP = ValidatePhone(P)
 
         //save text
   var saveTask = function () {
     localStorage.setItem("firstName", FN)
     localStorage.setItem("lastName", LN) 
     localStorage.setItem("email", validE) 
-    localStorage.setItem("phone", P) 
+    localStorage.setItem("phone", validP) 
     localStorage.setItem("info", I) 
     localStorage.setItem("contact", C)    
   }
     saveTask()
   });
-
-//Fade and Show Effects------------------------------------------------
+//---------------------------------//
+//-------Fade and Show Effects-----//
+//--------------------------------//
   $(document).ready(function () {
     $("#nav").show(2000);
 });
