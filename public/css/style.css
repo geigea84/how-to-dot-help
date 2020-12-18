@@ -47,6 +47,11 @@
   p {
     font-size: 1.2rem;
   }
+
+  .hide {
+      display:none;
+  }
+
   @media screen and (max-width: 700px) {
     p {
         font-size: 1rem;
@@ -108,6 +113,9 @@
   }
   .pad-b {
     padding-bottom: 20px;
+}
+.pad-tb {
+    padding: 10px 0px;
 }
   .pad-lr {
     padding: 0px 20px;

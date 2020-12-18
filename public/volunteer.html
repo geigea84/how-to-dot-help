@@ -13,7 +13,7 @@
             <div class="navheader">
                 <a href="/" >Home</a>
             </div>
-            <div class="navbody col-12 justify-space-around">
+            <div id="nav" class="navbody col-12 justify-space-around hide">
                 <a href="/login">Login</a>
                 <a href="/logout">Logout</a>
                 <a href="/volunteer">My Page</a>
@@ -27,11 +27,11 @@
             <h1>HowTo.Help</h1>
         </header>
         <!--FORM-->
+        <div class="col-12 flex-row align-center pad-lr">
+            <div class="col-12 center pad-tb">
+                <button id="hide-vinfo">Close Info</button>
+            </div>
             <div id="form-v">
-            <div class="col-12 flex-row align-center pad-lr">
-                <div class="col-12 center pad-t">
-                    <button id="hide-vinfo">Close Info</button>
-                </div>
                 <div class="form flex-row">
                     <p class=" col-12">
                         Create & Edit your information to send to orginizations you want to work with!
@@ -89,5 +89,8 @@
     <footer class="col-12">
         howto.help
     </footer>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="./javascript/cat.js"></script>
 </body>
 </html>
