@@ -18,6 +18,18 @@ $(document).ready(function () {
       $("#contact").html( contact );
 })
 
+const ValidateEmail = function(E) {
+    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(E))
+    {
+    console.log("Valid email address!");
+    return E;
+    }
+    else
+    {
+    alert("You have entered an invalid email address!");
+    return false;
+    }
+    }
 
 //save it! 
 $("#save").on("click", function() {
@@ -29,11 +41,14 @@ $("#save").on("click", function() {
     P = $("#phone").val()
     I = $("#info").val()
     C = $("#contact").val()
+
+    let validE = ValidateEmail(E)
+
         //save text
   var saveTask = function () {
     localStorage.setItem("firstName", FN)
     localStorage.setItem("lastName", LN) 
-    localStorage.setItem("email", E) 
+    localStorage.setItem("email", validE) 
     localStorage.setItem("phone", P) 
     localStorage.setItem("info", I) 
     localStorage.setItem("contact", C)    
