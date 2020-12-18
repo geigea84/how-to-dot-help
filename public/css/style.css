@@ -111,10 +111,13 @@
   .pad-t {
       padding-top: 10px;
   }
+  .pad-rt {
+    margin-top: -20px;
+}
   .pad-b {
     padding-bottom: 20px;
 }
-.pad-tb {
+  .pad-tb {
     padding: 10px 0px;
 }
   .pad-lr {
@@ -133,6 +136,9 @@
   .tertiary {
       color: black;
       font-weight: 600;
+  }
+  .primary {
+      color: var(--primary)
   }
 
   .bgblue {
