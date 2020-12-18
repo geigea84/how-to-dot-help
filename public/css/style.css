@@ -21,7 +21,10 @@
     color: var(--secondary);
     line-height: 1.25;
   }
-  
+  h1 {
+    font-size: 34px;
+  }
+
   h2 a {
     color: var(--tertiary);
   }
@@ -105,9 +108,20 @@
       text-align: center;
   }
 
+  .right {
+      text-align:right;
+  }
   .pad {
       padding: 40px;
   }
+  .pad-t {
+      padding-top: 10px;
+  }
+  .pad-lr {
+    padding: 0px 20px;
+}
+
+  /*HOMEPAGE*/
   .homehead {
       font-size: 40px;
   }
@@ -140,6 +154,10 @@
     border-right: solid 10px var(--secondary);
 }
 
+  main {
+    margin-left: 200px;
+  }
+  
 /*NAV*/
 .navbar {
     background-color: var(--secondary);
@@ -177,11 +195,6 @@
     to {background-color: var(--primary); color: var(--tertiary);}
   }
 
-  main {
-    margin-left: 200px;
-  }
-  
-/*NAV*/
 .navheader {
     background-color: var(--tertiary);
     font-size: 20px;
@@ -241,6 +254,30 @@
     background-color: black;
   }
 
+/*Forms*/
+.form {
+    padding:20px;
+    display: flex;
+    width: 100%;
+}
+.formbox-sl {
+    background-color:white;
+    min-height: 30px;
+    flex: 0 0 100%;
+    margin-bottom:20px;
+    margin-top: 5px;
+
+
+}  
+.formbox-lg {
+    background-color:white;
+    min-height: 100px;
+    flex: 0 0 100%;
+    margin-bottom:20px;
+    margin-top: 5px;
+
+}  
+
   /*CARDS*/
   .card-volunteer {
     color: var(--primary);
@@ -278,27 +315,6 @@
     background-color: var(--white);
     transform: translate(0, 0);
     box-shadow: 2px 2px darkgray;
-  }
-  
-  
-  /* FORM -----------------IN PROGRESS */
-  .form-label,
-  .form-input,
-  .form-textarea {
-    display: block;
-  }
-  
-  .form-label {
-    font-size: 1.1rem;
-    margin: 0 0 0 5px;
-  }
-  
-  .form-input {
-    width: 100%;
-    padding: 1%;
-    margin: 5px 0;
-    font-size: 1.2rem;
-    border: 2px solid var(--light-dark);
   }
   
   /* FLEX CONTENT */
