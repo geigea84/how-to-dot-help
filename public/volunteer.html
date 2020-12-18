@@ -16,6 +16,7 @@
             <div class="navbody col-12 justify-space-around">
                 <a href="/login">Login</a>
                 <a href="/logout">Logout</a>
+                <a href="/volunteer">My Page</a>
                 <a href="/nonforprifits">Partner NFPs</a>
             </div>    
         </div>
@@ -26,39 +27,61 @@
             <h1>HowTo.Help</h1>
         </header>
         <!--FORM-->
-        <div class="col-12 flex-row align-center pad-lr">
-            <div class="col-12 right pad-t">
-                <button id="hide-vinfo">Close Info</button>
+            <div id="form-v">
+            <div class="col-12 flex-row align-center pad-lr">
+                <div class="col-12 center pad-t">
+                    <button id="hide-vinfo">Close Info</button>
+                </div>
+                <div class="form flex-row">
+                    <p class=" col-12">
+                        Create & Edit your information to send to orginizations you want to work with!
+                    </p>
+                    <h4>First Name</h4>
+                    <div id="v-first-name" class="formbox-sl">
+                    </div>
+                    <h4>Last Name</h4>
+                    <div id="v-last-name" class="formbox-sl">
+                    </div>
+                    <h4>Email</h4>
+                    <div id="v-email" class="formbox-sl">
+                    </div>
+                    <h4>Phone</h4>
+                    <div id="v-phone" class="formbox-sl">
+                    </div>
+                    <h4>Prefered contact method</h4>
+                    <div id="v-contact" class="formbox-sl">
+                    </div>
+                    <h4>Tell NFPs a little about yourself. What are your interests and skills?</h4>
+                    <div id="v-info" class="formbox-lg">
+                    </div>
+                    <div class="col-12 center pad-t">
+                        <button id="save-v-info">Save</button>
+                    </div>
+                </div>
             </div>
-            <div class="form flex-row">
-                <p class=" col-12">
-                    Create & Edit your information to send to orginizations you want to work with!
-                </p>
-                <h4>First Name</h4>
-                <div id="v-first-name" class="formbox-sl">
-                </div>
-                <h4>Last Name</h4>
-                <div id="v-first-name" class="formbox-sl">
-                </div>
-                <h4>Email</h4>
-                <div id="v-first-name" class="formbox-sl">
-                </div>
-                <h4>Phone</h4>
-                <div id="v-first-name" class="formbox-sl">
-                </div>
-                <h4>Prefered contact method</h4>
-                <div id="v-first-name" class="formbox-sl">
-                </div>
-                <h4>Tell NFPs a little about yourself. What are your interests and skills?</h4>
-                <div id="v-first-name" class="formbox-lg">
-                </div>
-            </div>
-        </div>
+        </div>    
+
         <!--YOUR NFPs-->
-        <div class="col-12 pad-lr">
-            <div class="nfp-img"></div>
-            <div class="center">
-                <button> Reach Out </button>
+        <div class="col-12 flex-row pad bgblue">
+            <div class="col-12 center pad-b">
+                <h1>NFP You Have Reached Out To</h1>
+            </div>
+            <div class="card-nfp-b col-12 flex-row align-center">
+                    <div class="col-3">
+                        <img src="images/filler-logo.png" alt="NFP logo">
+                    </div>
+                    <div class="col-9">
+                        <div class="bod">
+                            <div class="center">
+                                <h2 id="nfp-name-">NFP Name</h2>
+                                <p id="nfp-info-">Info text text text text text text text text text text text text text text text texttext text text text text text text text text text text text text text text texttext text text text text text text text text text text text text text text texttext text text text text text text text text text text text text text text texttext text text text text text text text text text text text text text text texttext text text text text text text text text text text text text text text texttext text text text text text text text text text text text text text text text text text text text text text text text text text text text text</p>
+                            </div>
+                        </div>
+                        <!-- <div class="pad-b">
+                            <button>Remove</button>
+                        </div> -->
+                    </div>
+                </div>
             </div>
         </div>
         <!-- END Swapable -->

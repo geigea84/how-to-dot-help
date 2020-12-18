@@ -4,6 +4,7 @@
     --tertiary: #b02425;
     --white: white;
     --dark: #38302e;
+    --accent: #80ccbf;
   }
   
   * {
@@ -43,26 +44,13 @@
     text-decoration: underline;
   }
 
-  button {
-    text-decoration: none;
-    color: var(--primary);
-    background-color: var(--tertiary);
-    padding: 10px 20px;
-    width:200px;
-    border: none;
-    font-size: 18px;
-    border-radius: 3px;
-    transition: width 2s, transform 3s;
-
-  }
-    button:hover {
-            width: 400px;
-            transform: grow(200%); 
-            color: white;
-          }
-          
   p {
     font-size: 1.2rem;
+  }
+  @media screen and (max-width: 700px) {
+    p {
+        font-size: 1rem;
+      }
   }
   
   input {
@@ -102,6 +90,7 @@
   main {
     display: flex;
     flex-wrap: wrap;
+    padding-bottom: 40px;
   }
 
   .center {
@@ -117,6 +106,9 @@
   .pad-t {
       padding-top: 10px;
   }
+  .pad-b {
+    padding-bottom: 20px;
+}
   .pad-lr {
     padding: 0px 20px;
 }
@@ -136,7 +128,7 @@
   }
 
   .bgblue {
-      background-color: #a9e9de;
+      background-color: var(--accent);
   }
   .bgblue h2 {
     color: var(--tertiary);
@@ -260,6 +252,7 @@
     display: flex;
     width: 100%;
 }
+
 .formbox-sl {
     background-color:white;
     min-height: 30px;
@@ -277,8 +270,12 @@
     margin-top: 5px;
 
 }  
+.divide {
+    border-bottom: solid 15px var(--secondary);
+    width:100%;
+}
 
-  /*CARDS*/
+/*CARDS*/
   .card-volunteer {
     color: var(--primary);
     background-color: var(--tertiary);
@@ -286,37 +283,111 @@
     width: 100%;
     text-align: left;
   }
-
-  .card-nfp {
+/*NFP Card on Vol Page*/
+  .card-nfp-b {
     display: flex;
     color: var(--primary);
     background-color: var(--tertiary);
-    padding: 20px;
     width: 100%;
     text-align: center;
   }
-
-  /*BUTTONS*/
-  .btn-reachout {
-    font-size: 1.6rem;
-    text-decoration: none;
-    padding: 8px 6px;
+  .card-nfp-b .bod {
+    padding: 10px 20px 20px 20px;
     width: 100%;
-    display: block;
-    margin: 5px 0;
+    height:100%;
+    text-align: center;
+  }
+
+  .card-nfp-b .col-3 {
+    background-color: var(--white);
+    height:100%;
+    display:flex;
+    align-items: center;
+    padding:20px 10px; 
+  }
+  .card-nfp-b .col-3 img{
+    width:100%;
+    max-width:200px;
+    margin:auto;
+  }
+
+  @media screen and (max-width: 700px) {
+    .card-nfp-b .col-3 {
+      text-align: center;
+      height:auto;
+      padding:10px 20px; 
+    }
+    .card-nfp-b .col-3 img{
+        width: 80px;
+        margin:auto;
+      }
+  }
+
+  .card-nfp-b h2 {
+    color: var(--primary);
+    text-align: center;
+  }
+
+  .card-nfp-b p {
+    font-size:14px;
+  }
+  .card-nfp-b button {
     color: var(--tertiary);
     background-color: var(--primary);
-    box-shadow: none;
-    transform: translate(-1px, -1px);
+    text-align: center;
   }
-  
-  .btn-reachout:hover {
+  .card-nfp-b button:hover {
+    color: var(--tertiary);
+    background-color: var(--primary);
+    text-align: center;
+  }
+
+  .bgwhite {
+    background-color: white;
+    height:100%;
+    }
+    .twenty {
+        width:20%;
+    }
+    .eighty {
+        width:80%;
+    }
+
+
+
+  /*BUTTONS*/
+  button {
+    text-decoration: none;
     color: var(--primary);
-    background-color: var(--white);
-    transform: translate(0, 0);
-    box-shadow: 2px 2px darkgray;
+    background-color: var(--tertiary);
+    padding: 10px 20px;
+    width:200px;
+    border: none;
+    font-size: 18px;
+    border-radius: 3px;
+    transition: width 2s, transform 2s;
+
   }
+    button:hover {
+            width: 400px;
+            transform: grow(200%); 
+            color: white;
+          }
+          
   
+  @media screen and (max-width: 700px) {
+    button {
+        width:150px;
+        transition: width 1s, transform 1s;
+
+    }  
+    button:hover {
+        width: 200px;
+        transform: grow(133%); 
+        color: white;
+      }
+    }
+
   /* FLEX CONTENT */
   .flex-row {
     display: flex;
