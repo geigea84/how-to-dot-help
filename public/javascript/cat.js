@@ -4,8 +4,9 @@ var lastName = localStorage.getItem("lastName")
 var email = localStorage.getItem("email")
 var phone = localStorage.getItem("phone")
 var info = localStorage.getItem("info")
-var contact = localStorage.getItem("contact")
-
+// var contact = localStorage.getItem("contact")
+var city = localStorage.getItem("city")
+var state = localStorage.getItem("state")
 
 
 //---------------------------------//
@@ -35,7 +36,10 @@ $(document).ready(function () {
       $("#email").html( email );
       $("#phone").html( formatedPhone );
       $("#info").html( info );
-      $("#contact").html( contact );
+      //$("#contact").html( contact );
+      $("#city").html( city );
+      $("#state").html( state );
+
 })
 
 //---------------------------------//
@@ -72,6 +76,17 @@ const ValidatePhone = function(P) {
               }
 }
 
+//below function from https://gist.github.com/jacobstein2015/582d214b3f3c34b59368
+const ValidateState = function(S) {
+   let theState = S.toUpperCase();
+    if   (  theState == "AL" || theState == " AK" || theState == " AZ" || theState == "AR" || theState == "CA" || theState == "CO" || theState == "CT" || theState == "DE" || theState ==  "FL" || theState == "GA" || theState == "HI" || theState == "ID" || theState == "IL" || theState == "IN" || theState == "IA" || theState == "KS" || theState == "KY" || theState == "LA" || theState ==  "ME" || theState == "MD" || theState == "MA" || theState == "MI" || theState == "MN" || theState == "MS" || theState == "MO" || theState == "MT" || theState == "NE" || theState == "NV" || theState == "NH" || theState == "NJ" || theState == "NM" || theState == "NY" || theState == "NC" || theState == "ND" || theState == "OH" || theState == "OK" || theState == "OR" || theState == "PA" || theState == "RI" || theState == "SC" || theState == "SD" || theState == "TN" || theState == "TX" || theState == "UT" || theState == "VT" || theState == "VA" || theState == "WA" || theState == "WV" || theState == "WI" || theState == "WY" || theState == "AS" || theState == "DC" || theState == "FM" || theState == "GU" || theState == "MH" || theState == "MP" || theState == "PW" || theState == "PR" || theState == "VI" ){
+        return theState;
+    }
+    else {
+        alert("Invalid State - Please use initials");
+        return state;
+    }
+}
 //------------------------------------------------save
 
 $("#save").on("click", function() {
@@ -82,10 +97,13 @@ $("#save").on("click", function() {
     E = $("#email").val()
     P = $("#phone").val()
     I = $("#info").val()
-    C = $("#contact").val()
+    //C = $("#contact").val()
+    Ci = $("#city").val()
+    S = $("#state").val()
 
     let validE = ValidateEmail(E)
     let validP = ValidatePhone(P)
+    let validS = ValidateState(S)
 
         //save text
   var saveTask = function () {
@@ -94,7 +112,9 @@ $("#save").on("click", function() {
     localStorage.setItem("email", validE) 
     localStorage.setItem("phone", validP) 
     localStorage.setItem("info", I) 
-    localStorage.setItem("contact", C)    
+    //localStorage.setItem("contact", C)   
+    localStorage.setItem("city", Ci)  
+    localStorage.setItem("state", validS)   
   }
     saveTask()
   });
