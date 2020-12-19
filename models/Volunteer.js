@@ -32,8 +32,11 @@ Volunteer.init(
             allowNull: false
         },
         state: {
-            type: DataTypes.STRING(14),
-            allowNull: false
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [2]
+            }
         },
         bio: {
             type: DataTypes.STRING(500),

@@ -16,9 +16,9 @@ NFP.init(
             allowNull: false,
             unique: true
         },
-        site_link: {
+        url: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             unique: true,
             validate: {
                 isUrl: true
@@ -26,11 +26,11 @@ NFP.init(
         },
         cause: {
             type: DataTypes.STRING(30),
-            allowNull: false,
+            allowNull: false
         },
         tags: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: false
         },
         description: {
             type: DataTypes.STRING(1000),
@@ -56,12 +56,12 @@ NFP.init(
             allowNull: false
         },
         state: {
-            type: DataTypes.STRING(14),
+            type: DataTypes.STRING(2),
             allowNull: false
         },
         zip: {
             type: DataTypes.INTEGER,
-            allowNull: true,
+            allowNull: false,
             validate: {
                 len: [5]
             }
