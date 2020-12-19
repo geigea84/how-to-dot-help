@@ -47,6 +47,11 @@
   p {
     font-size: 1.2rem;
   }
+
+  .hide {
+      display:none;
+  }
+
   @media screen and (max-width: 700px) {
     p {
         font-size: 1rem;
@@ -106,8 +111,14 @@
   .pad-t {
       padding-top: 10px;
   }
+  .pad-rt {
+    margin-top: -20px;
+}
   .pad-b {
     padding-bottom: 20px;
+}
+  .pad-tb {
+    padding: 10px 0px;
 }
   .pad-lr {
     padding: 0px 20px;
@@ -125,6 +136,9 @@
   .tertiary {
       color: black;
       font-weight: 600;
+  }
+  .primary {
+      color: var(--primary)
   }
 
   .bgblue {
@@ -255,7 +269,7 @@
 
 .formbox-sl {
     background-color:white;
-    min-height: 30px;
+    height: 30px;
     flex: 0 0 100%;
     margin-bottom:20px;
     margin-top: 5px;
@@ -275,6 +289,13 @@
     width:100%;
 }
 
+textarea {
+    justify-content: left;
+    align-content: center;
+    text-align: left;
+    font-size: 16px;
+    padding-top:5px;
+}
 /*CARDS*/
   .card-volunteer {
     color: var(--primary);
@@ -354,8 +375,6 @@
     .eighty {
         width:80%;
     }
-
-
 
   /*BUTTONS*/
   button {
