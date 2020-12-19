@@ -18,6 +18,7 @@ else {
             port: 3001
         }
     );
+
 }
 
 module.exports = sequelize;
