@@ -1,5 +1,5 @@
 const express = require('express');
-//const routes = require('./controllers/');
+const routes = require('./controllers/');
 const path = require('path');
 const session = require('express-session');
 
@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //app.use(session(sess));
 
-//app.use(routes);
+app.use(routes);
 
 
 app.listen(PORT, () => console.log('Now Listening'));
