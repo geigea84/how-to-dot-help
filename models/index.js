@@ -1,6 +1,7 @@
 const Volunteer = require("./Volunteer");
 const Admin     = require("./Admin");
 const NFP       = require("./NFP");
+const VolNFPs   = require("./VolNFPs");
 
 /*
 Possible relationships, will need discussion with team
@@ -9,12 +10,13 @@ volunteer has many nfp
 */
 
 Volunteer.belongsToMany(NFP, {
-    through: volunteerNfps,
+    through: VolNFPs,
     foreignKey: "volunteer_id"
 });
 
-NFP.hasMany(Volunteer, {
+NFP.belongsToMany(Volunteer, {
+    through: VolNFPs,
     foreignKey: "nfp_id"
 });
 
-module.exports = {Volunteer, Admin, NFP};
+module.exports = {Volunteer, Admin, NFP, VolNFPs};

@@ -39,7 +39,7 @@ const nfpData = [
         description: "oscar",
         size: 10,
         founding_year: 1910,
-        reported_net_assets: 123456.00,
+        reported_net_assets: 123456.78,
         city: "Seattle",
         state: "WA",
         zip: 33333,

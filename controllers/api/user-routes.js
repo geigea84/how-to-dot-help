@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Models } = require('');
+const { Models } = require('../../models');
 
 // may need an authorization application before searching through API
 router.get('/', (req, res) => {
@@ -33,3 +33,5 @@ router.get('/:id', (req, res) => {
             res.status(500).json(err);
         });
 });
+
+module.exports = router;
