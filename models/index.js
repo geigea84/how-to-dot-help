@@ -8,7 +8,8 @@ nfp has many volunteer
 volunteer has many nfp
 */
 
-Volunteer.hasMany(NFP, {
+Volunteer.belongsToMany(NFP, {
+    through: volunteerNfps,
     foreignKey: "volunteer_id"
 });
 
