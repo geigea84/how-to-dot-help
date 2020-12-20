@@ -42,17 +42,14 @@ Volunteer.init(
             type: DataTypes.STRING(500),
             allowNull: true
         },
-        //https://sequelize.org/master/manual/validations-and-constraints.html
-        //allowNull interaction with other validators
-        /*
         phone_number: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING(10),
             allowNull: true,
             validate: {
-                len: [10]
+                min: 10,
+                isNumeric: true
             }
         },
-        */
         email: {
             type: DataTypes.STRING,
             allowNull: false,
