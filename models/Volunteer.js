@@ -77,6 +77,7 @@ Volunteer.init(
             },
             async beforeCreate(updatedVolunteerData) {
                 updatedVolunteerData.password = await bcrypt.hash(updatedVolunteerData, 12);
+                return updatedVolunteerData;
             }
         },
         sequelize,
