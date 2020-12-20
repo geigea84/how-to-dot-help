@@ -7,7 +7,7 @@ const volunteerData = [
         city: "Chicago",
         state: "IL",
         bio: "Da Bears",
-        phone_number: 4444444444,
+        //phone_number: 4444444444,
         email: "alpha@bravo.com",
         password: "alphaBravo"
     },
@@ -17,7 +17,7 @@ const volunteerData = [
         city: "New York",
         state: "NY",
         bio: "J! E! T! S!",
-        phone_number: 5555555555,
+        //phone_number: 5555555555,
         email: "charlie@delta.com",
         password: "charlieDelta"
     },
@@ -27,7 +27,7 @@ const volunteerData = [
         city: "Los Angeles",
         state: "CA",
         bio: "Go back to San Diego and St. Louis",
-        phone_number: 6666666666,
+        //phone_number: 6666666666,
         email: "echo@foxtrot.com",
         password: "echoFoxtrot"
     }

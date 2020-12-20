@@ -49,7 +49,10 @@ NFP.init(
         },
         reported_net_assets: {
             type: DataTypes.DECIMAL,
-            allowNull: true
+            allowNull: true,
+            validate: {
+                isDecimal: true
+            }
         },
         city: {
             type: DataTypes.STRING(25),
@@ -60,12 +63,14 @@ NFP.init(
             allowNull: false
         },
         zip: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING(5),
             allowNull: false,
             validate: {
-                len: [5]
+                min: 5,
+                isNumeric: true
             }
         },
+        /*
         phone_number: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -73,6 +78,7 @@ NFP.init(
                 len: [10]
             }
         },
+        */
         email: {
             type: DataTypes.STRING,
             allowNull: false,

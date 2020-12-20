@@ -13,7 +13,7 @@ const nfpData = [
         city: "Miami",
         state: "FL",
         zip: 11111,
-        phone_number: 1111111111,
+        //phone_number: 1111111111,
         email: "mike@mike.com"
     },
     {
@@ -28,7 +28,7 @@ const nfpData = [
         city: "Austin",
         state: "TX",
         zip: 22222,
-        phone_number: 2222222222,
+        //phone_number: 2222222222,
         email: "november@november.com"
     },
     {
@@ -43,7 +43,7 @@ const nfpData = [
         city: "Seattle",
         state: "WA",
         zip: 33333,
-        phone_number: 3333333333,
+        //phone_number: 3333333333,
         email: "oscar@oscar.com"
     }
 ];
