@@ -20,7 +20,7 @@ router.get('/dashboard', (req, res) => {
 });
 
 router.get('/partners', (req, res) => {
-
+    res.render('partner-nfp');
 });
 
 module.exports = router;
