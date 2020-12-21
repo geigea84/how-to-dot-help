@@ -332,6 +332,8 @@ textarea {
     margin:auto;
   }
 
+  
+
   @media screen and (max-width: 700px) {
     .card-nfp-b .col-3 {
       text-align: center;
@@ -552,3 +554,4 @@ textarea {
         flex: 0 0 100%;
     }
     }    
+    

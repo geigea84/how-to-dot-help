@@ -4,6 +4,12 @@ var path = require("path");
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
+const router = require('express').Router();
+
+router.get('/', (req, res) => {
+    console.log('Homepage')
+})
+
 
 module.exports = function(app) {
 
