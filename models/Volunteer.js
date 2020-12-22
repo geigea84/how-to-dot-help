@@ -20,12 +20,12 @@ Volunteer.init(
             autoIncrement: true
         },
         first_name: {
-            type: DataTypes.STRING,
-            allowNull: false,
+            type: DataTypes.STRING(25),
+            allowNull: false
         },
         last_name: {
-            type: DataTypes.STRING,
-            allowNull: false,
+            type: DataTypes.STRING(25),
+            allowNull: false
         },
         city: {
             type: DataTypes.STRING(25),
@@ -40,15 +40,14 @@ Volunteer.init(
         },
         bio: {
             type: DataTypes.STRING(500),
-            allowNull: true,
+            allowNull: true
         },
-        //https://sequelize.org/master/manual/validations-and-constraints.html
-        //allowNull interaction with other validators
         phone_number: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(10),
             allowNull: true,
             validate: {
-                len: [10]
+                min: 10,
+                isNumeric: true
             }
         },
         email: {
