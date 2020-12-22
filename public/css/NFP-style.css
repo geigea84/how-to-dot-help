@@ -1,8 +1,18 @@
+:root {
+    --primary: #fff3d7;
+    --secondary: #db4546;
+    --tertiary: #b02425;
+    --white: white;
+    --dark: #38302e;
+    --accent: #80ccbf;
+  }
+
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     border-radius: 5px; /* 5px rounded corners */
-    /* width: 100%; */
+    max-width: 600px;
+    background-color: var(--accent);
   }
 
   /* On mouse-over, add a deeper shadow */
