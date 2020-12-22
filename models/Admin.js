@@ -1,6 +1,6 @@
 const {Model, DataTypes} = require("sequelize");
+const bcrypt = require('bcrypt');
 const sequelize = require("../config/connection");
-const bcrypt = require("bcrypt");
 
 class Admin extends Model {
     checkPassword(loginPw) {
@@ -39,7 +39,7 @@ Admin.init(
                 newAdminData.password = await bcrypt.hash(newAdminData.password, 12);
                 return newAdminData;
             },
-            async beforeCreate(updatedAdminData) {
+            async beforeUpdate(updatedAdminData) {
                 updatedAdminData.password = await bcrypt.hash(updatedAdminData.password, 12);
                 return updatedAdminData;
             }

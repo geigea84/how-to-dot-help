@@ -3,7 +3,6 @@ const sequelize = require('../config/connection');
 const { Admin, NFP, Volunteer } = require('../models')
 
 router.get('/', (req, res) => {
-    console.log(req.session);
     res.render('homepage')
 });
 
