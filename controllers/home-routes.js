@@ -1,23 +1,28 @@
+const { Sequelize } = require('sequelize/types');
+
 const router = require('express').Router();
+const sequelize = resuire('../config/connection');
+const { Admin, NFP, Volunteer } = require('../models');
 
 router.get('/', (req, res) => {
-    res.render('homepage');
+    res.render('homepage')
 });
 
-
-
-
 router.get('/login', (req, res) => {
-
+    res.render('login')
 });
 
 router.get('/signup', (req, res) => {
-
+    res.render('signup');
 });
 
-router.get('/dashboard', (req, res) => {
-
+router.get('/volunteer', (req, res) => {
+    res.render('/volunteers');
 });
+
+router.get('/admin', (req, res) => {
+    res.render('admin');
+})
 
 router.get('/partners', (req, res) => {
     res.render('partner-nfp');
