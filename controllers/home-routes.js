@@ -1,8 +1,7 @@
 const { Sequelize } = require('sequelize/types');
-
 const router = require('express').Router();
-const sequelize = resuire('../config/connection');
-
+const sequelize = require('../config/connection');
+const { Admin, NFP, Volunteer } = require('../models')
 
 router.get('/', (req, res) => {
     res.render('homepage')
@@ -26,6 +25,10 @@ router.get('/admin', (req, res) => {
 
 router.get('/partners', (req, res) => {
     res.render('partner-nfp');
+});
+
+router.get('/admin', (req, res) => {
+
 });
 
 module.exports = router;

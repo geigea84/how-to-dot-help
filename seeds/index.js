@@ -6,16 +6,24 @@ const sequelize = require("../config/connection");
 
 const seedAll = async () => {
     await sequelize.sync({force: true});
-    console.log("==========DATABASE SYNCED");
+    console.log("");
+    console.log("========== DATABASE SYNCED ==========");
+    console.log("");
 
     await volunteerSeeds();
-    console.log("==========VOLUNTEERS SEEDED");
+    console.log("");
+    console.log("========== VOLUNTEER SEEDED ==========");
+    console.log("");
 
     await adminSeeds();
-    console.log("==========ADMINS SEEDED");
+    console.log("");
+    console.log("========== ADMIN SEEDED ==========");
+    console.log("");
 
     await nfpSeeds();
-    console.log("==========NFPS SEEDED");
+    console.log("");
+    console.log("========== NFP SEEDED ==========");
+    console.log("");
 
     process.exit(0);
 };
