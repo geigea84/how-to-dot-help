@@ -37,19 +37,26 @@ NFP.init(
             allowNull: false
         },
         size: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        founding_year: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [4]
+                isNumeric: true
+            }
+        },
+        founding_year: {
+            type: DataTypes.STRING(4),
+            allowNull: false,
+            validate: {
+                min: 4,
+                isNumeric: true
             }
         },
         reported_net_assets: {
             type: DataTypes.DECIMAL,
-            allowNull: true
+            allowNull: true,
+            validate: {
+                isDecimal: true
+            }
         },
         city: {
             type: DataTypes.STRING(25),
@@ -60,17 +67,19 @@ NFP.init(
             allowNull: false
         },
         zip: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING(5),
             allowNull: false,
             validate: {
-                len: [5]
+                min: 5,
+                isNumeric: true
             }
         },
         phone_number: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING(10),
             allowNull: false,
             validate: {
-                len: [10]
+                min: 10,
+                isNumeric: true
             }
         },
         email: {
@@ -86,7 +95,6 @@ NFP.init(
     },
     {
         sequelize,
-        //adjust/add timestamps here or elsewhere?----------------------------------------------
         timestamps: true,
         createdAt: true,
         updatedAt: true,

@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const { Volunteer } = require('../../models');
 
+
+
 // may need an authorization application before searching through API
 router.get('/', (req, res) => {
     Volunteer.findAll({
@@ -100,4 +102,4 @@ router.delete('/:id', (req, res) => {
         });
 });
 
-module.exports = router
+module.exports = router;
