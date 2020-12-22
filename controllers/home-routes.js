@@ -2,7 +2,7 @@ const { Sequelize } = require('sequelize/types');
 
 const router = require('express').Router();
 const sequelize = resuire('../config/connection');
-const { Admin, NFP, Volunteer } = require('../models');
+
 
 router.get('/', (req, res) => {
     res.render('homepage')
