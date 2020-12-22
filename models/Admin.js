@@ -36,11 +36,11 @@ Admin.init(
     {
         hooks: {
             async beforeCreate(newAdminData) {
-                newAdminData.password = await bcrypt.hash(newAdminData.password, 12);
+                newAdminData.password = await bcrypt.hash(newAdminData.password, 10);
                 return newAdminData;
             },
-            async beforeCreate(updatedAdminData) {
-                updatedAdminData.password = await bcrypt.hash(updatedAdminData.password, 12);
+            async beforeUpdate(updatedAdminData) {
+                updatedAdminData.password = await bcrypt.hash(updatedAdminData.password, 10);
                 return updatedAdminData;
             }
         },

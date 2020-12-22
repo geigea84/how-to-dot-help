@@ -72,11 +72,11 @@ Volunteer.init(
     {
         hooks: {
             async beforeCreate(newVolunteerData) {
-                newVolunteerData.password = await bcrypt.hash(newVolunteerData.password, 12);
+                newVolunteerData.password = await bcrypt.hash(newVolunteerData.password, 10);
                 return newVolunteerData;
             },
-            async beforeCreate(updatedVolunteerData) {
-                updatedVolunteerData.password = await bcrypt.hash(updatedVolunteerData, 12);
+            async beforeUpdate(updatedVolunteerData) {
+                updatedVolunteerData.password = await bcrypt.hash(updatedVolunteerData, 10);
                 return updatedVolunteerData;
             }
         },
