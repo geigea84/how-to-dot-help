@@ -1,6 +1,6 @@
 const {Model, DataTypes} = require("sequelize");
+const bcrypt = require('bcrypt');
 const sequelize = require("../config/connection");
-const bcrypt = require("bcrypt");
 
 //create our Volunteer model
 class Volunteer extends Model {
@@ -81,12 +81,10 @@ Volunteer.init(
             }
         },
         sequelize,
-        //adjust/add timestamps here or elsewhere?----------------------------------------------
         timestamps: true,
         createdAt: true,
         updatedAt: true,
         freezeTableName: true,
-        //nature of sql utilizes underscored rather than camel/pascal
         underscored: true,
         modelName: "volunteer"
     }
