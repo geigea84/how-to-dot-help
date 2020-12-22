@@ -13,19 +13,19 @@ let formatPhoneNumber = (P) => {
     if (match) {
       return '(' + match[1] + ') ' + match[2] + '-' + match[3]
     }; 
-    return "unlisted"
+    return " "
   };
 
 //------------------------------------------------load all form
 $(document).ready(function () {
-    $.get("/api/user_data".then(function(data) {
-        let formatedPhone = formatPhoneNumber(data.phone)
+    $.get("/api/users/:id".then(function(data) {
+        let formatedPhone = formatPhoneNumber(data.phone_number)
             console.log(data)
-        $("#first-name").html( data.firstName );
-        $("#last-name").html( data.lastName );
+        $("#first-name").html( data.first_name );
+        $("#last-name").html( data.last_name );
         $("#email").html( data.email );
         $("#phone").html( formatedPhone );
-        $("#info").html( data.info );
+        $("#info").html( data.bio );
         $("#city").html( data.city );
         $("#state").html( data.state );
     }))
@@ -55,12 +55,12 @@ const ValidatePhone = function(P) {
             console.log("valid phone")      
             return cleaned;
               }
-        else if (P == "unlisted"){
-                return "unlisted";
+        else if (P == ""){
+                return "";
             }
         else {
               alert("not a valid phone number");
-              return "unlisted";
+              return "";
               }
     }
 
@@ -93,22 +93,27 @@ const ValidateState = function(S) {
         let validP = ValidatePhone(P)
         let validS = ValidateState(S)
 
+
     var userinfo = {
-        firstName: FN,
-        lastName: LN,
-        //etc
+        first_name: FN,
+        last_name: LN,
+        city: Ci,
+        state: validS,
+        bio: I,
+        phone_number: validP,
+        email: validE
     }
 
-    $.put("/api/user_data", {userinfo}.then(function(data) {
+    $.put("/api/users/:id", {userinfo}.then(function(data) {
             console.log("Data Saved")
     }))
 })
 
 
 
-//---------------------------------------//
+//---------------------------------------------//
 //-------------POST/ CREATE NEW USER-----------//
-//--------------------------------------//
+//---------------------------------------------//
 
   //------------------------------------------------PUT
   $("#save").on("click", function() {
@@ -122,13 +127,13 @@ const ValidateState = function(S) {
         let validE = ValidateEmail(E)
 
     var userinfo = {
-        firstName: FN,
-        lastName: LN,
+        first_name: FN,
+        last_name: LN,
         email: validE,
         password: Ps
     }
 
-    $.post("/api/user_data", {userinfo}.then(function(data) {
+    $.post("/api/users", {userinfo}.then(function(data) {
         //load/userpage html route
     }))
 })

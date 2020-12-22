@@ -3,8 +3,11 @@ const sequelize = require('../config/connection');
 const { Admin, NFP, Volunteer } = require('../models')
 
 router.get('/', (req, res) => {
-    res.render('homepage')
+    res.render('homepage');
 });
+
+
+
 
 router.get('/login', (req, res) => {
 
@@ -19,7 +22,7 @@ router.get('/dashboard', (req, res) => {
 });
 
 router.get('/partners', (req, res) => {
-
+    res.render('partner-nfp');
 });
 
 router.get('/admin', (req, res) => {
