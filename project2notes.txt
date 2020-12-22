@@ -1,0 +1,57 @@
+to do
+make seeds to populate for testing purposes
+-set up schema - do with node?
+-get database on heroku
+-figure out why validation seems to be selective
+
+questions for class
+-how does nodemon work?
+
+-best practice to enter city and state info into mysql db
+
+-adding dropdown frontend info into database
+
+-connect front and back
+--gitlab 14mvc activites 04
+
+-more points of emphasis for password validation
+
+-add logo/image info to database
+
+questions for HTH
+-which (if any) columns can be left blank when entering new NFP
+
+*Volunteer model
+-add timestamp?
+--flipped to true in model, need to learn about adjustments elsewhere
+first name
+last name
+city
+state
+bio string
+phone number 
+-allowNull: true 
+-10 digit
+email
+password
+- want more for password validation, check into mysql docs/sequelize docs
+
+*nfp model
+-add timestamp?
+--flipped to true in model, need to learn about adjustments elsewhere
+nfp name
+city
+state
+cause
+- static/categorical - make its own model?
+bio/about us
+phone number
+email
+site link
+logo? just url?
+- npm multer - could also be tech we haven't yet discussed
+
+*admin model
+see their spreadsheets for column info
+based current set up on volunteer model
+-updated to primary key id, email, and password

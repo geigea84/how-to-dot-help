@@ -77,16 +77,14 @@ Volunteer.init(
             },
             async beforeUpdate(updatedVolunteerData) {
                 updatedVolunteerData.password = await bcrypt.hash(updatedVolunteerData, 10);
-                return newVolunteerData;
+                return updatedVolunteerData;
             }
         },
         sequelize,
-        //adjust/add timestamps here or elsewhere?----------------------------------------------
         timestamps: true,
-        // createdAt: true,
-        // updatedAt: true,
+        createdAt: true,
+        updatedAt: true,
         freezeTableName: true,
-        //nature of sql utilizes underscored rather than camel/pascal
         underscored: true,
         modelName: "volunteer"
     }
