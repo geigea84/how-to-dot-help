@@ -1,6 +1,6 @@
 const {Model, DataTypes} = require("sequelize");
+const bcrypt = require('bcrypt');
 const sequelize = require("../config/connection");
-const bcrypt = require("bcrypt");
 
 //create our Volunteer model
 class Volunteer extends Model {
@@ -45,7 +45,7 @@ Volunteer.init(
         //https://sequelize.org/master/manual/validations-and-constraints.html
         //allowNull interaction with other validators
         phone_number: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: true,
             validate: {
                 len: [10]
@@ -73,18 +73,19 @@ Volunteer.init(
     {
         hooks: {
             async beforeCreate(newVolunteerData) {
-                newVolunteerData.password = await bcrypt.hash(newVolunteerData.password, 12);
+                newVolunteerData.password = await bcrypt.hash(newVolunteerData.password, 10);
                 return newVolunteerData;
             },
-            async beforeCreate(updatedVolunteerData) {
-                updatedVolunteerData.password = await bcrypt.hash(updatedVolunteerData, 12);
+            async beforeUpdate(updatedVolunteerData) {
+                updatedVolunteerData.password = await bcrypt.hash(updatedVolunteerData, 10);
+                return newVolunteerData;
             }
         },
         sequelize,
         //adjust/add timestamps here or elsewhere?----------------------------------------------
         timestamps: true,
-        createdAt: true,
-        updatedAt: true,
+        // createdAt: true,
+        // updatedAt: true,
         freezeTableName: true,
         //nature of sql utilizes underscored rather than camel/pascal
         underscored: true,

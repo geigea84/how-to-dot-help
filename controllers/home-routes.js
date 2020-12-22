@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Admin, Volunteer, NFP, VolNFPs } = require('../models');
 
+
+const { Admin, NFP, Volunteer } = require('../models')//VolNFPs
 
 
 router.get('/', (req, res) => {
@@ -78,6 +79,10 @@ router.get('/dashboard', (req, res) => {
 
 router.get('/partners', (req, res) => {
     res.render('partner-nfp');
+});
+
+router.get('/admin', (req, res) => {
+
 });
 
 module.exports = router;
