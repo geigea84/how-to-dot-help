@@ -8,32 +8,26 @@
                         Create & Edit your information to send to orginizations you want to work with!
                     </p>
                     <h4>First Name</h4>
-                    <textarea id="first-name" class="formbox-sl">
-                    </textarea>
+                    <textarea id="first-name" class="formbox-sl">{{volunteer.first_name}}</textarea>
                     <h4>Last Name</h4>
-                    <textarea id="last-name" class="formbox-sl">
-                    </textarea>
+                    <textarea id="last-name" class="formbox-sl">{{volunteer.last_name}}</textarea>
                     <h4>Email</h4>
-                    <textarea id="email" class="formbox-sl">
-                    </textarea>
+                    <textarea id="email" class="formbox-sl">{{volunteer.email}}</textarea>
                     <h4>Phone</h4>
-                    <textarea id="phone" class="formbox-sl">
-                    </textarea>
+                    <textarea id="phone" class="formbox-sl">{{volunteer.phone_number}}</textarea>
                     <h4>City</h4>
-                    <textarea id="city" class="formbox-sl">
-                    </textarea>
+                    <textarea id="city" class="formbox-sl">{{volunteer.city}}</textarea>
                     <h4>State (Please use initials)</h4>
-                    <textarea id="state" class="formbox-sl">
-                    </textarea>
+                    <textarea id="state" class="formbox-sl">{{volunteer.state}}</textarea>
+                    <textarea id="divId" class="hide">{{volunteer.id}}</textarea>
                     <!-- <h4>Prefered contact method</h4>
-                    <textarea id="contact" class="formbox-sl">
+                    <textarea id="password" class="formbox-sl">
                         Email
                     </textarea> -->
                     <h4>Tell NFPs a little about yourself. What are your interests and skills?</h4>
-                    <textarea id="info" class="formbox-lg">
-                    </textarea>
+                    <textarea id="info" class="formbox-lg">{{volunteer.bio}}</textarea>
                     <div class="col-12 center pad-t">
-                        <button id="save">Save</button>
+                        <button id="save-rev-btn">Save</button>
                     </div>
                 </div>
             </div>
@@ -42,23 +36,14 @@
         <!--YOUR NFPs-->
         <div class="col-12 flex-row pad bgblue">
             <div class="col-12 center pad-b pad-rt">
-                <h1 class="primary">NFP You Have Reached Out To</h1>
+                <h1 class="primary">See NFP to Reach Out To</h1>
             </div>
-            <div class="card-nfp-b col-12 flex-row align-center">
-                    <div class="col-3">
-                        <img src="images/filler-logo.png" alt="NFP logo">
-                    </div>
-                    <div class="col-9">
-                        <div class="bod">
-                            <div class="center">
-                                <h2 id="nfp-name-">NFP Name</h2>
-                                <p id="nfp-info-">Info text text text text text text text text text text text text text text text texttext text text text text text text text text text text text text text text texttext text text text text text text text text text text text text text text texttext text text text text text text text text text text text text text text texttext text text text text text text text text text text text text text text texttext text text text text text text text text text text text text text text texttext text text text text text text text text text text text text text text text text text text text text text text text text text text text text</p>
-                            </div>
-                        </div>
-                        <!-- <div class="pad-b">
-                            <button>Remove</button>
-                        </div> -->
-                    </div>
-                </div>
-            </div>
+            <ol>
+            {{#each nfp as |nfp|}}
+            <li>
+                {{> nfp-btn nfp }}
+            </li>
+            {{/each}}
+            </ol>   
         </div>
+        

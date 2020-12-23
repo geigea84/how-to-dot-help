@@ -52,10 +52,10 @@ NFP.init(
             }
         },
         reported_net_assets: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.STRING,
             allowNull: true,
             validate: {
-                isDecimal: true
+                isNumeric: true
             }
         },
         city: {

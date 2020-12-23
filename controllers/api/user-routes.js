@@ -15,7 +15,9 @@ router.get('/', (req, res) => {
         });
 });
 
+//  /api/users/:id
 router.get('/:id', (req, res) => {
+    console.log("WE HIT IT HARAY!!")
     Volunteer.findOne({
         attributes: { exclude: ['password'] },
         where: {
@@ -28,7 +30,8 @@ router.get('/:id', (req, res) => {
             'state',
             'bio',
             'phone_number',
-            'email'
+            'email',
+            'id'
         ]
     })
         .then(dbUserData => {
@@ -36,7 +39,8 @@ router.get('/:id', (req, res) => {
                 res.status(404).json({ message: 'No user found with this id' });
                 return;
             }
-            res.json(dbUserData);
+           // res.json(dbUserData);
+            res.render("volunteers", dbUserData)
         })
         .catch(err => {
             console.log(err);
@@ -65,11 +69,23 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-    Volunteer.update(req.body, {
+    Volunteer.update(
+        {
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            city: req.body.city,
+            state: req.body.state,
+            bio: req.body.bio,
+            phone_number: req.body.phone_number,
+            email: req.body.email,
+            password: req.body.password
+        },
+        {
         where: {
             id: req.params.id
         }
-    })
+        }
+        )
         .then(dbUserData => {
             if(!dbUserData[0]) {
                 res.status(404).json({ message: 'No user found with this id' });

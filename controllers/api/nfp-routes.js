@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { NFP } = require('../../models');
+const { NFP, VolNFPs } = require('../../models');
 
 router.get('/', (req, res) => {
     NFP.findAll({
@@ -75,7 +75,7 @@ router.post('/', (req, res) => {
         city: req.body.city,
         state: req.body.state,
         zip: req.body.zip,
-        phone_number: req.body.phone-number,
+        phone_number: req.body.phone_number,
         email: req.body.email
     })
     .then(dbPostData => res.json(dbPostData))
@@ -84,6 +84,15 @@ router.post('/', (req, res) => {
         res.status(500).json(err);
     });
 });
+
+router.put('/interest', (req, res) => {
+    VolNFPs.create({
+        volunteer_id: req.body.volunteer_id,
+        nfp_id: req.body.nfp_id
+    })
+        .then(dbPostData => res.json(dbPostData))
+        .catch(err => res.json(err));
+})
 
 router.put('/:id', (req, res) => {
     NFP.update(req.body, {
@@ -122,3 +131,5 @@ router.delete('/:id', (req, res) => {
             res.status(500).json(err);
         });
 });
+
+module.exports = router;
