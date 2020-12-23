@@ -88,9 +88,6 @@ router.put('/volunteer/:id', (req, res) => {
 
     console.log('put', req.body, req.params)
     Volunteer.update(
-        {where: {
-            id: req.params.id
-          }},
      {  first_name: req.body.userinfo.first_name,
         last_name: req.body.userinfo.last_name,
         email: req.body.userinfo.email,
@@ -98,7 +95,10 @@ router.put('/volunteer/:id', (req, res) => {
         bio: req.body.userinfo.bio,
         state: req.body.userinfo.state,
         city: req.body.userinfo.city
-    }
+    },
+    {where: {
+        id: req.params.id
+      }}
     )
       .then(dbPostData => {
         if (!dbPostData) {
