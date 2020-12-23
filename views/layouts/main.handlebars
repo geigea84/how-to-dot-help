@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>howto.help</title>
   <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/NFP-style.css">
+    
 </head>
 
 <body>
@@ -21,9 +23,18 @@
         <br>
         <a href="/signup">Join</a>
         <br>
-        <a href="/volunteer/1">Volnteer</a>
+        <a href="/volunteer/1">Volunteer</a>
+        <br>
+        <a href="/admin">Admin</a>
         <br>
         <a href="/logout">Logout</a>
+        {{!-- trying to toggle on or off depending on login --}}
+        {{!-- {{#if loggedIn}} --}}
+        {{!-- <button id="logout" class="hide">logout</button> --}}
+        {{!-- <a href="/logout">Logout</a>
+        {{else}}
+        <a href="/logout" style="display: none;">Logout</a>
+        {{/if}} --}}
       </h4>
     </div>
   </div>
@@ -45,6 +56,12 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="/javascript/cat.js"></script>
   <script src="/javascript/volApiCalls.js"></script>
+  {{!-- {{#if loggedIn}} --}}
+  <script src="/javascript/logout.js"></script>
+  <script src="/javascript/login.js"></script>
+
+  {{!-- {{/if}} --}}
+
 </body>
 
 </html>

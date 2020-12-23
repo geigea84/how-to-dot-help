@@ -109,7 +109,7 @@
       padding: 40px;
   }
   .pad-t {
-      padding-top: 10px;
+      padding-top: 30px;
   }
   .pad-rt {
     margin-top: -20px;
@@ -151,7 +151,13 @@
     font-size: 30px;
     line-height: 1.5;
   }
-
+  .bg-scrabble {
+    background-image: url('../images/support-scrabble.jpg');
+    background-size: 100%;
+    background-attachment: fixed;
+    background-position: top; 
+    height:100%;
+  }
   .home-head-image {
     width:100%;
     margin-bottom:-6px;
