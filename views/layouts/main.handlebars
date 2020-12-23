@@ -23,7 +23,12 @@
         <br>
         <a href="/volunteer/1">Volnteer</a>
         <br>
+        {{!-- trying to toggle on or off depending on login --}}
+        {{#if loggedIn}}
         <a href="/logout">Logout</a>
+        {{else}}
+        <a href="/logout" class="hide">Logout</a>
+        {{/if}}
       </h4>
     </div>
   </div>
@@ -45,6 +50,9 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="./javascript/cat.js"></script>
   <script src="./javascript/volApiCalls.js"></script>
+  {{#if loggedIn}}
+  <script src="/javascript/logout.js"></script>
+  {{/if}}
 </body>
 
 </html>
