@@ -6,9 +6,43 @@ const sequelize = require('../config/connection');
 const { Admin, NFP, Volunteer } = require('../models')//VolNFPs
 
 
-router.get('/', (req, res) => {
-    res.render('homepage')
-});
+// router.get('/', (req, res) => {
+//     res.render('homepage')
+// });
+
+
+// get all npfs for homepage
+router.get("/", (req, res) => {
+    NFP.findAll({
+        attributes: [
+            'id',
+            'nfp_name',
+            'url',
+            'cause',
+            'tags',
+            'description',
+            'size',
+            'founding_year',
+            'reported_net_assets',
+            'city',
+            'state',
+            'zip',
+            'phone_number',
+            'email'
+        ]   
+    })
+      .then((dbPostData) => {
+         const nfps = dbPostData.map((npf) => npf.get({ plain: true }));
+        // console.log(nfps)
+        res.render('homepage', { nfps });
+      })
+      .catch((err) => {
+        res.status(500).json(err);
+      });
+  });
+
+
+
 
 router.get('/login', (req, res) => {
     res.render('login');
@@ -53,7 +87,8 @@ router.get('/volunteer/:id', (req, res) => {
         'bio',
         'city',
         'state'
-      ]
+      ],
+      include
     })
       .then(dbPostData => {
         if (!dbPostData) {
