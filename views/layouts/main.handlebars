@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>howto.help</title>
+  <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/NFP-style.css">
+    
+</head>
+
+<body>
+  <div class="navbar">
+    <div class="navheader">
+      <h2>
+        <a href="/">Home</a>
+      </h2>
+    </div>
+    <div class="navbody">
+      <h4>
+        <a href="/login">Volunteer Login</a>
+        <br>
+        <a href="/signup">Join</a>
+        <br>
+        <a href="/volunteer/1">Volunteer</a>
+        <br>
+        <a href="/admin">Admin</a>
+        <br>
+        <a href="/logout">Logout</a>
+        {{!-- trying to toggle on or off depending on login --}}
+        {{!-- {{#if loggedIn}} --}}
+        {{!-- <button id="logout" class="hide">logout</button> --}}
+        {{!-- <a href="/logout">Logout</a>
+        {{else}}
+        <a href="/logout" style="display: none;">Logout</a>
+        {{/if}} --}}
+      </h4>
+    </div>
+  </div>
+  <main>
+    <header>
+      <h1>HowTo.Help</h1>
+    </header>
+
+    {{{ body }}}
+    
+  </main>
+  <footer>
+    HowTo.Help
+  </footer>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="/javascript/cat.js"></script>
+  <script src="/javascript/volApiCalls.js"></script>
+  {{!-- {{#if loggedIn}} --}}
+  <script src="/javascript/logout.js"></script>
+  <script src="/javascript/login.js"></script>
+
+  {{!-- {{/if}} --}}
+
+</body>
+
+</html>
