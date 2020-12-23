@@ -84,14 +84,25 @@ router.get('/volunteer/:id', (req, res) => {
 
 // personal page //
 router.put('/volunteer/:id', (req, res) => {
+    console.log(req.params.id + "is the id")
+    //console.log('put', req.body, req.params)
+    Volunteer.update(
+     {  first_name: req.body.userinfo.first_name,
+        last_name: req.body.userinfo.last_name,
+        email: req.body.userinfo.email,
+        phone_number: req.body.userinfo.phone_number,
+        bio: req.body.userinfo.bio,
+        state: req.body.userinfo.state,
+        city: req.body.userinfo.city,
+        id: req.body.userinfo.id
 
-    console.log('put', req.body, req.params)
-    Volunteer.update(req.body, {
-      individualHooks: true,
-      where: {
-        id: req.params.id,
-      }
-    })
+    },
+    {
+      individualHooks: true,  
+        where: {
+            id: req.body.userinfo.id
+      }}
+    )
       .then(dbPostData => {
         if (!dbPostData) {
           res.status(404).json({ message: 'No user found with this id' });
