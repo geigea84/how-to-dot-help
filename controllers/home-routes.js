@@ -85,8 +85,8 @@ router.get('/volunteer/:id', (req, res) => {
 
 // personal page //
 router.put('/volunteer/:id', (req, res) => {
-
-    console.log('put', req.body, req.params)
+    console.log(req.params.id + "is the id")
+    //console.log('put', req.body, req.params)
     Volunteer.update(
      {  first_name: req.body.userinfo.first_name,
         last_name: req.body.userinfo.last_name,
@@ -96,7 +96,9 @@ router.put('/volunteer/:id', (req, res) => {
         state: req.body.userinfo.state,
         city: req.body.userinfo.city
     },
-    {where: {
+    {
+      individualHooks: true,  
+        where: {
         id: req.params.id
       }}
     )
