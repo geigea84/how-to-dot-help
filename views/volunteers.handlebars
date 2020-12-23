@@ -36,23 +36,14 @@
         <!--YOUR NFPs-->
         <div class="col-12 flex-row pad bgblue">
             <div class="col-12 center pad-b pad-rt">
-                <h1 class="primary">NFP You Have Reached Out To</h1>
+                <h1 class="primary">See NFP to Reach Out To</h1>
             </div>
-            <div class="card-nfp-b col-12 flex-row align-center">
-                    <div class="col-3">
-                        <img src="images/filler-logo.png" alt="NFP logo">
-                    </div>
-                    <div class="col-9">
-                        <div class="bod">
-                            <div class="center">
-                                <h2 id="nfp-name-">NFP Name</h2>
-                                <p id="nfp-info-">Info text text text text text text text text text text text text text text text texttext text text text text text text text text text text text text text text texttext text text text text text text text text text text text text text text texttext text text text text text text text text text text text text text text texttext text text text text text text text text text text text text text text texttext text text text text text text text text text text text text text text texttext text text text text text text text text text text text text text text text text text text text text text text text text text text text text</p>
-                            </div>
-                        </div>
-                        <!-- <div class="pad-b">
-                            <button>Remove</button>
-                        </div> -->
-                    </div>
-                </div>
-            </div>
+            <ol>
+            {{#each nfp as |nfp|}}
+            <li>
+                {{> nfp-btn nfp }}
+            </li>
+            {{/each}}
+            </ol>   
         </div>
+        
