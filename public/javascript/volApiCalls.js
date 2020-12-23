@@ -18,7 +18,7 @@ let formatPhoneNumber = (P) => {
 
 //---------------------------------------//
 //-------------SAVE/PUT UPDATE-----------//
-//--------------------------------------//
+//---------------------------------------//
 //------------------------------------------------validate/reformat
 const ValidateEmail = function(E) {
     if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(E))
@@ -73,12 +73,12 @@ const ValidateState = function(S) {
         //C = $("#contact").val()
         Ci = $("#city").val()
         S = $("#state").val()
-        PW = $("#divId").val()
+        userId = $("#divId").val()
     
         let validE = ValidateEmail(E)
         let validP = ValidatePhone(P)
         let validS = ValidateState(S)
-    //console.log(PW)
+        console.log(userId + "THIS IS THE ID")
 
     var userinfo = {
         first_name: FN,
@@ -88,7 +88,7 @@ const ValidateState = function(S) {
         bio: I,
         phone_number: validP,
         email: validE,
-        id: PW
+        id: userId
     }
 
     $.ajax({

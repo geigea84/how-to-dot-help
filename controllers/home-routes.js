@@ -94,12 +94,14 @@ router.put('/volunteer/:id', (req, res) => {
         phone_number: req.body.userinfo.phone_number,
         bio: req.body.userinfo.bio,
         state: req.body.userinfo.state,
-        city: req.body.userinfo.city
+        city: req.body.userinfo.city,
+        id: req.body.userinfo.id
+
     },
     {
       individualHooks: true,  
         where: {
-        id: 2
+            id: req.body.userinfo.id
       }}
     )
       .then(dbPostData => {
