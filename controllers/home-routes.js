@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 98cb33f38eac10d40da7eb05d34684ab4280a3da
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 
