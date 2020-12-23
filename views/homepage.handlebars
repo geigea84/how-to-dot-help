@@ -17,6 +17,18 @@
             <div class="center pad-t">
                 <button id="join-btn">join today</button>
             </div>
+         {{!--NFP list--}}
+            <div class="col-12 pad">
+                <h2 class="center">Our NFP Partners</h2>
+            </div>
+            <ol>
+            {{#each nfp as |nfp|}}
+            <li>
+                {{> nfp-no-btn nfp }}
+            </li>
+            {{/each}}
+            </ol>   
+        
             <div class="col-8">
                 <p class="center pad">
                     Say hello at <a href="mailto:howtohelpteam@gmail.com"><i class="tertiary">howtohelpteam@gmail.com</i></a> to receive occasional email updates on the project.
