@@ -29,11 +29,11 @@ Volunteer.init(
         },
         city: {
             type: DataTypes.STRING(25),
-            allowNull: false
+            allowNull: true
         },
         state: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 len: [2]
             }
