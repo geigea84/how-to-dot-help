@@ -99,7 +99,7 @@ router.put('/volunteer/:id', (req, res) => {
     {
       individualHooks: true,  
         where: {
-        id: req.params.id
+        id: 2
       }}
     )
       .then(dbPostData => {
