@@ -96,7 +96,7 @@ const ValidateState = function(S) {
         url: "/volunteer/:id",
         data: {userinfo},
         success: function(data){
-            console.log("Updat Ok")
+            console.log("Update Ok")
         }
     })
 })
