@@ -8,32 +8,26 @@
                         Create & Edit your information to send to orginizations you want to work with!
                     </p>
                     <h4>First Name</h4>
-                    <textarea id="first-name" class="formbox-sl">
-                    </textarea>
+                    <textarea id="first-name" class="formbox-sl">{{volunteer.first_name}}</textarea>
                     <h4>Last Name</h4>
-                    <textarea id="last-name" class="formbox-sl">
-                    </textarea>
+                    <textarea id="last-name" class="formbox-sl">{{volunteer.last_name}}</textarea>
                     <h4>Email</h4>
-                    <textarea id="email" class="formbox-sl">
-                    </textarea>
+                    <textarea id="email" class="formbox-sl">{{volunteer.email}}</textarea>
                     <h4>Phone</h4>
-                    <textarea id="phone" class="formbox-sl">
-                    </textarea>
+                    <textarea id="phone" class="formbox-sl">{{volunteer.phone_number}}</textarea>
                     <h4>City</h4>
-                    <textarea id="city" class="formbox-sl">
-                    </textarea>
+                    <textarea id="city" class="formbox-sl">{{volunteer.city}}</textarea>
                     <h4>State (Please use initials)</h4>
-                    <textarea id="state" class="formbox-sl">
-                    </textarea>
+                    <textarea id="state" class="formbox-sl">{{volunteer.state}}</textarea>
+                    <div class="hide" id="divId">{{volunteer.id}}</div>
                     <!-- <h4>Prefered contact method</h4>
-                    <textarea id="contact" class="formbox-sl">
+                    <textarea id="password" class="formbox-sl">
                         Email
                     </textarea> -->
                     <h4>Tell NFPs a little about yourself. What are your interests and skills?</h4>
-                    <textarea id="info" class="formbox-lg">
-                    </textarea>
+                    <textarea id="info" class="formbox-lg">{{volunteer.bio}}</textarea>
                     <div class="col-12 center pad-t">
-                        <button id="save">Save</button>
+                        <button id="save-rev-btn">Save</button>
                     </div>
                 </div>
             </div>
