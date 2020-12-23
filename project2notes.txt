@@ -1,8 +1,6 @@
 to do
-make seeds to populate for testing purposes
--set up schema - do with node?
--get database on heroku
 -figure out why validation seems to be selective
+-readme/presentation - google slides?
 
 questions for class
 -how does nodemon work?

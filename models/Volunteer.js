@@ -76,7 +76,7 @@ Volunteer.init(
                 return newVolunteerData;
             },
             async beforeUpdate(updatedVolunteerData) {
-                updatedVolunteerData.password = await bcrypt.hash(updatedVolunteerData, 10);
+                updatedVolunteerData.password = await bcrypt.hash(updatedVolunteerData.password, 10);
                 return updatedVolunteerData;
             }
         },

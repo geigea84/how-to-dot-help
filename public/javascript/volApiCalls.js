@@ -16,24 +16,9 @@ let formatPhoneNumber = (P) => {
     return " "
   };
 
-//------------------------------------------------load all form
-$(document).ready(function () {
-    $.get("/api/users/:id".then(function(data) {
-        let formatedPhone = formatPhoneNumber(data.phone_number)
-            console.log(data)
-        $("#first-name").html( data.first_name );
-        $("#last-name").html( data.last_name );
-        $("#email").html( data.email );
-        $("#phone").html( formatedPhone );
-        $("#info").html( data.bio );
-        $("#city").html( data.city );
-        $("#state").html( data.state );
-    }))
-})
-
 //---------------------------------------//
 //-------------SAVE/PUT UPDATE-----------//
-//--------------------------------------//
+//---------------------------------------//
 //------------------------------------------------validate/reformat
 const ValidateEmail = function(E) {
     if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(E))
@@ -77,7 +62,7 @@ const ValidateState = function(S) {
 }
 
   //------------------------------------------------PUT
-  $("#save").on("click", function() {
+  $("#save-rev-btn").on("click", function() {
     console.log("click happend")
         //collect text
         FN = $("#first-name").val()
@@ -88,11 +73,12 @@ const ValidateState = function(S) {
         //C = $("#contact").val()
         Ci = $("#city").val()
         S = $("#state").val()
+        userId = $("#divId").val()
     
         let validE = ValidateEmail(E)
         let validP = ValidatePhone(P)
         let validS = ValidateState(S)
-
+        console.log(userId + "THIS IS THE ID")
 
     var userinfo = {
         first_name: FN,
@@ -101,43 +87,53 @@ const ValidateState = function(S) {
         state: validS,
         bio: I,
         phone_number: validP,
-        email: validE
-    }
-
-    $.put("/api/users/:id", {userinfo}.then(function(data) {
-            console.log("Data Saved")
-    }))
-})
-
-
-
-  //------------------------------------------------PUT 2
-  $("#save-new").on("click", function() {
-    console.log("click happend")
-        //collect text
-        FN = $("#first-name").val()
-        LN = $("#last-name").val()
-        E = $("#email").val()
-        P = $("#phone").val()
-        I = $("#info").val()
-        //C = $("#contact").val()
-        Ci = $("#city").val()
-        S = $("#state").val()
-        Ps = $("#password")
-        let validE = ValidateEmail(E)
-
-
-    var userinfo = {
-        first_name: FN,
-        last_name: LN,
         email: validE,
-        password: Ps
+        id: userId
     }
 
-    $.put("/api/users/:id", {userinfo}.then(function(data) {
-            console.log("Data Saved")
-    }))
+    $.ajax({
+        method: "PUT",
+        url: "/volunteer/:id",
+        data: {userinfo},
+        success: function(data){
+            console.log("Update Ok")
+        }
+    })
 })
+
+
+
+//   //------------------------------------------------PUT 2
+//   $("#save-new").on("click", function() {
+//     console.log("click happend")
+//         //collect text
+//         FN = $("#first-name").val()
+//         LN = $("#last-name").val()
+//         E = $("#email").val()
+//         P = $("#phone").val()
+//         I = $("#info").val()
+//         //C = $("#contact").val()
+//         Ci = $("#city").val()
+//         S = $("#state").val()
+//         Ps = $("#password")
+//         let validE = ValidateEmail(E)
+
+
+//     var userinfo = {
+//         first_name: FN,
+//         last_name: LN,
+//         email: validE,
+//         password: Ps
+//     }
+
+
+
+
+
+//     $.put("/api/users/:id", {userinfo}.then(function(data) {
+//             console.log("Data Saved")
+//     }))
+// })
 
 
 
@@ -145,25 +141,25 @@ const ValidateState = function(S) {
 //-------------POST/ CREATE NEW USER-----------//
 //---------------------------------------------//
 
-  //------------------------------------------------PUT
-  $("#save").on("click", function() {
-    console.log("click happend")
-        //collect text
-        FN = $("#first-name").val()
-        LN = $("#last-name").val()
-        E = $("#email").val()
-        Ps = $("#password").val()
+//   //------------------------------------------------PUT
+//   $("#save").on("click", function() {
+//     console.log("click happend")
+//         //collect text
+//         FN = $("#first-name").val()
+//         LN = $("#last-name").val()
+//         E = $("#email").val()
+//         Ps = $("#password").val()
     
-        let validE = ValidateEmail(E)
+//         let validE = ValidateEmail(E)
 
-    var userinfo = {
-        first_name: FN,
-        last_name: LN,
-        email: validE,
-        password: Ps
-    }
+//     var userinfo = {
+//         first_name: FN,
+//         last_name: LN,
+//         email: validE,
+//         password: Ps
+//     }
 
-    $.post("/api/users", {userinfo}.then(function(data) {
-        //load/userpage html route
-    }))
-})
+//     $.post("/api/users", {userinfo}.then(function(data) {
+//         //load/userpage html route
+//     }))
+// })
