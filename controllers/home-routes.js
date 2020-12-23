@@ -1,4 +1,3 @@
-const { Sequelize } = require('sequelize/types');
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 
