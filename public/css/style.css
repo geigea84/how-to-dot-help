@@ -154,9 +154,14 @@
     line-height: 1.5;
   }
   .bg-scrabble {
+    background-color: var(--primary);
+    background-position: top; 
+    height:100%;
+    width:100%;
+  }
+  .bg-hands {
     background-image: url('../images/support-scrabble.jpg');
     background-size: 100%;
-    background-attachment: fixed;
     background-position: top; 
     height:100%;
     width:100%;
