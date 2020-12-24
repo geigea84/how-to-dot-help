@@ -1,11 +1,11 @@
 :root {
-    --primary: #fff3d7;
-    --secondary: #db4546;
-    --tertiary: #b02425;
-    --white: white;
-    --dark: #38302e;
-    --accent: #80ccbf;
-  }
+  --primary: #EDD2C4;
+  --secondary: #5E887C;
+  --tertiary: #AA4924;
+  --white: whitesmoke;
+  --dark: #13231F;
+  --accent: #CC936C;
+}
 
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -13,7 +13,7 @@
     display: flex;
     border-radius: 0px; /* 5px rounded corners */
     min-width: 100%;
-    background-color: var(--accent);
+    background-color: var(--secondary);
     text-align: left;
   }
 
@@ -23,8 +23,15 @@
     height:100%;
   }
 
+  .card h2 {
+    color: var(--white);
+  }
+  .card h4 {
+    color: var(--primary);
+  }
+
 .card .col-3 {
-    background-color: var(--secondary);
+    background-color: var(--tertiary);
     height:100%;
     display:flex;
     align-items: center;

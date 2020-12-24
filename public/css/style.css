@@ -1,11 +1,13 @@
 :root {
-    --primary: #fff3d7;
-    --secondary: #db4546;
-    --tertiary: #b02425;
-    --white: white;
-    --dark: #38302e;
-    --accent: #80ccbf;
-  }
+  --primary: #EDD2C4;
+  --secondary: #5E887C;
+  --tertiary: #AA4924;
+  --white: whitesmoke;
+  --dark: #13231F;
+  --accent: #CC936C;
+}
+
+  
   
   * {
     box-sizing: border-box;
@@ -68,16 +70,16 @@
   
   body {
     margin: 0px;
-    background-color: var(--primary);
+    background-color: var(--white);
     padding: 0;
     font-family: 'Montserrat', sans-serif;
-    color: var(--secondary);
+    color: var(--dark);
     line-height: 1.5;
     font-size: 14px; 
   }
 
   header {
-    background-color:white;
+    background-color: var(--primary);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -145,7 +147,7 @@
       background-color: var(--accent);
   }
   .bgblue h2 {
-    color: var(--tertiary);
+    color: var(--white);
     text-decoration: none;
     font-weight: normal;
     font-size: 30px;
@@ -157,14 +159,23 @@
     background-attachment: fixed;
     background-position: top; 
     height:100%;
-  }
-  .home-head-image {
     width:100%;
-    margin-bottom:-6px;
-    padding:0;
-    min-height:100%;
-    border-right: solid 10px var(--secondary);
-}
+  }
+
+  .bg-faded {
+    background-color: rgb(250, 230, 220, 0.8);
+    padding:20px;
+  }
+
+  .bg-serving {
+    background-image: url('../images/importance-of-community-service-social-2.jpg');
+    background-size: 100%;
+    background-attachment: fixed;
+    background-position: top; 
+    height:100%;
+    width:100%;
+  }
+
 
   main {
     margin-left: 200px;
@@ -184,7 +195,7 @@
   }
   
   .navbody a {
-    color: var(--primary);
+    color: var(--white);
     padding: 16px;
     display: flex;
     justify-content: center;
