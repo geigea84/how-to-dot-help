@@ -85,6 +85,9 @@
   
     header {
       background-color: var(--primary);
+    //   background-image: url('../images/paperp.jpg');
+    //   background-attachment: fixed;
+    //   background-position: top; 
       display: flex;
       justify-content: center;
       align-items: center;
@@ -160,6 +163,8 @@
     }
    .bg-scrabble {
       background-color: var(--primary);
+      background-image: url('../images/paperp.jpg');
+      background-attachment: fixed;
       background-position: top; 
       height:100%;
       width:100%;
@@ -173,15 +178,17 @@
     } 
   
     .bg-faded {
-      background-color: rgb(250, 230, 220);
+        background-color:var(--primary);
+        height:100%;
+        width:100%;
       padding:20px;
       font-weight:300;
-      transition: 0.5s;
+      transition: 1s;
       border-radius: 5px;
     }
   
     .bg-faded:hover{
-      background-color:rgb(250, 230, 220);
+      background-color:white;
       box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
   
     }
@@ -195,7 +202,12 @@
       width:100%;
     }
   
-  
+    @media screen and (max-width: 700px) {
+        .bg-serving {
+            background-size: cover;
+          }
+      }
+      
     main {
       margin-left: 200px;
     }
@@ -284,7 +296,7 @@
   /*FOOTER*/
   
     footer {
-      position: fixed;
+        position: fixed;
       display: flex;
       justify-content: right;
       align-items: center;
@@ -292,9 +304,10 @@
       right: 0;
       bottom: 0;
       left: 0;
+      color: var(--accent);
       padding-right:10px;
       text-align: right;
-      background-color: black;
+      background-color: var(--tertiary);
     }
   
   /*Forms*/

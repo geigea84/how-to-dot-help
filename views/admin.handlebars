@@ -1,8 +1,12 @@
-<div class="col-12 content">
-    <div class="form flex-row">
-        <h2 class="col-12">
+    <div class="col-12 center pad">
+        <h2>
             Add Non-For-Profit Information!
         </h2>
+        <br>
+        <button id="hide-vinfo">Close Info</button>
+    </div>
+<div class="col-12 content">
+    <div id="form-v" class="form flex-row">
         <h4>Name of NFP</h4>
         <textarea id="first-name" class="formbox-sl"></textarea>
         <h4>What is the Cause for your NFP?</h4>
@@ -13,19 +17,31 @@
             placeholder="10-Digit Phone Number">10-Digit Phone Number</textarea>
         <h4>About/Mission Statement</h4>
         <textarea id="mission-statement" class="formbox-lg"></textarea>
-        <div class="col-12 pad">
+        <div class="col-12 pad-t">
             <div class="center">
                 <button>Save</button>
             </div>
         </div>
-        <h4>Search for Volunteers</h4>
-        <textarea id="search-name" class="formbox-sl">Search by Name</textarea>
-        <textarea id="seearch-NFP" class="formbox-sl">Search by requested NFP</textarea>
-        <div class="col-12 pad">
-            <div class="center">
-                <button>Search</button>
+    </div>
+</div> 
+<div class="col-12">
+    <div class="bg-scrabble hide ghost-in">
+        <h2 class="center pad-t">Search Volunteers</h2>
+        <div class="form flex-row">
+            <textarea id="search-name" class="formbox-sl">Search by Name</textarea>
+            <textarea id="seearch-NFP" class="formbox-sl">Search by requested NFP</textarea>
+            <div class="col-12 pad">
+                <div class="center">
+                    <button>Search</button>
+                </div>
+            </div>
+            <div class=" justify-center">
+                <div class=" flex-row ">
+                    {{#each nfp as |nfp|}}
+                        {{> nfp-btn nfp }}
+                    {{/each}}
+                </div> 
             </div>
         </div>
-        
     </div>
 </div>

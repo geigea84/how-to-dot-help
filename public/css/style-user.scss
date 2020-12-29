@@ -11,7 +11,9 @@
 /* 2.2 - added flex */
 .user-c {
   flex: 1;
-  margin: 5px;
+  margin:30px;
+  min-width:200px;
+  box-shadow: 0 5px 5px 0 rgba(0,0,0,0.4);
   background: var(--secondary);
   color: var(--white);
   border-radius: 5px;
@@ -89,18 +91,19 @@
   padding: 15px;
   clear: both;
   & .head {
-    background-color: var(--horizon);
-    border-radius: 5px;
+
     padding:5px 10px;
   & h3 {
-    color:var(--dark);
-    font-weight: 600;
-    font-size: 22px;
-    width:100%;
-  }
+      color: var(--primary);
+      font-weight: 300;
+      font-size: 20px;
+      text-transform: uppercase;
+      padding-bottom: 5px;
+    }
   & h4 {
-    color: var(--tertiary)
-  }
+      scroll-padding-top: 5px;
+      color: var(--dark);
+    }
 }
 }
 /* TRAINER STYLES END */

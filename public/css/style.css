@@ -13,7 +13,10 @@
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  margin: 5px;
+  margin: 30px;
+  min-width: 200px;
+  -webkit-box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.4);
+          box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.4);
   background: var(--secondary);
   color: var(--white);
   border-radius: 5px;
@@ -105,20 +108,20 @@
 }
 
 .user-bod .head {
-  background-color: var(--horizon);
-  border-radius: 5px;
   padding: 5px 10px;
 }
 
 .user-bod .head h3 {
-  color: var(--dark);
-  font-weight: 600;
-  font-size: 22px;
-  width: 100%;
+  color: var(--primary);
+  font-weight: 300;
+  font-size: 20px;
+  text-transform: uppercase;
+  padding-bottom: 5px;
 }
 
 .user-bod .head h4 {
-  color: var(--tertiary);
+  scroll-padding-top: 5px;
+  color: var(--dark);
 }
 
 /* TRAINER STYLES END */
@@ -304,6 +307,8 @@ main {
 
 .bg-scrabble {
   background-color: var(--primary);
+  background-image: url("../images/paperp.jpg");
+  background-attachment: fixed;
   background-position: top;
   height: 100%;
   width: 100%;
@@ -318,16 +323,18 @@ main {
 }
 
 .bg-faded {
-  background-color: #fae6dc;
+  background-color: var(--primary);
+  height: 100%;
+  width: 100%;
   padding: 20px;
   font-weight: 300;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  -webkit-transition: 1s;
+  transition: 1s;
   border-radius: 5px;
 }
 
 .bg-faded:hover {
-  background-color: #fae6dc;
+  background-color: white;
   -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
           box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
 }
@@ -339,6 +346,12 @@ main {
   background-position: top;
   height: 100%;
   width: 100%;
+}
+
+@media screen and (max-width: 700px) {
+  .bg-serving {
+    background-size: cover;
+  }
 }
 
 main {
@@ -473,9 +486,10 @@ footer {
   right: 0;
   bottom: 0;
   left: 0;
+  color: var(--accent);
   padding-right: 10px;
   text-align: right;
-  background-color: black;
+  background-color: var(--tertiary);
 }
 
 /*Forms*/
