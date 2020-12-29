@@ -1,0 +1,106 @@
+:root {
+  --primary: #EDD2C4;
+  --secondary: #5E887C;
+  --tertiary: #AA4924;
+  --white: whitesmoke;
+  --dark: #13231F;
+  --accent: #CC936C;
+  --horizon: #C7D5D2;
+}
+
+/* 2.2 - added flex */
+.user-c {
+  flex: 1;
+  margin: 5px;
+  background: var(--secondary);
+  color: var(--white);
+  border-radius: 5px;
+  text-align: center;
+  & .img-ctnt {
+    width: 100%;
+    min-height: 150px;
+    display: flex;
+    padding: 15px;
+    border-radius:5px 5px 0px 0px;
+    align-items: flex-end;
+    background: var(--accent);
+    //background-image: url('../images/shanti.png');
+    background-size: cover;
+    background-position: top;
+    overflow: hidden;
+    position: relative;
+    & ::after {
+      content: "";
+      height: 100%;
+      width: 100%;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 1;
+      transition: .5s linear;
+      overflow: auto ;
+    }
+    & h3 {
+      position: relative;
+      top: 200px;
+      transition-duration: .6s;
+      transition-timing-function: ease-in-out;
+      margin-bottom: 5px;
+      z-index: 1;
+      background-color: var(--horizon);
+      color: var(--dark);
+      padding:5px 10px;
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
+      border-radius: 5px;
+    }
+    & h4 {
+      position: relative;
+      z-index: 1;
+      top: 200px;
+      left: 20px;
+      transition-duration: .6s;
+      transition-delay: .2s;
+      transition-timing-function: ease-in-out;
+      background-color: var(--white);
+      color: var(--tertiary);
+      padding:5px 10px;
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
+      border-radius: 5px;
+    }
+  }
+}
+
+//On outside so hover effect not inherited
+.user-c:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+  }
+
+.user-c:hover .img-ctnt h3, .user-c:hover .img-ctnt h4 {
+  transform: translateY(-200px);
+}
+
+// .user-c-bg {
+//   background-image: url('../images/shanti.png');
+// }
+
+/* 2.2 - removed float and width */
+.user-bod {
+  padding: 15px;
+  clear: both;
+  & .head {
+    background-color: var(--horizon);
+    border-radius: 5px;
+    padding:5px 10px;
+  & h3 {
+    color:var(--dark);
+    font-weight: 600;
+    font-size: 22px;
+    width:100%;
+  }
+  & h4 {
+    color: var(--tertiary)
+  }
+}
+}
+/* TRAINER STYLES END */

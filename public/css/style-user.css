@@ -1,0 +1,125 @@
+:root {
+  --primary: #EDD2C4;
+  --secondary: #5E887C;
+  --tertiary: #AA4924;
+  --white: whitesmoke;
+  --dark: #13231F;
+  --accent: #CC936C;
+  --horizon: #C7D5D2;
+}
+
+/* 2.2 - added flex */
+.user-c {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin: 5px;
+  background: var(--secondary);
+  color: var(--white);
+  border-radius: 5px;
+  text-align: center;
+}
+
+.user-c .img-ctnt {
+  width: 100%;
+  min-height: 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 15px;
+  border-radius: 5px 5px 0px 0px;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  background: var(--accent);
+  background-size: cover;
+  background-position: top;
+  overflow: hidden;
+  position: relative;
+}
+
+.user-c .img-ctnt ::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  -webkit-transition: .5s linear;
+  transition: .5s linear;
+  overflow: auto;
+}
+
+.user-c .img-ctnt h3 {
+  position: relative;
+  top: 200px;
+  -webkit-transition-duration: .6s;
+          transition-duration: .6s;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+  margin-bottom: 5px;
+  z-index: 1;
+  background-color: var(--horizon);
+  color: var(--dark);
+  padding: 5px 10px;
+  -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+
+.user-c .img-ctnt h4 {
+  position: relative;
+  z-index: 1;
+  top: 200px;
+  left: 20px;
+  -webkit-transition-duration: .6s;
+          transition-duration: .6s;
+  -webkit-transition-delay: .2s;
+          transition-delay: .2s;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+  background-color: var(--white);
+  color: var(--tertiary);
+  padding: 5px 10px;
+  -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+
+.user-c:hover {
+  -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+          box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+}
+
+.user-c:hover .img-ctnt h3, .user-c:hover .img-ctnt h4 {
+  -webkit-transform: translateY(-200px);
+          transform: translateY(-200px);
+}
+
+/* 2.2 - removed float and width */
+.user-bod {
+  padding: 15px;
+  clear: both;
+}
+
+.user-bod .head {
+  background-color: var(--horizon);
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.user-bod .head h3 {
+  color: var(--dark);
+  font-weight: 600;
+  font-size: 22px;
+  width: 100%;
+}
+
+.user-bod .head h4 {
+  color: var(--tertiary);
+}
+
+/* TRAINER STYLES END */
+/*# sourceMappingURL=style-user.css.map */
