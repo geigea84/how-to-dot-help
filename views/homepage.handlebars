@@ -27,17 +27,13 @@
             <div class="bg-scrabble hide ghost-in">
                 <h2 class="center pad-t">Our NFP Partners</h2>
                 <div class=" justify-center">
-                    <div class="hide slide">
-                        <div class=" flex-column justify-space-around">
-                            <ul style="list-style-type:none;">
+                        <div class=" flex-row justify-space-around">
                             {{#each nfps as |nfp|}}
-                            <li>
+
                                 {{> nfp-no-btn nfp }}
-                            </li>
-                            {{/each}}
-                            </ul>   
+
+                            {{/each}} 
                         </div> 
-                    </div>
                 </div>
             </div>
         </div>
