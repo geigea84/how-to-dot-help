@@ -17,7 +17,8 @@ router.get('/', (req, res) => {
             'state',
             'zip',
             'phone_number',
-            'email'
+            'email',
+            'image_url'
         ]   
     })
     .then(dbUserData => res.json(dbUserData))
@@ -46,7 +47,8 @@ router.get('/:id', (req, res) => {
             'state',
             'zip',
             'phone_number',
-            'email'
+            'email',
+            'image_url'
         ]
     })
     .then(dbPostData => {
@@ -76,7 +78,8 @@ router.post('/', (req, res) => {
         state: req.body.state,
         zip: req.body.zip,
         phone_number: req.body.phone_number,
-        email: req.body.email
+        email: req.body.email,
+        image_url: req.body.image_url
     })
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {
