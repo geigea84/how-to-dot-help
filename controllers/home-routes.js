@@ -254,9 +254,9 @@ router.get('/signup', (req, res) => {
     res.render('signup');
 });
 
-router.get('/user/1', (req, res) => {
-    res.render('/user');
-});
+// router.get('/volunteer/1', (req, res) => {
+//     res.render('/volunteers');
+// });
 
 router.get('/admin', (req, res) => {
     res.render('admin');

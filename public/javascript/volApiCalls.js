@@ -31,7 +31,7 @@ const ValidateEmail = function(E) {
     alert("invalid email provided");
     return email;
     }
-    }
+}
 
 const ValidatePhone = function(P) {
     let cleaned = ('' + P).replace(/\D/g, '');

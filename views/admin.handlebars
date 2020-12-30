@@ -1,31 +1,64 @@
-<div class="col-12 content">
-    <div class="form flex-row">
-        <h2 class="col-12">
+    <div class="col-12 center pad">
+        <h2>
             Add Non-For-Profit Information!
         </h2>
+        <br>
+        <button id="hide-vinfo">Close Info</button>
+    </div>
+<div class="col-12 content">
+    <div id="form-v" class="form flex-row">
         <h4>Name of NFP</h4>
-        <textarea id="first-name" class="formbox-sl"></textarea>
-        <h4>What is the Cause for your NFP?</h4>
-        <textarea id="cause" class="formbox-sl"></textarea>
+        <textarea id="nfp-name" class="formbox-sl"></textarea>
+        <h4>Website</h4>
+        <textarea id="nfp-website" class="formbox-sl"></textarea>
+        <h4>Cause</h4>
+        <textarea id="nfp-cause" class="formbox-sl"></textarea>
+        <h4>Tags</h4>
+        <textarea id="nfp-tags" class="formbox-sl"></textarea>
+        <h4>Description/Mission Statement</h4>
+        <textarea id="nfp-mission-statement" class="formbox-lg"></textarea>
+        <h4>Size</h4>
+        <textarea id="nfp-size" class="formbox-sl"></textarea>
+        <h4>Founding Year</h4>
+        <textarea id="nfp-founding-year" class="formbox-sl"></textarea>
+        <h4>Reported Net Assets</h4>
+        <textarea id="nfp-rna" class="formbox-sl"></textarea>
+        <h4>City</h4>
+        <textarea id="nfp-city" class="formbox-sl"></textarea>
+        <h4>State Abbreviation</h4>
+        <textarea id="nfp-state" class="formbox-sl"></textarea>
+        <h4>Zip Code</h4>
+        <textarea id="nfp-zip" class="formbox-sl"></textarea>
         <h4>Contact Info</h4>
-        <textarea id="contact-info" class="formbox-sl" placeholder="Email Adress">Email Address</textarea>
-        <textarea id="phone-number" class="formbox-sl"
-            placeholder="10-Digit Phone Number">10-Digit Phone Number</textarea>
-        <h4>About/Mission Statement</h4>
-        <textarea id="mission-statement" class="formbox-lg"></textarea>
-        <div class="col-12 pad">
+        <textarea id="nfp-email" class="formbox-sl" placeholder="Email Adress">Email Address</textarea>
+        <textarea id="nfp-phone" class="formbox-sl" placeholder="10-Digit Phone Number">10-Digit Phone Number</textarea>
+        <h4>NFP Image</h4>
+        <textarea id="nfp-image" class="formbox-sl" placeholder="Enter Image URL">Enter Image URL</textarea>
+        <div class="col-12 pad-t">
             <div class="center">
-                <button>Save</button>
+                <button id="nfp-save-btn">Save</button>
             </div>
         </div>
-        <h4>Search for Volunteers</h4>
-        <textarea id="search-name" class="formbox-sl">Search by Name</textarea>
-        <textarea id="seearch-NFP" class="formbox-sl">Search by requested NFP</textarea>
-        <div class="col-12 pad">
-            <div class="center">
-                <button>Search</button>
+    </div>
+</div> 
+<div class="col-12">
+    <div class="bg-scrabble hide ghost-in">
+        <h2 class="center pad-t">Search Volunteers</h2>
+        <div class="form flex-row">
+            <textarea id="search-name" class="formbox-sl">Search by Name</textarea>
+            <textarea id="seearch-NFP" class="formbox-sl">Search by requested NFP</textarea>
+            <div class="col-12 pad">
+                <div class="center">
+                    <button>Search</button>
+                </div>
+            </div>
+            <div class=" justify-center">
+                <div class=" flex-row ">
+                    {{#each nfp as |nfp|}}
+                        {{> nfp-btn nfp }}
+                    {{/each}}
+                </div> 
             </div>
         </div>
-        
     </div>
 </div>

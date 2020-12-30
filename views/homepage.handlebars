@@ -1,45 +1,42 @@
 {{!-- <div>You are on the homepage</div> --}}
-
-        <div id="home-image-bar">
-            <div class="col-12 flex-row align-center bgblue">
-                <div class="col-4">
-                    <img src="images/integration4.jpg" class="home-head-image" alt="hands making a tree">
-                </div>
-                <div class="col-8">
-                    <h2 id="main-line" class="center pad hide">HowTo.Help is a nonpartisan project aiming to bridge the gap between <i class="secondary">caring</i> and <i class="tertiary">acting</i>.
-                    Become a volunteer today!</h2>
+    <div class="col-12 flex-row align-center">
+        <div class="bg-serving">
+            <div id="home-image-bar">
+                <div class="align-center col-12">
+                    <h2 id="main-line" class="center pad hide">
+                        <div class="bg-faded">
+                            HowTo.Help is a nonpartisan project aiming to bridge the gap between <i class="secondary">caring</i> and <i class="tertiary">acting</i>.
+                            Become a volunteer today!</h2>
+                        </div>
                 </div>
             </div>
         </div>
-        <div class="col-12">
+        <div>
             <div class="pad">
                 <h2 class="center">about</h2>
                 <p class="pad-tb">With the coronavirus pandemic's mounting death toll and nationwide protests against police violence, many Americans find themselves asking, "How can I help?" Urgent needs are everywhere we look, even as we each struggle with our own hardships. HowTo.Help will help Americans who want to get more involved in their communities and turn compassion into action.</p>
+                                <p class="center" >
+                    Say hello at <a href="mailto:howtohelpteam@gmail.com"><i class="tertiary">howtohelpteam@gmail.com</i></a> to receive occasional email updates on the project.
+                </p>
                 <div class="center pad-t">
                     <button href="/login" id="join-btn">join today</button>
                 </div>
+                
             </div>
          {{!--NFP list--}}
-            <div class="bg-scrabble">
-                <h2 class="center pad-t">Our NFP Partners</h2>
-                <div class=" justify-center">
-                    <div class=" flex-column justify-space-around">
-                        <ul style="list-style-type:none;">
-                        {{#each nfps as |nfp|}}
-                        <li>
-                            {{> nfp-no-btn nfp }}
-                        </li>
-                        {{/each}}
-                        </ul>   
-                    </div> 
+            <div class="bg-scrabble hide ghost-in">
+                <h2 class="center pad">NFP Partners</h2>
+                <div class="justify-center pad-lr">
+                        <div class=" flex-row justify-space-around">
+                            {{#each nfps as |nfp|}}
+
+                                {{> user-card nfp }}
+
+                            {{/each}} 
+                        </div> 
                 </div>
             </div>
-        
-            <div class="col-12">
-                <p class="center pad">
-                    Say hello at <a href="mailto:howtohelpteam@gmail.com"><i class="tertiary">howtohelpteam@gmail.com</i></a> to receive occasional email updates on the project.
-                </p>
-            </div>
         </div>
+    </div>    
         <!-- END Swapable -->
     
