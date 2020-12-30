@@ -33,14 +33,12 @@ function hideVForm() {
   }
   var hideVolunteerForm = document.getElementById("hide-vinfo")
   hideVolunteerForm.addEventListener("click", hideVForm);
-  
 
   $('.reach-out').click(function(){
     console.log("clicked btn")
     $(this).fadeOut(3000);
   })
 
-  //HIDE NUTRAL----------------------------------------------------------
 // function hideInfoToggle() {
 //   $(".hide-toggle").slideToggle(1000);
 

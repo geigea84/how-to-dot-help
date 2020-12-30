@@ -2,7 +2,7 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 
 
-const { Admin, NFP, Volunteer } = require('../models')//VolNFPs
+const { Admin, NFP, User } = require('../models')//VolNFPs
 
 
 // router.get('/', (req, res) => {
@@ -27,7 +27,8 @@ router.get("/", (req, res) => {
             'state',
             'zip',
             'phone_number',
-            'email'
+            'email',
+            'image_url'
         ]   
     })
       .then((dbPostData) => {
@@ -55,11 +56,11 @@ router.get('/signup', (req, res) => {
 //////////////////////////USER GET INFO/////////////////////////////////////
 //------------------------------------------------------------------------//
 // personal page //
-router.get('/volunteer/:id', async (req, res) => {
+router.get('/user/:id', async (req, res) => {
 
     //console.log('HOMEROUTES')
     const firstQuery = await 
-    Volunteer.findOne({
+    User.findOne({
       where: {
         id: req.params.id
       },
@@ -90,17 +91,18 @@ router.get('/volunteer/:id', async (req, res) => {
             'state',
             'zip',
             'phone_number',
-            'email'
+            'email',
+            'image_url'
         ]   
     })
     const renderObject = {
-        volunteer: firstQuery,
+        User: firstQuery,
         nfp: secondQuery
       }
      //const whatWeWant = renderObject.get({ plain: true });
 
       console.log(renderObject)
-    res.render('volunteers', renderObject);
+    res.render('user', renderObject);
   });
 
 
@@ -126,12 +128,12 @@ router.get('/volunteer/:id', async (req, res) => {
 
 
 // // personal page //
-// router.get('/volunteer/:id', (req, res) => {
+// router.get('/user/:id', (req, res) => {
 
 //     let newTableOfVol = {}
 
 //     //console.log('HOMEROUTES')
-//     Volunteer.findOne({
+//     User.findOne({
 //       where: {
 //         id: req.params.id
 //       },
@@ -152,15 +154,15 @@ router.get('/volunteer/:id', async (req, res) => {
 //           return;
 //         }
 
-//         const volunteer = dbPostData.get({ plain: true });
+//         const user = dbPostData.get({ plain: true });
 //        console.log(dbPostData)
        
-//         var num = formatPhoneNumber(volunteer.phone_number)
+//         var num = formatPhoneNumber(user.phone_number)
 //         console.log(num)
-//         volunteer.phone_number = num;
-//         volunteer.id =  req.params.id;
-//         res.render('volunteers', {
-//           volunteer,
+//         user.phone_number = num;
+//         user.id =  req.params.id;
+//         res.render('user', {
+//           user,
 //           loggedIn: req.session.loggedIn
 //         });
 //       })
@@ -176,10 +178,10 @@ router.get('/volunteer/:id', async (req, res) => {
 //------------------------------------------------------------------------//
 
 // personal page //
-router.put('/volunteer/:id', (req, res) => {
+router.put('/user/:id', (req, res) => {
     console.log(req.params.id + "is the id")
     //console.log('put', req.body, req.params)
-    Volunteer.update(
+    User.update(
      {  first_name: req.body.userinfo.first_name,
         last_name: req.body.userinfo.last_name,
         email: req.body.userinfo.email,

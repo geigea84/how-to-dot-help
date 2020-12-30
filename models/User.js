@@ -2,15 +2,15 @@ const {Model, DataTypes} = require("sequelize");
 const bcrypt = require('bcrypt');
 const sequelize = require("../config/connection");
 
-//create our Volunteer model
-class Volunteer extends Model {
+//create our User model
+class User extends Model {
     checkPassword(loginPw) {
         return bcrypt.compareSync(loginPw, this.password);
     }
 }
 
 //define table columns and configuration
-Volunteer.init(
+User.init(
     {
         //define columns
         id: {
@@ -64,20 +64,24 @@ Volunteer.init(
             validate: {
                 min: 8
             }
+        },
+        image_url: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            validate: {
+                isUrl: true
+            }
         }
-
-        //placeholder for logo column here
-
     },
     {
         hooks: {
-            async beforeCreate(newVolunteerData) {
-                newVolunteerData.password = await bcrypt.hash(newVolunteerData.password, 10);
-                return newVolunteerData;
+            async beforeCreate(newUserData) {
+                newUserData.password = await bcrypt.hash(newUserData.password, 10);
+                return newUserData;
             },
-            async beforeUpdate(updatedVolunteerData) {
-                updatedVolunteerData.password = await bcrypt.hash(updatedVolunteerData.password, 10);
-                return updatedVolunteerData;
+            async beforeUpdate(updatedUserData) {
+                updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+                return updatedUserData;
             }
         },
         sequelize,
@@ -86,8 +90,8 @@ Volunteer.init(
         updatedAt: true,
         freezeTableName: true,
         underscored: true,
-        modelName: "volunteer"
+        modelName: "user"
     }
 );
 
-module.exports = Volunteer;
+module.exports = User;
