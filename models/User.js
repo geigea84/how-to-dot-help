@@ -64,10 +64,14 @@ User.init(
             validate: {
                 min: 8
             }
+        },
+        image_url: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            validate: {
+                isUrl: true
+            }
         }
-
-        //placeholder for logo column here
-
     },
     {
         hooks: {
