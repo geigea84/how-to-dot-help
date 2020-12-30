@@ -63,7 +63,7 @@ const ValidateState = function(S) {
 
   //------------------------------------------------PUT
   $("#save-rev-btn").on("click", function() {
-    console.log("click happend")
+    console.log("click happened")
         //collect text
         FN = $("#first-name").val()
         LN = $("#last-name").val()

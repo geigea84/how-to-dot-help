@@ -27,7 +27,8 @@ router.get("/", (req, res) => {
             'state',
             'zip',
             'phone_number',
-            'email'
+            'email',
+            'image_url'
         ]   
     })
       .then((dbPostData) => {
@@ -90,7 +91,8 @@ router.get('/user/:id', async (req, res) => {
             'state',
             'zip',
             'phone_number',
-            'email'
+            'email',
+            'image_url'
         ]   
     })
     const renderObject = {

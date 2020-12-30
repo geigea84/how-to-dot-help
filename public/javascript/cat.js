@@ -25,7 +25,7 @@ function hideVForm() {
   var hideVolunteerForm = document.getElementById("hide-vinfo")
   hideVolunteerForm.addEventListener("click", hideVForm);
   
-  //HIDE NUTRAL----------------------------------------------------------
+  //HIDE NEUTRAL----------------------------------------------------------
 // function hideInfoToggle() {
 //   $(".hide-toggle").slideToggle(1000);
 
