@@ -44,7 +44,12 @@ router.get("/", (req, res) => {
 
 
 router.get('/login', (req, res) => {
-    res.render('login');
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('login');
 });
 
 router.get('/signup', (req, res) => {
