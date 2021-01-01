@@ -1,7 +1,10 @@
-//format phone number to prevent input of incorrect characters
-let formatPhoneNumber = (P) => {
+/* POST save new nfp info */
+
+//prevent input of incorrect characters in phone number
+let checkPhoneNumber = (nfpPhone) => {
+    console.log("number called");
     //filter out non-numeric characters
-    let cleaned = ("" + P).replace(/\D/g, "");
+    let cleaned = ("" + nfpPhone).replace(/\D/g, "");
 
     //verify correct input length
     let match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
@@ -12,10 +15,12 @@ let formatPhoneNumber = (P) => {
     return " ";
 };
 
-const validateEmail = function(E) {
-    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(E)) {
+//replace with arrow functions?
+const validateEmail = function(nfpEmail) {
+    console.log("email called");
+    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(nfpEmail)) {
         console.log("valid email address");
-        return E;
+        return nfpEmail;
     }
     else {
         alert("Invalid email address");
@@ -23,14 +28,15 @@ const validateEmail = function(E) {
     }
 };
 
-const validatePhone = function(P) {
-    let cleaned = ("" + P).replace(/\D/g, "");
+const validatePhone = function(nfpPhone) {
+    console.log("phone called");
+    let cleaned = ("" + nfpPhone).replace(/\D/g, "");
     
     if (/^\d{10}$/.test(cleaned)) {
         console.log("valid phone number");
         return cleaned;
     }
-    else if (P == "") {
+    else if (nfpPhone == "") {
         return;
     }
     else {
@@ -40,8 +46,9 @@ const validatePhone = function(P) {
 };
 
 //eliminate issues with DRY-test to see if the || can drop theState between each one
-const validateState = function(S) {
-    let theState = S.toUpperCase();
+const validateState = function(nfpState) {
+    console.log("state called");
+    let theState = nfpState.toUpperCase();
     if (theState == "AL" || 
         theState == "AK" || 
         theState == "AZ" || 
@@ -109,7 +116,7 @@ const validateState = function(S) {
     }
 }
 
-$("#nfp-save-btn").on("click", function() {
+$("#nfp-save-btn").on("click", () => {
     console.log("nfp save btn clicked")
     
     nfpName    = $("#nfp-name").val();
@@ -127,6 +134,10 @@ $("#nfp-save-btn").on("click", function() {
     nfpPhone   = $("#nfp-phone").val();
     nfpImage   = $("#nfp-image").val();
 
+    let validEmail = validateEmail(nfpEmail);
+    let validPhone = validatePhone(nfpPhone);
+    let validState = validateState(nfpState);
+
     let nfpInfo = {
         nfp_name: nfpName,
         url: nfpWebsite,
@@ -137,10 +148,10 @@ $("#nfp-save-btn").on("click", function() {
         founding_year: nfpFY,
         reported_net_assets: nfpRNA,
         city: nfpCity,
-        state: nfpState,
+        state: validState,
         zip: nfpZip,
-        phone_number: nfpPhone,
-        email: nfpEmail,
+        phone_number: validPhone,
+        email: validEmail,
         image_url: nfpImage
     }
 
@@ -154,3 +165,25 @@ $("#nfp-save-btn").on("click", function() {
         }
     });
 });
+
+
+/* GET search volunteers by name */
+/*
+$(".typeahead").typeahead(
+    {
+        minLength: 3,
+        highlight: true
+    },
+    {
+        name: "typeahead",
+        remote: "http://localhost:3001/users"
+    }
+)
+*/
+$("#vol-search-btn").on("click", function(req, res, next) {
+    console.log("vol search btn clicked")
+
+    let searchTerm = req.query.searchNameAndNfp;
+
+    let query = "SELECT * FROM User WHERE first_name LIKE " + searchTerm% 
+})
