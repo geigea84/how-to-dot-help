@@ -93,7 +93,7 @@ const ValidateState = function(S) {
 
     $.ajax({
         method: "PUT",
-        url: "/volunteer/:id",
+        url: "/user/:id",
         data: {userinfo},
         success: function(data){
             console.log("Update Ok")
