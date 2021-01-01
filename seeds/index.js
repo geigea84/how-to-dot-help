@@ -1,6 +1,6 @@
-const volunteerSeeds = require("./volunteer-seeds");
-const adminSeeds     = require("./admin-seeds");
-const nfpSeeds       = require("./nfp-seeds");
+const userSeeds  = require("./user-seeds");
+//const adminSeeds = require("./admin-seeds");
+const nfpSeeds   = require("./nfp-seeds");
 
 const sequelize = require("../config/connection");
 
@@ -10,15 +10,17 @@ const seedAll = async () => {
     console.log("========== DATABASE SYNCED ==========");
     console.log("");
 
-    await volunteerSeeds();
+    await userSeeds();
     console.log("");
-    console.log("========== VOLUNTEER SEEDED ==========");
+    console.log("========== USER SEEDED ==========");
     console.log("");
 
+    /*
     await adminSeeds();
     console.log("");
     console.log("========== ADMIN SEEDED ==========");
     console.log("");
+    */
 
     await nfpSeeds();
     console.log("");

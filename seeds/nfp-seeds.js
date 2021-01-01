@@ -14,7 +14,8 @@ const nfpData = [
         state: "FL",
         zip: "11111",
         phone_number: "1111111111",
-        email: "mike@mike.com"
+        email: "mike@mike.com",
+        image_url: "https://mynewmicrophone.com/wp-content/uploads/2019/07/mnm_What_Is_Microphone_Feedback_And_How_To_Eliminate_It_For_Good_large.jpg"
     },
     {
         nfp_name: "November",
@@ -29,12 +30,13 @@ const nfpData = [
         state: "TX",
         zip: "22222",
         phone_number: "2222222222",
-        email: "november@november.com"
+        email: "november@november.com",
+        image_url: "https://uproxx.com/wp-content/uploads/2015/01/chris-pratt.jpg?w=650"
     },
     {
         nfp_name: "Oscar",
         url: "https://oscar.com",
-        cause: "the grouch",
+        cause: "The Grouch",
         tags: "I live in a trash can",
         description: "I'm from the streets.  The Sesame Streets",
         size: "10",
@@ -44,7 +46,8 @@ const nfpData = [
         state: "WA",
         zip: "33333",
         phone_number: "3333333333",
-        email: "oscar@oscar.com"
+        email: "oscar@oscar.com",
+        image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOPflnKg6W81rj63WwlpJ-yN5aKm71BXXRXw&usqp=CAU"
     }
 ];
 
