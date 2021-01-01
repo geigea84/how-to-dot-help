@@ -45,14 +45,14 @@
     <div class="bg-scrabble hide ghost-in">
         <h2 class="center pad-t">Search Volunteers</h2>
         <div class="form flex-row">
-            <input id="searchNameAndNfp" value="<%= searchTerm %>" class="formbox-sl typeahead tt-input" spellcheck="false" autocomplete="off" name="searchNameAndNfp" placeholder="Search by first name, last name, or NFP"></textarea>
-            <!--<input id="search-NFP" class="formbox-sl typeahead tt-input" spellcheck="false" autocomplete="off" name="typeahead" placeholder="Search by requested NFP"></textarea>-->
+            <input id="search-User" class="formbox-sl" placeholder="Search volunteers by first or last name"></textarea>
+            <input id="search-NFP" class="formbox-sl" placeholder="Search NFPs by name"></textarea>
             <div class="col-12 pad">
                 <div class="center">
-                    <button id="vol-search-btn">Search</button>
+                    <button id="search-btn">Search</button>
                 </div>
             </div>
-            <div class=" justify-center">
+            <div id="results-container" class=" justify-center">
                 <div class=" flex-row ">
                     {{#each nfp as |nfp|}}
                         {{> nfp-btn nfp }}

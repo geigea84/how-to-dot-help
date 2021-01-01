@@ -180,10 +180,50 @@ $(".typeahead").typeahead(
     }
 )
 */
-$("#vol-search-btn").on("click", function(req, res, next) {
-    console.log("vol search btn clicked")
 
-    let searchTerm = req.query.searchNameAndNfp;
+$("#search-btn").on("click", () => {
+    console.log("search btn clicked");
+    
+    //get value of input
+    let query = $("#search-User").value;
 
-    let query = "SELECT * FROM User WHERE first_name LIKE " + searchTerm% 
-})
+    let resultsContainer = $("#results-container");
+
+    //create XMLHttp object
+    const xmlhttp = new XMLHttpRequest();
+
+    //function called on button click
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            //fetch response text
+            let response = xmlhttp.responseText;
+            let outputPosts;
+
+            //parse response if valid JSON
+            try {
+                outputPosts = JSON.parse(response);
+            }
+            catch(err) {
+                alert("No matches");
+                return;
+            }
+
+            //iterate over results
+            for (let i = 0; i < outputPosts.length; i++) {
+                resultsContainer.innerHTML += "<div id=result-" + i + ">" 
+                + outputPosts[i].first_name + "\n" 
+                + outputPosts[i].last_name + "\n"
+                + outputPosts[i].city + "\n"
+                + outputPosts[i].state + "\n"
+                + outputPosts[i].bio + "\n"
+                + outputPosts[i].phone_number + "\n"
+                + outputPosts[i].email +
+                "</div>"
+            };
+        };
+    };
+
+    //send request to fetch searchDB.php
+    xmlhttp.open("GET", "searchDB.php?search=" + query, true);
+    xmlhttp.send();
+});

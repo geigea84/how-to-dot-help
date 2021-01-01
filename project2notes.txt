@@ -6,7 +6,7 @@ public/php/searchDB.php
 config/connection.js
 
 Admin Page: admin.handlebars, volApiCalls.js, (route connection example: home-routes, volApiCalls)
-- needs add new NFP (done), edit, and delete
+- needs add new NFP (done), edit (see taskmaster), and delete (also taskmaster)
 - needs to pull volunteers by name and NFP joined
 - make useful on page/make everything work
 - admin privileges - create account, command line abilities to said account
