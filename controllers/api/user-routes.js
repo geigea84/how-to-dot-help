@@ -40,7 +40,7 @@ router.get('/:id', (req, res) => {
                 return;
             }
            // res.json(dbUserData);
-            res.render("user", dbUserData)
+            res.render("volunteers", dbUserData)
         })
         .catch(err => {
             console.log(err);
@@ -50,8 +50,8 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     User.create({
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
+        first_name: req.body.firstName,
+        last_name: req.body.lastName,
         city: req.body.city,
         state: req.body.state,
         bio: req.body.bio,

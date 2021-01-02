@@ -2,7 +2,7 @@
 
 //prevent input of incorrect characters in phone number
 let checkPhoneNumber = (nfpPhone) => {
-    console.log("number called");
+    //console.log("number called");
     //filter out non-numeric characters
     let cleaned = ("" + nfpPhone).replace(/\D/g, "");
 
@@ -17,9 +17,9 @@ let checkPhoneNumber = (nfpPhone) => {
 
 //replace with arrow functions?
 const validateEmail = function(nfpEmail) {
-    console.log("email called");
+    //console.log("email called");
     if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(nfpEmail)) {
-        console.log("valid email address");
+        //console.log("valid email address");
         return nfpEmail;
     }
     else {
@@ -29,15 +29,12 @@ const validateEmail = function(nfpEmail) {
 };
 
 const validatePhone = function(nfpPhone) {
-    console.log("phone called");
+    //console.log("phone called");
     let cleaned = ("" + nfpPhone).replace(/\D/g, "");
     
     if (/^\d{10}$/.test(cleaned)) {
-        console.log("valid phone number");
+        //console.log("valid phone number");
         return cleaned;
-    }
-    else if (nfpPhone == "") {
-        return;
     }
     else {
         alert("Invalid phone number");
@@ -47,7 +44,7 @@ const validatePhone = function(nfpPhone) {
 
 //eliminate issues with DRY-test to see if the || can drop theState between each one
 const validateState = function(nfpState) {
-    console.log("state called");
+    //console.log("state called");
     let theState = nfpState.toUpperCase();
     if (theState == "AL" || 
         theState == "AK" || 
@@ -116,9 +113,29 @@ const validateState = function(nfpState) {
     }
 }
 
-$("#nfp-save-btn").on("click", () => {
+//$("#nfp-save-btn").on("click", async function() {
+async function addNFP(event) {
+    event.preventDefault();
     console.log("nfp save btn clicked")
     
+    let nfpName    = document.querySelector("#nfp-name").value.trim();
+    let nfpWebsite = document.querySelector("#nfp-website").value.trim();
+    let nfpCause   = document.querySelector("#nfp-cause").value.trim();
+    let nfpTags    = document.querySelector("#nfp-tags").value.trim();
+    let nfpMS      = document.querySelector("#nfp-mission-statement").value.trim();
+    let nfpSize    = document.querySelector("#nfp-size").value.trim();
+    let nfpFY      = document.querySelector("#nfp-founding-year").value.trim();
+    let nfpRNA     = document.querySelector("#nfp-rna").value.trim();
+    let nfpCity    = document.querySelector("#nfp-city").value.trim();
+    let nfpState   = document.querySelector("#nfp-state").value.trim();
+    let nfpZip     = document.querySelector("#nfp-zip").value.trim();
+    let nfpEmail   = document.querySelector("#nfp-email").value.trim();
+    let nfpPhone   = document.querySelector("#nfp-phone").value.trim();
+    let nfpImage   = document.querySelector("#nfp-image").value.trim();
+
+    console.log(nfpName);
+
+    /*
     nfpName    = $("#nfp-name").val();
     nfpWebsite = $("#nfp-website").val();
     nfpCause   = $("#nfp-cause").val();
@@ -133,11 +150,15 @@ $("#nfp-save-btn").on("click", () => {
     nfpEmail   = $("#nfp-email").val();
     nfpPhone   = $("#nfp-phone").val();
     nfpImage   = $("#nfp-image").val();
+    */
 
     let validEmail = validateEmail(nfpEmail);
     let validPhone = validatePhone(nfpPhone);
     let validState = validateState(nfpState);
+    
+    console.log(validEmail);
 
+    /*
     let nfpInfo = {
         nfp_name: nfpName,
         url: nfpWebsite,
@@ -156,18 +177,70 @@ $("#nfp-save-btn").on("click", () => {
     }
 
     console.log(nfpInfo);
+    */
 
+    if(
+        nfpName &&
+        nfpWebsite &&
+        nfpCause &&
+        nfpTags &&
+        nfpMS &&
+        nfpSize &&
+        nfpFY &&
+        nfpRNA &&
+        nfpCity &&
+        validState &&
+        nfpZip &&
+        validPhone &&
+        validEmail &&
+        nfpImage
+    ) {
+        const response = await fetch('/api/nfp', {
+            method: 'post',
+            body: JSON.stringify({
+                nfpName,
+                nfpWebsite,
+                nfpCause,
+                nfpTags,
+                nfpMS,
+                nfpSize,
+                nfpFY,
+                nfpRNA,
+                nfpCity,
+                validState,
+                nfpZip,
+                validPhone,
+                validEmail,
+                nfpImage
+            }),
+            headers: {'Content-Type': 'application/json'}
+        });
+
+        if (response.ok) {
+            alert(`${nfpName} added as new NFP`);
+        }
+        else {
+            alert(response.statusText);
+        }
+    }
+    else {
+        alert("nfp did not save");
+    }
+
+    /*
     $.ajax({
         method: "POST",
-        url: "/admin",
+        url: "/api/nfp",
         data: {nfpInfo},
         success: function(response) {
             console.log(response);
             alert("NFP added!");
         }
     });
-});
-
+    */
+//});
+}
+document.getElementById("nfp-save-btn").addEventListener("click", addNFP);
 
 /* GET search volunteers by name */
 /*
@@ -182,6 +255,7 @@ $(".typeahead").typeahead(
     }
 )
 */
+
 
 $("#search-btn").on("click", () => {
     console.log("search btn clicked");

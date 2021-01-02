@@ -1,4 +1,4 @@
-const User = require("./User");
+const User      = require("./User");
 const Admin     = require("./Admin");
 const NFP       = require("./NFP");
 const VolNFPs   = require("./VolNFPs");
