@@ -198,20 +198,20 @@ async function addNFP(event) {
         const response = await fetch('/api/nfp', {
             method: 'post',
             body: JSON.stringify({
-                nfpName,
-                nfpWebsite,
-                nfpCause,
-                nfpTags,
-                nfpMS,
-                nfpSize,
-                nfpFY,
-                nfpRNA,
-                nfpCity,
-                validState,
-                nfpZip,
-                validPhone,
-                validEmail,
-                nfpImage
+                nfp_name: nfpName,
+                url: nfpWebsite,
+                cause: nfpCause,
+                tags: nfpTags,
+                description: nfpMS,
+                size: nfpSize,
+                founding_year: nfpFY,
+                reported_net_assets: nfpRNA,
+                city: nfpCity,
+                state: validState,
+                zip: nfpZip,
+                phone_number: validPhone,
+                email: validEmail,
+                image_url: nfpImage
             }),
             headers: {'Content-Type': 'application/json'}
         });

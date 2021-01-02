@@ -7,38 +7,40 @@
     </div>
 <div class="col-12 content">
     <div id="form-v" class="form flex-row">
-        <h4>Name of NFP</h4>
-            <textarea id="nfp-name" class="formbox-sl"></textarea>
-        <h4>Website</h4>
-            <textarea id="nfp-website" class="formbox-sl"></textarea>
-        <h4>Cause</h4>
-            <textarea id="nfp-cause" class="formbox-sl"></textarea>
-        <h4>Tags</h4>
-            <textarea id="nfp-tags" class="formbox-sl"></textarea>
-        <h4>Description/Mission Statement</h4>
-            <textarea id="nfp-mission-statement" class="formbox-lg"></textarea>
-        <h4>Size</h4>
-            <textarea id="nfp-size" class="formbox-sl"></textarea>
-        <h4>Founding Year</h4>
-            <textarea id="nfp-founding-year" class="formbox-sl"></textarea>
-        <h4>Reported Net Assets</h4>
-            <textarea id="nfp-rna" class="formbox-sl"></textarea>
-        <h4>City</h4>
-            <textarea id="nfp-city" class="formbox-sl"></textarea>
-        <h4>State Abbreviation</h4>
-            <textarea id="nfp-state" class="formbox-sl"></textarea>
-        <h4>Zip Code</h4>
-            <textarea id="nfp-zip" class="formbox-sl"></textarea>
-        <h4>Contact Info</h4>
-            <textarea id="nfp-email" class="formbox-sl" placeholder="Email Adress"></textarea>
-            <textarea id="nfp-phone" class="formbox-sl" placeholder="10-Digit Phone Number"></textarea>
-        <h4>NFP Image</h4>
-            <textarea id="nfp-image" class="formbox-sl" placeholder="Enter Image URL"></textarea>
-        <div class="col-12 pad-t">
-            <div class="center">
-                <button id="nfp-save-btn">Save</button>
+        <form class="form flex-row" method="post">
+            <h4>Name of NFP</h4>
+                <input id="nfp-name" class="formbox-sl"></input>
+            <h4>Website</h4>
+                <input id="nfp-website" class="formbox-sl"></input>
+            <h4>Cause</h4>
+                <input id="nfp-cause" class="formbox-sl"></input>
+            <h4>Tags</h4>
+                <input id="nfp-tags" class="formbox-sl"></input>
+            <h4>Description/Mission Statement</h4>
+                <input id="nfp-mission-statement" class="formbox-lg"></input>
+            <h4>Size</h4>
+                <input id="nfp-size" class="formbox-sl"></input>
+            <h4>Founding Year</h4>
+                <input id="nfp-founding-year" class="formbox-sl"></input>
+            <h4>Reported Net Assets</h4>
+                <input id="nfp-rna" class="formbox-sl"></input>
+            <h4>City</h4>
+                <input id="nfp-city" class="formbox-sl"></input>
+            <h4>State Abbreviation</h4>
+                <input id="nfp-state" class="formbox-sl"></input>
+            <h4>Zip Code</h4>
+                <input id="nfp-zip" class="formbox-sl"></input>
+            <h4>Contact Info</h4>
+                <input id="nfp-email" class="formbox-sl" placeholder="Email Adress"></input>
+                <input id="nfp-phone" class="formbox-sl" placeholder="10-Digit Phone Number"></input>
+            <h4>NFP Image</h4>
+                <input id="nfp-image" class="formbox-sl" placeholder="Enter Image URL"></input>
+            <div class="col-12 pad-t">
+                <div class="center">
+                    <button id="nfp-save-btn">Save</button>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 </div> 
 <div class="col-12">
@@ -46,11 +48,11 @@
         <h2 class="center pad-t">Search Volunteers</h2>
         <div class="form flex-row">
             <!--<form action="" method="POST">-->
-                <input id="search-User" class="formbox-sl" type="text" name="search" placeholder="Search volunteers by first or last name"></textarea>
-                <input id="search-NFP" class="formbox-sl" placeholder="Search NFPs by name"></textarea>
+                <input id="search-User" class="formbox-sl" type="text" name="search" placeholder="Search volunteers by first or last name"></input>
+                <input id="search-NFP" class="formbox-sl" placeholder="Search NFPs by name"></input>
                 <div class="col-12 pad">
                     <div class="center">
-                        <button id="search-btn">Search</button>
+                        <button type="submit" id="search-btn">Search</button>
                     </div>
                 </div>
             <!--</form>-->

@@ -38,9 +38,9 @@ volunteer
 admin
     good
         close info/open info
+        save
     nope
     kinda?
-        save
         search
 
 logout
