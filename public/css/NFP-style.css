@@ -5,7 +5,33 @@
   --white: whitesmoke;
   --dark: #13231F;
   --accent: #CC936C;
+  --marmalade: #f1e0b0;
+
 }
+/*-- must be in normal css so can have bg transarency--*/
+.bg-faded {
+  background-color: rgb(250, 230, 220, 0.8);
+  width:100%;
+  padding:20px;
+  height: 100%;
+  font-weight:300;
+  transition: 1s;
+  border-radius: 5px;
+}
+.bg-faded h2{
+  background-color: rgb(250, 230, 220, 1);
+  padding:20px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+  border-radius: 5px;
+      color: var(--dark);
+  }
+.secondary {
+      color: var(--accent);
+  }
+.tertiary {
+      color:var(--tertiary);
+  }
+
 
   .card {
       box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -65,6 +91,8 @@
   min-width: 100%;
   background-color: var(--secondary);
   text-align: left;
+  border-radius: 5px;
+
 }
 @media screen and (max-width: 700px) {
   .card2 {
@@ -104,11 +132,14 @@
   display:flex;
   align-items: center;
   padding:20px 10px; 
+  border-radius: 5px;
+
 }
 .card2 .col-3 img{
   width:100%;
   max-width:200px;
   margin:auto;
+  border-radius: 5px;
 }
 
 /* On mouse-over, add a deeper shadow */
