@@ -2,10 +2,10 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 
 
-const { Admin, NFP, User } = require('../models')//VolNFPs
+const { Admin, NFP, User } = require('../models');
 
 //------------------------------------------------------------------------//
-//Home Page
+//////////////////////////////Home Page/////////////////////////////////////
 //------------------------------------------------------------------------//
 router.get("/", (req, res) => {
   console.log(req.session.user_id);
@@ -32,8 +32,6 @@ router.get("/", (req, res) => {
     })
       .then((dbPostData) => {
          const nfps = dbPostData.map((npf) => npf.get({ plain: true }));
-        // console.log(nfps)
-        //res.render('homepage', { nfps });
         res.render('homepage', {
           nfps,
           loggedIn: req.session.loggedIn
@@ -47,58 +45,9 @@ router.get("/", (req, res) => {
 
 
 //------------------------------------------------------------------------//
-//USER Page
+//////////////////////////////USER Page ////////////////////////////////////
 //------------------------------------------------------------------------//
 
-
-// router.get('/user/:id', async (req, res) => {
-//   //console.log('HOMEROUTES')
-//   console.log("WE HIT IT HARAY!!"+ req.params.id)
-//   const firstQuery = await 
-//         User.findOne({
-//           where: {
-//             id: req.params.id
-//           },
-//           attributes: [
-//             'id',
-//             'first_name',
-//             'last_name',
-//             'email',
-//             'phone_number',
-//             'bio',
-//             'city',
-//             'state'
-//           ]
-//         }) 
-//   const secondQuery = await 
-//   NFP.findAll({
-//       attributes: [
-//           'id',
-//           'nfp_name',
-//           'url',
-//           'cause',
-//           'tags',
-//           'description',
-//           'size',
-//           'founding_year',
-//           'reported_net_assets',
-//           'city',
-//           'state',
-//           'zip',
-//           'phone_number',
-//           'email',
-//           'image_url'
-//       ]   
-//   })
-//   const renderObject = {
-//       User: firstQuery,
-//       nfp: secondQuery
-//     }
-//    //const whatWeWant = renderObject.get({ plain: true });
-
-//     console.log(renderObject)
-//   res.render('user', renderObject);
-// });
 
 
 //////////////////////////////
@@ -118,9 +67,11 @@ let formatPhoneNumber = (P) => {
     return " "
   };
 
+//------------------------------------------------------------------------//
+/////////////////////////// personal page //////////////////////////////////
+//------------------------------------------------------------------------//
 
-// personal page //
-router.get('/user/:id', (req, res) => {
+router.get('/user', (req, res) => {
 
     let newTableOfVol = {}
 
@@ -171,7 +122,7 @@ router.get('/user/:id', (req, res) => {
 //------------------------------------------------------------------------//
 
 // personal page //
-router.put('/user/:id', (req, res) => {
+router.put('/user', (req, res) => {
     console.log(req.session.user_id + "is the id")
     //console.log('put', req.body, req.params)
     User.update(
@@ -228,7 +179,7 @@ router.put('/user/:id', (req, res) => {
   });
 
 //------------------------------------------------------------------------//
-//admin
+//////////////////////////////Admin/////////////////////////////////////////
 //------------------------------------------------------------------------//
 
   router.get('/signup', (req, res) => {
@@ -247,7 +198,7 @@ router.get('/admin', (req, res) => {
 })
 
 //------------------------------------------------------------------------//
-//partners
+////////////////////////////partners////////////////////////////////////////
 //------------------------------------------------------------------------//
 
 router.get('/partners', (req, res) => {

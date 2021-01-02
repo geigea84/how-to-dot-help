@@ -9,7 +9,6 @@ class Admin extends Model {
     }
 }
 
-//anticipating more requests for input from HTDH
 Admin.init(
     {
         id: {

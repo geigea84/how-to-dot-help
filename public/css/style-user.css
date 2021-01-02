@@ -8,7 +8,6 @@
   --horizon: #C7D5D2;
 }
 
-/* 2.2 - added flex */
 .user-c {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -101,7 +100,6 @@
           transform: translateY(-200px);
 }
 
-/* 2.2 - removed float and width */
 .user-bod {
   padding: 15px;
   clear: both;
@@ -123,6 +121,3 @@
   scroll-padding-top: 5px;
   color: var(--dark);
 }
-
-/* TRAINER STYLES END */
-/*# sourceMappingURL=style-user.css.map */
