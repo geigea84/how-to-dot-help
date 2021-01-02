@@ -31,3 +31,13 @@ function hideVForm() {
   const hideVolunteerForm = document.getElementById("hide-vinfo")
   hideVolunteerForm.addEventListener("click", hideVForm);
 //end caryover
+
+//Reach out button on HP
+//---------------------------------------------------------------------
+function reachOutJoin() {
+  console.log("signup clicked btn")
+  $(this).fadeOut(3000);
+    reachOut(nfp_id)
+}
+
+$(document).on("click", ".sign-up", reachOutJoin)
