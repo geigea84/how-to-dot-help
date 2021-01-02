@@ -32,10 +32,10 @@ function hideVForm() {
   hideVolunteerForm.addEventListener("click", hideVForm);
 //end caryover
 
-//  const reachOutResponse = function() {
-//     console.log("clicked btn")
-//     $(this).fadeOut(3000);
-//   }
+ const reachOutResponse = function() {
+    console.log("clicked btn")
+    $(this).fadeOut(3000);
+  }
 
-  const reachOutBtnClicked = document.getElementsByClassName("reach-out")
-  reachOutBtnClicked.addEventListener("click",console.log("btn clicked"))
+  const reachOutBtn = document.getElementsByClassName("reach-out")
+  reachOutBtn.addEventListener("click",reachOutResponse)

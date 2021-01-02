@@ -63,6 +63,58 @@ router.get('/signup', (req, res) => {
 //USER Page
 //------------------------------------------------------------------------//
 
+
+// router.get('/user/:id', async (req, res) => {
+//   //console.log('HOMEROUTES')
+//   console.log("WE HIT IT HARAY!!"+ req.params.id)
+//   const firstQuery = await 
+//         User.findOne({
+//           where: {
+//             id: req.params.id
+//           },
+//           attributes: [
+//             'id',
+//             'first_name',
+//             'last_name',
+//             'email',
+//             'phone_number',
+//             'bio',
+//             'city',
+//             'state'
+//           ]
+//         }) 
+//   const secondQuery = await 
+//   NFP.findAll({
+//       attributes: [
+//           'id',
+//           'nfp_name',
+//           'url',
+//           'cause',
+//           'tags',
+//           'description',
+//           'size',
+//           'founding_year',
+//           'reported_net_assets',
+//           'city',
+//           'state',
+//           'zip',
+//           'phone_number',
+//           'email',
+//           'image_url'
+//       ]   
+//   })
+//   const renderObject = {
+//       User: firstQuery,
+//       nfp: secondQuery
+//     }
+//    //const whatWeWant = renderObject.get({ plain: true });
+
+//     console.log(renderObject)
+//   res.render('user', renderObject);
+// });
+
+
+//////////////////////////////
 let formatPhoneNumber = (P) => {
     //Filter only numbers from the input
     let cleaned = ('' + P).replace(/\D/g, '');
@@ -226,56 +278,4 @@ router.get('/admin', (req, res) => {
 });
 
 module.exports = router;
-
-
-
-
-// router.get('/user/:id', async (req, res) => {
-//   //console.log('HOMEROUTES')
-//   console.log("WE HIT IT HARAY!!"+ req.params.id)
-//   const firstQuery = await 
-//         User.findOne({
-//           where: {
-//             id: req.params.id
-//           },
-//           attributes: [
-//             'id',
-//             'first_name',
-//             'last_name',
-//             'email',
-//             'phone_number',
-//             'bio',
-//             'city',
-//             'state'
-//           ]
-//         }) 
-//   const secondQuery = await 
-//   NFP.findAll({
-//       attributes: [
-//           'id',
-//           'nfp_name',
-//           'url',
-//           'cause',
-//           'tags',
-//           'description',
-//           'size',
-//           'founding_year',
-//           'reported_net_assets',
-//           'city',
-//           'state',
-//           'zip',
-//           'phone_number',
-//           'email',
-//           'image_url'
-//       ]   
-//   })
-//   const renderObject = {
-//       User: firstQuery,
-//       nfp: secondQuery
-//     }
-//    //const whatWeWant = renderObject.get({ plain: true });
-
-//     console.log(renderObject)
-//   res.render('user', renderObject);
-// });
 
