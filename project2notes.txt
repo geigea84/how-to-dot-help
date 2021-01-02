@@ -1,11 +1,32 @@
 to do
--figure out why validation seems to be selective
--readme/presentation - google slides?
+
+update files to remote database when finished testing locally:
+.env
+public/php/searchDB.php
+config/connection.js
+
+Admin Page: admin.handlebars, volApiCalls.js, (route connection example: home-routes, volApiCalls)
+- needs add new NFP (done), edit (see taskmaster), and delete (also taskmaster)
+- needs to pull volunteers by name and NFP joined
+- make useful on page/make everything work
+- admin privileges - create account, command line abilities to said account
+
+=====================================================================================================
+
+feature/users - 
+
+res.render?
+session id to access admin page? - may have to ask about this one
+
+***1 user table, grant admin to select individuals in table
+-how would we go about having a column for admin only that wouldn't be filled out/viewed by volunteers?
+--idea: column is created but not displayed, manually enter permission into database (boolean), default in model is false, 
+--permission is to access the admin page, route contains statement to call true value in respective column 
+
+-router.get volunteer:id - run two router.gets?
 
 questions for class
 -how does nodemon work?
-
--best practice to enter city and state info into mysql db
 
 -adding dropdown frontend info into database
 
@@ -15,9 +36,6 @@ questions for class
 -more points of emphasis for password validation
 
 -add logo/image info to database
-
-questions for HTH
--which (if any) columns can be left blank when entering new NFP
 
 *Volunteer model
 -add timestamp?
