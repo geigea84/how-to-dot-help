@@ -28,12 +28,14 @@ function hideVForm() {
   }
   }
 //carried over code fro merge
-  var hideVolunteerForm = document.getElementById("hide-vinfo")
+  const hideVolunteerForm = document.getElementById("hide-vinfo")
   hideVolunteerForm.addEventListener("click", hideVForm);
 //end caryover
 
-  $('.reach-out').click(function(){
+ const reachOutResponse = function() {
     console.log("clicked btn")
     $(this).fadeOut(3000);
-  })
+  }
 
+  const reachOutBtn = document.getElementsByClassName("reach-out")
+  reachOutBtn.addEventListener("click",reachOutResponse)
