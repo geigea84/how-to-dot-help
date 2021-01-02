@@ -8,6 +8,8 @@ const { Admin, NFP, User } = require('../models')//VolNFPs
 //Home Page
 //------------------------------------------------------------------------//
 router.get("/", (req, res) => {
+  console.log(req.session.user_id);
+  
     NFP.findAll({
         attributes: [
             'id',
@@ -62,7 +64,7 @@ router.get('/user/:id', async (req, res) => {
     const firstQuery = await 
     User.findOne({
       where: {
-        id: req.params.id
+        id: req.session.user_id
       },
       attributes: [
         'id',
@@ -102,6 +104,7 @@ router.get('/user/:id', async (req, res) => {
      //const whatWeWant = renderObject.get({ plain: true });
 
       console.log(renderObject)
+      console.log('this it this' + req.params.id)
     res.render('volunteers', renderObject);
   });
 
@@ -195,7 +198,8 @@ router.put('/user/:id', (req, res) => {
     {
       individualHooks: true,  
         where: {
-            id: req.body.userinfo.id
+            //id: req.body.userinfo.id
+            id: req.session.user_id
       }}
     )
       .then(dbPostData => {
