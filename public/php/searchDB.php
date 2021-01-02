@@ -22,24 +22,29 @@ $dbName = "how_to_dot_help_db";
 //connect to db (use mysqli or mysql)
 $con = new mysqli($host, $user, $password, $dbName);
 
-//query the db (add limit for previously loaded results if desired)
-$sql = 'SELECT * FROM User WHERE MATCH (first_name, last_name) AGAINST ("'.$search.'")';
+if ($con->connect_error) {
+    echo "Connection Failed: ".$con->connect_error;
+}
+else {
+    //query the db (add limit for previously loaded results if desired)
+    $sql = "SELECT * FROM User WHERE first_name, last_name LIKE '%$search%'";
 
-//array to store results
-$output = array();
+    //array to store results
+    $output = array();
 
-if($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        //add row to output array
-        $output[] = array(
-            "first_name" => $row["first_name"],
-            "last_name" => $row["last_name"],
-            "city" => $row["city"],
-            "state" => $row["state"],
-            "bio" => $row["bio"],
-            "phone_number" => $row["phone_number"],
-            "email" => $row["email"]
-        );
+    if($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            //add row to output array
+            echo $output[] = array(
+                "first_name" => $row["first_name"],
+                "last_name" => $row["last_name"],
+                "city" => $row["city"],
+                "state" => $row["state"],
+                "bio" => $row["bio"],
+                "phone_number" => $row["phone_number"],
+                "email" => $row["email"]
+            );
+        }
     }
 }
 

@@ -155,6 +155,8 @@ $("#nfp-save-btn").on("click", () => {
         image_url: nfpImage
     }
 
+    console.log(nfpInfo);
+
     $.ajax({
         method: "POST",
         url: "/admin",
@@ -185,12 +187,15 @@ $("#search-btn").on("click", () => {
     console.log("search btn clicked");
     
     //get value of input
-    let query = $("#search-User").value;
-
-    let resultsContainer = $("#results-container");
+    let query = document.getElementById("search-User").value;
+    let resultsContainer = document.getElementById("results-container");
+    
+    console.log(query);
 
     //create XMLHttp object
     const xmlhttp = new XMLHttpRequest();
+
+    console.log(xmlhttp);
 
     //function called on button click
     xmlhttp.onreadystatechange = function() {
@@ -219,11 +224,24 @@ $("#search-btn").on("click", () => {
                 + outputPosts[i].phone_number + "\n"
                 + outputPosts[i].email +
                 "</div>"
+                
+                //generate edit and delete buttons
+                let editButton = document.createElement("button");
+                editButton.textContent = "Edit";
+                //editButton.className = 
+                editButton.setAttribute("id", outputPosts[i]);
+                resultsContainer.appendChild(editButton);
+
+                let deleteButton = document.createElement("button");
+                deleteButton.textContent = "Delete";
+                //deleteButton.className =
+                deleteButton.setAttribute("id", outputPosts[i]);
+                resultsContainer.appendChild(deleteButton);
             };
         };
     };
 
-    //send request to fetch searchDB.php
+    //send request to fetch searchDB.php (is file at right level?)
     xmlhttp.open("GET", "searchDB.php?search=" + query, true);
     xmlhttp.send();
 });
