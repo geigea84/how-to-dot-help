@@ -24,15 +24,15 @@
       <h4>
         <a href="/login">Volunteer Login</a>
         <a href="/signup">Join</a>
-        <a href="/volunteer/1">Volunteer</a>
+        <a href="/user/1">Volunteer</a>
         <a href="/admin">Admin</a>
         <br>
         {{!-- <a id="logout" href="/">Logout</a> --}}
         {{!-- trying to toggle on or off depending on login --}}
         {{#if loggedIn}}
-        <a id="logout" href="/" style="display: none">Logout</a>
+        <a id="logout" href="/">Logout</a>
         {{else}}
-        <a id="logout" href="/" >Logout</a>
+        <a id="logout" href="/" style="display: none">Logout</a>
         {{/if}}
       </h4>
     </div>

@@ -15,6 +15,7 @@ async function loginFormHandler(event) {
       });
   
       if (response.ok) {
+        //console.log(req.session.loggedIn)
         document.location.replace('/user/:id');
       } else {
         alert(response.statusText);

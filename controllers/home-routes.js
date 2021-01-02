@@ -9,6 +9,7 @@ const { Admin, NFP, User } = require('../models')//VolNFPs
 //------------------------------------------------------------------------//
 router.get("/", (req, res) => {
   console.log(req.session.user_id);
+  console.log(req.session.loggedIn);
   
     NFP.findAll({
         attributes: [
@@ -32,28 +33,18 @@ router.get("/", (req, res) => {
       .then((dbPostData) => {
          const nfps = dbPostData.map((npf) => npf.get({ plain: true }));
         // console.log(nfps)
-        res.render('homepage', { nfps });
+        //res.render('homepage', { nfps });
+        res.render('homepage', {
+          nfps,
+          loggedIn: req.session.loggedIn
+        })
       })
+      
       .catch((err) => {
         res.status(500).json(err);
       });
   });
 
-
-
-
-router.get('/login', (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect('/');
-    return;
-  }
-
-  res.render('login');
-});
-
-router.get('/signup', (req, res) => {
-    res.render('join');
-});
 
 //------------------------------------------------------------------------//
 //USER Page
@@ -218,12 +209,6 @@ router.put('/user/:id', (req, res) => {
 
 
 
-
-
-
-
-
-
   ////////////////////////////////////////////////////////
   router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
@@ -246,32 +231,27 @@ router.put('/user/:id', (req, res) => {
   });
 
 
-
+  router.get('/signup', (req, res) => {
+    res.render('join', {
+      loggedIn: req.session.loggedIn
+    });
+});
 
 
 /////////////////////////////////////////////////////////////////////////////
-router.get('/dashboard', (req, res) => {
 
-});
 
-router.get('/signup', (req, res) => {
-    res.render('signup');
-});
-
-// router.get('/volunteer/1', (req, res) => {
-//     res.render('/volunteers');
-// });
 
 router.get('/admin', (req, res) => {
-    res.render('admin');
+    res.render('admin', {
+      loggedIn: req.session.loggedIn
+    });
 })
 
 router.get('/partners', (req, res) => {
     res.render('partner-nfp');
 });
 
-router.get('/admin', (req, res) => {
 
-});
 
 module.exports = router;
