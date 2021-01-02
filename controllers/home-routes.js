@@ -40,7 +40,9 @@ router.get("/", (req, res) => {
   });
 
 
-
+//------------------------------------------------------------------------//
+//login
+//------------------------------------------------------------------------//
 
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
@@ -51,6 +53,10 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+//------------------------------------------------------------------------//
+//signup
+//------------------------------------------------------------------------//
+
 router.get('/signup', (req, res) => {
     res.render('join');
 });
@@ -58,10 +64,79 @@ router.get('/signup', (req, res) => {
 //------------------------------------------------------------------------//
 //USER Page
 //------------------------------------------------------------------------//
-router.get('/user/:id', async (req, res) => {
+
+
+// router.get('/user/:id', async (req, res) => {
+//   //console.log('HOMEROUTES')
+//   console.log("WE HIT IT HARAY!!"+ req.params.id)
+//   const firstQuery = await 
+//         User.findOne({
+//           where: {
+//             id: req.params.id
+//           },
+//           attributes: [
+//             'id',
+//             'first_name',
+//             'last_name',
+//             'email',
+//             'phone_number',
+//             'bio',
+//             'city',
+//             'state'
+//           ]
+//         }) 
+//   const secondQuery = await 
+//   NFP.findAll({
+//       attributes: [
+//           'id',
+//           'nfp_name',
+//           'url',
+//           'cause',
+//           'tags',
+//           'description',
+//           'size',
+//           'founding_year',
+//           'reported_net_assets',
+//           'city',
+//           'state',
+//           'zip',
+//           'phone_number',
+//           'email',
+//           'image_url'
+//       ]   
+//   })
+//   const renderObject = {
+//       User: firstQuery,
+//       nfp: secondQuery
+//     }
+//    //const whatWeWant = renderObject.get({ plain: true });
+
+//     console.log(renderObject)
+//   res.render('user', renderObject);
+// });
+
+
+//////////////////////////////
+let formatPhoneNumber = (P) => {
+    //Filter only numbers from the input
+    let cleaned = ('' + P).replace(/\D/g, '');
+    
+    //Check if the input is of correct length
+    let match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+  
+    if (match) {
+      return '(' + match[1] + ') ' + match[2] + '-' + match[3]
+    }; 
+    return " "
+  };
+
+
+// personal page //
+router.get('/user/:id', (req, res) => {
+
+    let newTableOfVol = {}
 
     //console.log('HOMEROUTES')
-    const firstQuery = await 
     User.findOne({
       where: {
         id: req.session.user_id
@@ -76,104 +151,31 @@ router.get('/user/:id', async (req, res) => {
         'city',
         'state'
       ]
-    })  
-    const secondQuery = await 
-    NFP.findAll({
-        attributes: [
-            'id',
-            'nfp_name',
-            'url',
-            'cause',
-            'tags',
-            'description',
-            'size',
-            'founding_year',
-            'reported_net_assets',
-            'city',
-            'state',
-            'zip',
-            'phone_number',
-            'email',
-            'image_url'
-        ]   
-    })
-    const renderObject = {
-        User: firstQuery,
-        nfp: secondQuery
-      }
-     //const whatWeWant = renderObject.get({ plain: true });
 
-      console.log(renderObject)
-      console.log('this it this' + req.params.id)
-    res.render('volunteers', renderObject);
-  });
+    })    
+      .then(dbPostData => {
+        if (!dbPostData) {
+          res.status(404).json({ message: 'No user found with this id' });
+          return;
+        }
 
-
-
-
-
-
-
-
-
-// let formatPhoneNumber = (P) => {
-//     //Filter only numbers from the input
-//     let cleaned = ('' + P).replace(/\D/g, '');
-    
-//     //Check if the input is of correct length
-//     let match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
-  
-//     if (match) {
-//       return '(' + match[1] + ') ' + match[2] + '-' + match[3]
-//     }; 
-//     return " "
-//   };
-
-
-// // personal page //
-// router.get('/user/:id', (req, res) => {
-
-//     let newTableOfVol = {}
-
-//     //console.log('HOMEROUTES')
-//     User.findOne({
-//       where: {
-//         id: req.params.id
-//       },
-//       attributes: [
-//         'id',
-//         'first_name',
-//         'last_name',
-//         'email',
-//         'phone_number',
-//         'bio',
-//         'city',
-//         'state'
-//       ]
-//     })    
-//       .then(dbPostData => {
-//         if (!dbPostData) {
-//           res.status(404).json({ message: 'No user found with this id' });
-//           return;
-//         }
-
-//         const user = dbPostData.get({ plain: true });
-//        console.log(dbPostData)
+        const user = dbPostData.get({ plain: true });
+       console.log(dbPostData)
        
-//         var num = formatPhoneNumber(user.phone_number)
-//         console.log(num)
-//         user.phone_number = num;
-//         user.id =  req.params.id;
-//         res.render('user', {
-//           user,
-//           loggedIn: req.session.loggedIn
-//         });
-//       })
-//       .catch(err => {
-//         console.log(err);
-//         res.status(500).json(err);
-//       });
-//   });
+        var num = formatPhoneNumber(user.phone_number)
+        console.log(num)
+        user.phone_number = num;
+        user.id =  req.params.id;
+        res.render('user', {
+          user,
+          loggedIn: req.session.loggedIn
+        });
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
   
 
 //------------------------------------------------------------------------//
@@ -216,23 +218,9 @@ router.put('/user/:id', (req, res) => {
       });
   });
 
-
-
-
-
-
-
-
-
-  ////////////////////////////////////////////////////////
-  router.get('/login', (req, res) => {
-    if (req.session.loggedIn) {
-      res.redirect('/');
-      return;
-    }
-  
-    res.render('login');
-  });
+//------------------------------------------------------------------------//
+//logout
+//------------------------------------------------------------------------//
 
   router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
@@ -245,33 +233,53 @@ router.put('/user/:id', (req, res) => {
     }
   });
 
+//------------------------------------------------------------------------//
+//admin
+//------------------------------------------------------------------------//
 
-
-
-
-/////////////////////////////////////////////////////////////////////////////
-router.get('/dashboard', (req, res) => {
-
-});
-
-router.get('/signup', (req, res) => {
-    res.render('signup');
-});
-
-// router.get('/volunteer/1', (req, res) => {
-//     res.render('/volunteers');
-// });
 
 router.get('/admin', (req, res) => {
     res.render('admin');
 })
 
+//------------------------------------------------------------------------//
+//partners
+//------------------------------------------------------------------------//
+
 router.get('/partners', (req, res) => {
-    res.render('partner-nfp');
+  NFP.findAll({
+    attributes: [
+        'id',
+        'nfp_name',
+        'url',
+        'cause',
+        'tags',
+        'description',
+        'size',
+        'founding_year',
+        'reported_net_assets',
+        'city',
+        'state',
+        'zip',
+        'phone_number',
+        'email',
+        'image_url'
+    ]   
+})
+  .then((dbPostData) => {
+     const nfps = dbPostData.map((npf) => npf.get({ plain: true }));
+    console.log(nfps)
+    res.render('partner-nfp', { nfps });
+  })
+  .catch((err) => {
+    res.status(500).json(err);
+  });
 });
+
 
 router.get('/admin', (req, res) => {
 
 });
 
 module.exports = router;
+
