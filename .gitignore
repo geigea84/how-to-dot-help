@@ -2,3 +2,5 @@ node_modules
 .DS_Store
 .env
 credentials.js
+Dummy NFPs.txt
+deprecated.js

@@ -1,5 +1,52 @@
 to do
 
+page checklist
+home
+    good
+        home
+        volunteer login
+        join
+        admin
+        email hyperlink
+        logout
+    nope
+        volunteer
+        join today
+        image
+    kinda?
+
+volunteer login
+    good
+        login
+    nope
+    kinda?
+
+join
+    good
+        sign up
+    nope
+    kinda?
+
+volunteer
+    good
+        route works
+    nope
+        join/reach out
+    kinda?
+        sub-divide pages
+
+admin
+    good
+        close info/open info
+        save
+    nope
+    kinda?
+        search
+
+logout
+    good
+
+
 update files to remote database when finished testing locally:
 .env
 public/php/searchDB.php

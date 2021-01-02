@@ -65,6 +65,8 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+    console.log("activated router.post");
+    
     NFP.create({
         nfp_name: req.body.nfp_name,
         url: req.body.url,
@@ -81,7 +83,9 @@ router.post('/', (req, res) => {
         email: req.body.email,
         image_url: req.body.image_url
     })
-    .then(dbPostData => res.json(dbPostData))
+    .then(dbPostData => { 
+        res.json(dbPostData);
+    })
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
