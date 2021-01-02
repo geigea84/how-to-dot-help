@@ -8,6 +8,8 @@ const { Admin, NFP, User } = require('../models')//VolNFPs
 //Home Page
 //------------------------------------------------------------------------//
 router.get("/", (req, res) => {
+  console.log(req.session.user_id);
+  
     NFP.findAll({
         attributes: [
             'id',
@@ -137,7 +139,7 @@ router.get('/user/:id', (req, res) => {
     //console.log('HOMEROUTES')
     User.findOne({
       where: {
-        id: req.params.id
+        id: req.session.user_id
       },
       attributes: [
         'id',
@@ -149,6 +151,7 @@ router.get('/user/:id', (req, res) => {
         'city',
         'state'
       ]
+
     })    
       .then(dbPostData => {
         if (!dbPostData) {
@@ -197,7 +200,8 @@ router.put('/user/:id', (req, res) => {
     {
       individualHooks: true,  
         where: {
-            id: req.body.userinfo.id
+            //id: req.body.userinfo.id
+            id: req.session.user_id
       }}
     )
       .then(dbPostData => {

@@ -25,15 +25,14 @@
         <a href="/signup">Join</a>
         <a href="/user/1">Your Information</a>
         <a href="/admin">Admin</a>
+        {{!-- <a id="logout" href="/">Logout</a> --}}
         <a href="/partners">NFP Partners</a>
-        <a id="logout" href="/">Logout</a>
         {{!-- trying to toggle on or off depending on login --}}
-        {{!-- {{#if loggedIn}} --}}
-        {{!-- <button id="logout" class="hide">logout</button> --}}
-        {{!-- <a href="/logout">Logout</a>
+        {{#if loggedIn}}
+        <a id="logout" href="/" style="display: none">Logout</a>
         {{else}}
-        <a href="/logout" style="display: none;">Logout</a>
-        {{/if}} --}}
+        <a id="logout" href="/" >Logout</a>
+        {{/if}}
       </h4>
     </div>
   </div>
@@ -59,11 +58,12 @@
   <script src="/javascript/adminApiCalls.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="typeahead.min.js" type="text/javascript"></script>
-  {{!-- {{#if loggedIn}} --}}
   <script src="/javascript/logout.js"></script>
   <script src="/javascript/login.js"></script>
+  <script src="/javascript/signup.js"></script>
 
-  {{!-- {{/if}} --}}
+
+
 
 </body>
 
