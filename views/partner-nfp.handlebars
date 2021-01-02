@@ -1,37 +1,13 @@
-<div class="col-4 content">
-            <div class="card">
-                <img src="/images/STEAMCoders.png" style="width:100%">
-                <div class="container">
-                    <h4><b>STEAM Coders</b></h4>
-                    <p>STEAM Education</p>
-                    <div class="pad-b">
-                        <button>Reach Out</button>
-                    </div>
+<div class="col-12 flex-row align-center">
+         {{!--NFP list--}}
+            <div class="bg-scrabble hide ghost-in">
+                <h2 class="center pad-t"> Reach Out to a NFP! </h2>
+                <div class=" justify-center pad-lr">
+                    <div class=" flex-row ">
+                        {{#each nfps as |nfp|}}
+                            {{> nfp-btn nfp }}
+                        {{/each}}
+                    </div> 
                 </div>
             </div>
-            
-        </div>
-        <div class="col-4 content">
-            <div class="card">
-                <img src="/images/shanti.png" style="width:100%">
-                <div class="container">
-                    <h4><b>Shanti Project</b></h4>
-                    <p>Human Services</p>
-                    <div class="pad-b">
-                        <button>Reach Out</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-4 content">
-            <div class="card">
-                <img src="/images/oceanBlueProject.png" style="width:100%">
-                <div class="container">
-                    <h4><b>Ocean Blue Project</b></h4>
-                    <p>Environmental Activism</p>
-                    <div class="pad-b">
-                        <button>Reach Out</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>

@@ -63,8 +63,6 @@
       color: var(--dark);
     }
   
-
-
   .card .col-3 img{
     width:100%;
     border-radius: 5px 5px 0 0;
@@ -128,6 +126,9 @@
 
 .card2 .col-3 {
   background-color: var(--tertiary);
+  background-size: cover;
+  background-position: top;
+  min-height:150px;
   height:auto;
   display:flex;
   align-items: center;
