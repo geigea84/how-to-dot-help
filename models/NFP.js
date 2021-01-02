@@ -90,8 +90,13 @@ NFP.init(
                 isEmail: true
             }
         },
-        
-        //placeholder for logo column here
+        image_url: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            validate: {
+                isUrl: true
+            }
+        }
     },
     {
         sequelize,
