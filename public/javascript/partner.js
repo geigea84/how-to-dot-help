@@ -1,23 +1,33 @@
-// var source = document.innerHTML; 
-var template = Handlebars.compile(source);
-document.body.innerHTML = template();
-// var partnerNFP = document.getElementsByClassName("joinNFPnow");
-
-console.log(partnerNFP)
- const reachOutResponse = function() {
-    console.log("clicked btn")
-    $(this).fadeOut(3000);
+async function reachOut(i) {
+    event.preventDefault();
+    console.log(i)
+  
+    if (i) {
+      const response = await fetch('/api/users/login', {
+        method: 'post',
+        body: JSON.stringify({
+          nfp_id,
+          user_id
+        }),
+        headers: { 'Content-Type': 'application/json' }
+      });
+  
+      if (response.ok) {
+        document.location.replace('/user/:id');
+      } else {
+        alert(response.statusText);
+      }
+    }
   }
 
-const reachOutBtnClicked = document.getElementsByClassName("reach-out")
-reachOutBtnClicked.addEventListener("click",console.log("btn clicked"))
 
 
 
-// // // Create a new task
-// // partnerNFP.addEventListener("click", reachOutResponse);
-// document.getElementById("joinNFPnow").addEventListener("click", myFunction);
+ const reachOutResponse = function() {
+    console.log("clicked btn")
+    var nfp_id = $(this).attr("id");
+    $(this).fadeOut(3000);
+      reachOut(nfp_id)
+  }
 
-// function myFunction() {
-//   document.getElementById("joinNFPnow").innerHTML = "YOU CLICKED ME!";
-// }
+$(document).on("click", ".reach-out", reachOutResponse)

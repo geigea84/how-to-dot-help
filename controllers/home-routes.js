@@ -108,8 +108,11 @@ let formatPhoneNumber = (P) => {
     
     //Check if the input is of correct length
     let match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
-  
-    if (match) {
+ 
+    if (match == 1000000000){
+      return " "
+    }    
+    else if (match) {
       return '(' + match[1] + ') ' + match[2] + '-' + match[3]
     }; 
     return " "
@@ -150,7 +153,7 @@ router.get('/user/:id', (req, res) => {
         var num = formatPhoneNumber(user.phone_number)
         console.log(num)
         user.phone_number = num;
-        user.id =  req.params.id;
+        user.id =  req.session.user_id;
         res.render('user', {
           user,
           loggedIn: req.session.loggedIn
@@ -169,7 +172,7 @@ router.get('/user/:id', (req, res) => {
 
 // personal page //
 router.put('/user/:id', (req, res) => {
-    console.log(req.params.id + "is the id")
+    console.log(req.session.user_id + "is the id")
     //console.log('put', req.body, req.params)
     User.update(
      {  first_name: req.body.userinfo.first_name,
@@ -179,13 +182,11 @@ router.put('/user/:id', (req, res) => {
         bio: req.body.userinfo.bio,
         state: req.body.userinfo.state,
         city: req.body.userinfo.city,
-        id: req.body.userinfo.id
-
+        id: req.session.user_id
     },
     {
       individualHooks: true,  
         where: {
-            //id: req.body.userinfo.id
             id: req.session.user_id
       }}
     )
@@ -282,4 +283,3 @@ router.get('/partners', (req, res) => {
 
 
 module.exports = router;
-
