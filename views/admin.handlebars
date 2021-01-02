@@ -7,34 +7,35 @@
     </div>
 <div class="col-12 content">
     <div id="form-v" class="form flex-row">
-        <form class="form flex-row" method="post">
+        <form id="nfp-form" class="form flex-row" method="post">
             <h4>Name of NFP</h4>
-                <input id="nfp-name" class="formbox-sl"></input>
+                <input id="nfp-name" class="nfp-input formbox-sl"></input>
             <h4>Website</h4>
-                <input id="nfp-website" class="formbox-sl"></input>
+                <input id="nfp-website" class="nfp-input formbox-sl"></input>
             <h4>Cause</h4>
-                <input id="nfp-cause" class="formbox-sl"></input>
+                <input id="nfp-cause" class="nfp-input formbox-sl"></input>
             <h4>Tags</h4>
-                <input id="nfp-tags" class="formbox-sl"></input>
+                <input id="nfp-tags" class="nfp-input formbox-sl"></input>
             <h4>Description/Mission Statement</h4>
-                <input id="nfp-mission-statement" class="formbox-lg"></input>
+                <!--change back to textarea?-->
+                <input id="nfp-mission-statement" class="nfp-input formbox-lg"></input>
             <h4>Size</h4>
-                <input id="nfp-size" class="formbox-sl"></input>
+                <input id="nfp-size" class="nfp-input formbox-sl"></input>
             <h4>Founding Year</h4>
-                <input id="nfp-founding-year" class="formbox-sl"></input>
+                <input id="nfp-founding-year" class="nfp-input formbox-sl"></input>
             <h4>Reported Net Assets</h4>
-                <input id="nfp-rna" class="formbox-sl"></input>
+                <input id="nfp-rna" class="nfp-input formbox-sl"></input>
             <h4>City</h4>
-                <input id="nfp-city" class="formbox-sl"></input>
+                <input id="nfp-city" class="nfp-input formbox-sl"></input>
             <h4>State Abbreviation</h4>
-                <input id="nfp-state" class="formbox-sl"></input>
+                <input id="nfp-state" class="nfp-input formbox-sl"></input>
             <h4>Zip Code</h4>
-                <input id="nfp-zip" class="formbox-sl"></input>
+                <input id="nfp-zip" class="nfp-input formbox-sl"></input>
             <h4>Contact Info</h4>
-                <input id="nfp-email" class="formbox-sl" placeholder="Email Adress"></input>
-                <input id="nfp-phone" class="formbox-sl" placeholder="10-Digit Phone Number"></input>
+                <input id="nfp-email" class="nfp-input formbox-sl" placeholder="Email Adress"></input>
+                <input id="nfp-phone" class="nfp-input formbox-sl" placeholder="10-Digit Phone Number"></input>
             <h4>NFP Image</h4>
-                <input id="nfp-image" class="formbox-sl" placeholder="Enter Image URL"></input>
+                <input id="nfp-image" class="nfp-input formbox-sl" placeholder="Enter Image URL"></input>
             <div class="col-12 pad-t">
                 <div class="center">
                     <button id="nfp-save-btn">Save</button>
@@ -57,11 +58,12 @@
                 </div>
             <!--</form>-->
             <div id="results-container" class=" justify-center">
-                <div class=" flex-row ">
-                    <?php require "searchDB.php";?>
-                    {{#each nfp as |nfp|}}
-                        {{> volunteer-mod nfp }}
-                    {{/each}}
+                <div class="flex-row ">
+                    <form action="../public/php/searchDB.php" class="flex-row">
+                        {{#each nfp as |nfp|}}
+                            {{> volunteer-mod nfp }}
+                        {{/each}}
+                    </form>
                 </div> 
             </div>
         </div>

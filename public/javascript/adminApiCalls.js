@@ -12,7 +12,9 @@ let checkPhoneNumber = (nfpPhone) => {
     if (match) {
         return "(" + match[1] + ") " + match[2] + "-" + match[3];
     }
-    return " ";
+    else{
+        return;
+    }
 };
 
 //replace with arrow functions?
@@ -113,11 +115,10 @@ const validateState = function(nfpState) {
     }
 }
 
-//$("#nfp-save-btn").on("click", async function() {
+//add new NFP
 async function addNFP(event) {
     event.preventDefault();
-    console.log("nfp save btn clicked")
-    
+
     let nfpName    = document.querySelector("#nfp-name").value.trim();
     let nfpWebsite = document.querySelector("#nfp-website").value.trim();
     let nfpCause   = document.querySelector("#nfp-cause").value.trim();
@@ -133,52 +134,10 @@ async function addNFP(event) {
     let nfpPhone   = document.querySelector("#nfp-phone").value.trim();
     let nfpImage   = document.querySelector("#nfp-image").value.trim();
 
-    console.log(nfpName);
-
-    /*
-    nfpName    = $("#nfp-name").val();
-    nfpWebsite = $("#nfp-website").val();
-    nfpCause   = $("#nfp-cause").val();
-    nfpTags    = $("#nfp-tags").val();
-    nfpMS      = $("#nfp-mission-statement").val();
-    nfpSize    = $("#nfp-size").val();
-    nfpFY      = $("#nfp-founding-year").val();
-    nfpRNA     = $("#nfp-rna").val();
-    nfpCity    = $("#nfp-city").val();
-    nfpState   = $("#nfp-state").val();
-    nfpZip     = $("#nfp-zip").val();
-    nfpEmail   = $("#nfp-email").val();
-    nfpPhone   = $("#nfp-phone").val();
-    nfpImage   = $("#nfp-image").val();
-    */
-
     let validEmail = validateEmail(nfpEmail);
     let validPhone = validatePhone(nfpPhone);
     let validState = validateState(nfpState);
     
-    console.log(validEmail);
-
-    /*
-    let nfpInfo = {
-        nfp_name: nfpName,
-        url: nfpWebsite,
-        cause: nfpCause,
-        tags: nfpTags,
-        description: nfpMS,
-        size: nfpSize,
-        founding_year: nfpFY,
-        reported_net_assets: nfpRNA,
-        city: nfpCity,
-        state: validState,
-        zip: nfpZip,
-        phone_number: validPhone,
-        email: validEmail,
-        image_url: nfpImage
-    }
-
-    console.log(nfpInfo);
-    */
-
     if(
         nfpName &&
         nfpWebsite &&
@@ -215,50 +174,32 @@ async function addNFP(event) {
             }),
             headers: {'Content-Type': 'application/json'}
         });
-
+        //add switch statement for different empty issues?
         if (response.ok) {
+            console.log(`${nfpName} added as new NFP`);
             alert(`${nfpName} added as new NFP`);
+            document.querySelector("#nfp-form").reset();
         }
+        /*
+        else if (response.ok == false) {
+            console.log(response.statusText);
+
+        }
+        */
         else {
-            alert(response.statusText);
+            console.log(response.statusText);
         }
     }
     else {
-        alert("nfp did not save");
+        alert("ERROR: nfp did not save");
     }
-
-    /*
-    $.ajax({
-        method: "POST",
-        url: "/api/nfp",
-        data: {nfpInfo},
-        success: function(response) {
-            console.log(response);
-            alert("NFP added!");
-        }
-    });
-    */
-//});
 }
 document.getElementById("nfp-save-btn").addEventListener("click", addNFP);
 
-/* GET search volunteers by name */
-/*
-$(".typeahead").typeahead(
-    {
-        minLength: 3,
-        highlight: true
-    },
-    {
-        name: "typeahead",
-        remote: "http://localhost:3001/users"
-    }
-)
-*/
-
-
+//search for volunteer
 $("#search-btn").on("click", () => {
     console.log("search btn clicked");
+    //include php file
     
     //get value of input
     let query = document.getElementById("search-User").value;
