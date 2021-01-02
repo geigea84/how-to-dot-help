@@ -57,7 +57,7 @@ router.get('/user/:id', async (req, res) => {
     const firstQuery = await 
     User.findOne({
       where: {
-        id: req.params.id
+        id: 1
       },
       attributes: [
         'id',

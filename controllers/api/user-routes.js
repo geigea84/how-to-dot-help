@@ -16,37 +16,37 @@ router.get('/', (req, res) => {
 });
 
 //  /api/users/:id
-router.get('/:id', (req, res) => {
-    console.log("WE HIT IT HARAY!!")
-    User.findOne({
-        attributes: { exclude: ['password'] },
-        where: {
-            id: req.params.id
-        },
-        include: [
-            'first_name',
-            'last_name',
-            'city',
-            'state',
-            'bio',
-            'phone_number',
-            'email',
-            'id'
-        ]
-    })
-        .then(dbUserData => {
-            if(!dbUserData) {
-                res.status(404).json({ message: 'No user found with this id' });
-                return;
-            }
-           // res.json(dbUserData);
-            res.render("user", dbUserData)
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
-});
+// router.get('/:id', (req, res) => {
+//     console.log("WE HIT IT HARAY!!")
+//     User.findOne({
+//         attributes: { exclude: ['password'] },
+//         where: {
+//             id: req.params.id
+//         },
+//         include: [
+//             'first_name',
+//             'last_name',
+//             'city',
+//             'state',
+//             'bio',
+//             'phone_number',
+//             'email',
+//             'id'
+//         ]
+//     })
+//         .then(dbUserData => {
+//             if(!dbUserData) {
+//                 res.status(404).json({ message: 'No user found with this id' });
+//                 return;
+//             }
+//            // res.json(dbUserData);
+//             res.render("user", dbUserData)
+//         })
+//         .catch(err => {
+//             console.log(err);
+//             res.status(500).json(err);
+//         });
+// });
 
 router.post('/', (req, res) => {
     User.create({
