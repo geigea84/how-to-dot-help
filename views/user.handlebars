@@ -7,25 +7,25 @@
                     <p class=" col-12">
                         Create & Edit your information to send to orginizations you want to work with!
                     </p>
-                    <h4>First Name</h4>
-                    <textarea id="first-name" class="formbox-sl">{{volunteer.dataValues.first_name}}</textarea>
-                    <h4>Last Name</h4>
-                    <textarea id="last-name" class="formbox-sl">{{volunteer.dataValues.last_name}}</textarea>
-                    <h4>Email</h4>
-                    <textarea id="email" class="formbox-sl">{{volunteer.dataValues.email}}</textarea>
+                    <h4>First Name*</h4>
+                    <textarea id="first-name" class="formbox-sl">{{user.first_name}}</textarea>
+                    <h4>Last Name*</h4>
+                    <textarea id="last-name" class="formbox-sl">{{user.last_name}}</textarea>
+                    <h4>Email*</h4>
+                    <textarea id="email" class="formbox-sl">{{user.email}}</textarea>
                     <h4>Phone</h4>
-                    <textarea id="phone" class="formbox-sl">{{volunteer.dataValues.phone_number}}</textarea>
+                    <textarea id="phone" class="formbox-sl">{{user.phone_number}}</textarea>
                     <h4>City</h4>
-                    <textarea id="city" class="formbox-sl">{{volunteer.dataValues.city}}</textarea>
-                    <h4>State (Please use initials)</h4>
-                    <textarea id="state" class="formbox-sl">{{volunteer.dataValues.state}}</textarea>
-                    <textarea id="divId" class="hide">{{volunteer.dataValues.id}}</textarea>
+                    <textarea id="city" class="formbox-sl">{{user.city}}</textarea>
+                    <h4>State (Please use initials)*</h4>
+                    <textarea id="state" class="formbox-sl">{{user.state}}</textarea>
+                    <textarea id="divId" class="hide">{{user.id}}</textarea>
                     <!-- <h4>Prefered contact method</h4>
                     <textarea id="password" class="formbox-sl">
                         Email
                     </textarea> -->
                     <h4>Tell NFPs a little about yourself. What are your interests and skills?</h4>
-                    <textarea id="info" class="formbox-lg">{{volunteer.dataValues.bio}}</textarea>
+                    <textarea id="info" class="formbox-lg">{{user.bio}}</textarea>
                     <div class="col-12 center pad-t">
                         <button id="save-rev-btn">Save</button>
                     </div>
@@ -34,7 +34,7 @@
 
          {{!--NFP list--}}
             <div class="bg-scrabble hide ghost-in">
-                <h2 class="center pad-t"> Reach Out to a NFP! </h2>
+                <h2 class="center pad-t"> See Your NFP! </h2>
                 <div class=" justify-center pad-lr">
                     <div class=" flex-row ">
                         {{#each nfp as |nfp|}}

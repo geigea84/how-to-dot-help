@@ -14,7 +14,7 @@
       -ms-flex: 1;
           flex: 1;
   margin: 30px;
-  min-width: 200px;
+  min-width: 250px;
   -webkit-box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.4);
           box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.4);
   background: var(--secondary);
@@ -25,7 +25,7 @@
 
 .user-c .img-ctnt {
   width: 100%;
-  min-height: 150px;
+  min-height: 200px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
