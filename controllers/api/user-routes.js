@@ -109,6 +109,7 @@ router.post('/logout', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
+User.findOne(
      {  first_name: req.body.userinfo.first_name,
         last_name: req.body.userinfo.last_name,
         email: req.body.userinfo.email,

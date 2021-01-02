@@ -4,13 +4,9 @@ const sequelize = require('../config/connection');
 
 const { Admin, NFP, User } = require('../models')//VolNFPs
 
-
-// router.get('/', (req, res) => {
-//     res.render('homepage')
-// });
-
-
-// get all npfs for homepage
+//------------------------------------------------------------------------//
+//Home Page
+//------------------------------------------------------------------------//
 router.get("/", (req, res) => {
     NFP.findAll({
         attributes: [
@@ -53,9 +49,8 @@ router.get('/signup', (req, res) => {
 });
 
 //------------------------------------------------------------------------//
-//////////////////////////USER GET INFO/////////////////////////////////////
+//USER Page
 //------------------------------------------------------------------------//
-// personal page //
 router.get('/user/:id', async (req, res) => {
 
     //console.log('HOMEROUTES')
@@ -102,7 +97,7 @@ router.get('/user/:id', async (req, res) => {
      //const whatWeWant = renderObject.get({ plain: true });
 
       console.log(renderObject)
-    res.render('user', renderObject);
+    res.render('volunteers', renderObject);
   });
 
 
