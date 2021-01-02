@@ -45,15 +45,18 @@
     <div class="bg-scrabble hide ghost-in">
         <h2 class="center pad-t">Search Volunteers</h2>
         <div class="form flex-row">
-            <input id="search-User" class="formbox-sl" placeholder="Search volunteers by first or last name"></textarea>
-            <input id="search-NFP" class="formbox-sl" placeholder="Search NFPs by name"></textarea>
-            <div class="col-12 pad">
-                <div class="center">
-                    <button id="search-btn">Search</button>
+            <!--<form action="" method="POST">-->
+                <input id="search-User" class="formbox-sl" type="text" name="search" placeholder="Search volunteers by first or last name"></textarea>
+                <input id="search-NFP" class="formbox-sl" placeholder="Search NFPs by name"></textarea>
+                <div class="col-12 pad">
+                    <div class="center">
+                        <button id="search-btn">Search</button>
+                    </div>
                 </div>
-            </div>
+            <!--</form>-->
             <div id="results-container" class=" justify-center">
                 <div class=" flex-row ">
+                    <?php require "searchDB.php";?>
                     {{#each nfp as |nfp|}}
                         {{> nfp-btn nfp }}
                     {{/each}}
