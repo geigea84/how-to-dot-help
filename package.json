@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "watches": {
+    "sass": "sass/**"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "seed": "node seeds/index.js"
+    "seed": "node seeds/index.js",
+    "sass": "node-sass sass/ -o build/css/",
+    "dev": "rerun-script"
   },
   "repository": {
     "type": "git",
@@ -30,6 +35,8 @@
     "nodemon": "^2.0.6",
     "sequelize": "^6.3.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "node-sass": "^5.0.0"
+  },
   "keywords": []
 }

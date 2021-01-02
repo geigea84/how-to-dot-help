@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const { Volunteer } = require('../../models');
+const { User } = require('../../models');
 
 
 
 // may need an authorization application before searching through API
 router.get('/', (req, res) => {
-    Volunteer.findAll({
+    User.findAll({
         //attributes: { exclude: ['password'] }
     })
         .then(dbUserData => res.json(dbUserData))
@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 //  /api/users/:id
 router.get('/:id', (req, res) => {
     console.log("WE HIT IT HARAY!!")
-    Volunteer.findOne({
+    User.findOne({
         attributes: { exclude: ['password'] },
         where: {
             id: req.params.id
@@ -40,7 +40,7 @@ router.get('/:id', (req, res) => {
                 return;
             }
            // res.json(dbUserData);
-            res.render("volunteers", dbUserData)
+            res.render("user", dbUserData)
         })
         .catch(err => {
             console.log(err);
@@ -49,10 +49,9 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    Volunteer.create({
-        first_name: req.body.firstName,
-        last_name: req.body.lastName,
-        //
+    User.create({
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
         city: req.body.city,
         state: req.body.state,
         bio: req.body.bio,
@@ -111,38 +110,39 @@ router.post('/logout', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-    Volunteer.update(
-        {
-            first_name: req.body.first_name,
-            last_name: req.body.last_name,
-            city: req.body.city,
-            state: req.body.state,
-            bio: req.body.bio,
-            phone_number: req.body.phone_number,
-            email: req.body.email,
-            password: req.body.password
-        },
-        {
+User.findOne(
+     {  first_name: req.body.userinfo.first_name,
+        last_name: req.body.userinfo.last_name,
+        email: req.body.userinfo.email,
+        phone_number: req.body.userinfo.phone_number,
+        bio: req.body.userinfo.bio,
+        state: req.body.userinfo.state,
+        city: req.body.userinfo.city,
+        id: req.body.userinfo.id
+
+    },
+    {
+      individualHooks: true,  
         where: {
-            id: req.params.id
+            id: req.body.userinfo.id
+      }}
+    )
+      .then(dbPostData => {
+        if (!dbPostData) {
+          res.status(404).json({ message: 'No user found with this id' });
+          return;
         }
-        }
-        )
-        .then(dbUserData => {
-            if(!dbUserData[0]) {
-                res.status(404).json({ message: 'No user found with this id' });
-                return;
-            }
-            res.json(dbUserData);
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        })
-})
+        console.log(dbPostData)
+
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
 
 router.delete('/:id', (req, res) => {
-    Volunteer.destroy({
+    User.destroy({
         where: {
             id: req.params.id
         }
@@ -163,7 +163,7 @@ router.delete('/:id', (req, res) => {
 //login DS
 
 router.post('/login', (req, res) => {
-    Volunteer.findOne({
+    User.findOne({
       where: {
         email: req.body.email
       }
