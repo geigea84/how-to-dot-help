@@ -16,46 +16,46 @@ router.get('/', (req, res) => {
 });
 
 //  /api/users/:id
-// router.get('/:id', (req, res) => {
-//     console.log("WE HIT IT HARAY!!")
-//     User.findOne({
-//         attributes: { exclude: ['password'] },
-//         where: {
-//             id: req.params.id
-//         },
-//         include: [
-//             'first_name',
-//             'last_name',
-//             'city',
-//             'state',
-//             'bio',
-//             'phone_number',
-//             'email',
-//             'id'
-//         ]
-//     })
-//         .then(dbUserData => {
-//             if(!dbUserData) {
-//                 res.status(404).json({ message: 'No user found with this id' });
-//                 return;
-//             }
-//            // res.json(dbUserData);
-//             res.render("user", dbUserData)
-//         })
-//         .catch(err => {
-//             console.log(err);
-//             res.status(500).json(err);
-//         });
-// });
+router.get('/:id', (req, res) => {
+    User.findOne({
+        attributes: { exclude: ['password'] },
+        where: {
+            id: req.params.id
+        },
+        include: [
+            'first_name',
+            'last_name',
+            'city',
+            'state',
+            'bio',
+            'phone_number',
+            'email',
+            'id'
+        ]
+    })
+        .then(dbUserData => {
+            if(!dbUserData) {
+                res.status(404).json({ message: 'No user found with this id' });
+                return;
+            }
+           // res.json(dbUserData);
+            res.render("user", dbUserData)
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
 
 router.post('/', (req, res) => {
     User.create({
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
+        first_name: req.body.firstName,
+        last_name: req.body.lastName,
         city: req.body.city,
         state: req.body.state,
         bio: req.body.bio,
         phone_number: req.body.phone_number,
+        //
         email: req.body.email,
         password: req.body.password
     })
@@ -181,7 +181,6 @@ router.post('/login', (req, res) => {
   
       req.session.save(() => {
         req.session.user_id = dbUserData.id;
-        //req.session.username = dbUserData.username;
         req.session.loggedIn = true;
   
         res.json({ user: dbUserData, message: 'You are now logged in!' });
@@ -198,5 +197,6 @@ router.post('/login', (req, res) => {
       res.status(404).end();
     }
   });
+
 
 module.exports = router;

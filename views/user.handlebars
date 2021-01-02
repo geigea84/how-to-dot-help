@@ -12,11 +12,11 @@
                     <h4>Last Name</h4>
                     <textarea id="last-name" class="formbox-sl">{{dataValues.last_name}}</textarea>
                     <h4>Email</h4>
-                    <textarea id="email" class="formbox-sl">{{Users.dataValues.email}}</textarea>
+                    <textarea id="email" class="formbox-sl">{{user.dataValues.email}}</textarea>
                     <h4>Phone</h4>
                     <textarea id="phone" class="formbox-sl">{{users.user.dataValues.phone_number}}</textarea>
                     <h4>City</h4>
-                    <textarea id="city" class="formbox-sl">{{city}}</textarea>
+                    <textarea id="city" class="formbox-sl">{{user.city}}</textarea>
                     <h4>State (Please use initials)</h4>
                     <textarea id="state" class="formbox-sl">{{user.dataValues.state}}</textarea>
                     <textarea id="divId" class="hide">{{user.dataValues.id}}</textarea>
@@ -34,7 +34,7 @@
 
          {{!--NFP list--}}
             <div class="bg-scrabble hide ghost-in">
-                <h2 class="center pad-t"> Reach Out to a NFP! </h2>
+                <h2 class="center pad-t"> See Your NFP! </h2>
                 <div class=" justify-center pad-lr">
                     <div class=" flex-row ">
                         {{#each nfp as |nfp|}}
