@@ -216,9 +216,22 @@ router.get('/signup', (req, res) => {
 /////////////////////////////////////////////////////////////////////////////
 
 router.get('/admin', (req, res) => {
-  res.render('admin', {
-    loggedIn: req.session.loggedIn
-  });
+  NFP.findAll({
+    attributes: [
+        'id',
+        'nfp_name'
+    ]   
+})
+  .then((dbPostData) => {
+     const nfps = dbPostData.map((npf) => npf.get({ plain: true }));
+    console.log(nfps)
+    res.render('admin', { 
+      nfps,
+      loggedIn: req.session.loggedIn});
+  })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
 })
 
 //------------------------------------------------------------------------//
