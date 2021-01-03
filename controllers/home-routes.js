@@ -287,6 +287,12 @@ router.get("/adminsearch/:search", (req, res) => {
           'city',
           'state'
         ]
+      },
+      {
+        model: NFP,
+        attributes: [
+          'nfp_name'
+        ]
       }
     ]
   })
