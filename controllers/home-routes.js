@@ -323,6 +323,8 @@ router.get("/adminnfps", (req, res) => {
   console.log(req.query);
     VolNFPs.findAll({
         where: {
+          nfp_name: req.query.searchNFP,
+
           attributes: [
             [sequelize.literal("(SELECT (*) FROM NFP WHERE NFP.nfp_name = Mike)")]
           ]
@@ -369,11 +371,23 @@ router.get("/adminnfps", (req, res) => {
   });
 */
 
-router.get("/adminnfps", (req, res) => {
-  res.render("adminnfps");
+router.get("/adminnfps/search", (req, res) => {
+  res.render("adminnfps/search");
 });
 
+router.get("/adminnfps/search", (req, res) => {
+  let nfpName = req.query.searchNFP;
 
-
+  sequelize.query('SELECT (*) FROM NFP where nfp_name like "%'+nfpName+'%"',
+  function(err, rows, fields) {
+    if (err) throw err;
+    let data =[];
+    for(i = 0; i<rows.length; i++)
+    {
+      data.push(rows[i].nfp_name);
+    }
+    res.send(JSON.stringify(data));
+  });
+});
 
 module.exports = router;
