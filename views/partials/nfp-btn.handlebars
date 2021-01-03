@@ -1,15 +1,16 @@
         <div class="content">
-            <div class="card">
-                <div class="col-3">
-                    <img src="/images/filler-logo.png">
+            <div class="card2 flex-row">
+                <div class="col-3" style="background-image: url({{image_url}});">
                 </div>
-                <div class="bod">
-                <h2><b>{{dataValues.nfp_name}}: {{dataValues.cause}}</b></h2>
-                <h4><b>Tags: {{dataValues.tags}}</b></h4>
-                <p>About this NFP: {{dataValues.description}}</p>
-                <div class="pad-b">
-                        <button type="button">Reach Out</button>
-                </div>
+                <div class="bod col-9">
+                    <h2>{{nfp_name}}: {{cause}}</h2>
+                    <h4>Tags: {{tags}}</h4>
+                    <h4>Location: {{city}}, {{state}}, {{zip}}</b></h4>
+                    <h4>size: {{size}}</h4>
+                    <p>About this NFP: {{description}}</p>
+                    <div class="joinNFPnow">
+                        <button id="{{id}}" class="reach-out" type="button">Reach Out</button>
+                    </div>
                 </div>
             </div>
         </div>

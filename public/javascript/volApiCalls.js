@@ -3,18 +3,18 @@
 //-------------LOAD----------------//
 //---------------------------------//
 //------------------------------------------------reformat phone
-let formatPhoneNumber = (P) => {
-    //Filter only numbers from the input
-    let cleaned = ('' + P).replace(/\D/g, '');
+// let formatPhoneNumber = (P) => {
+//     //Filter only numbers from the input
+//     let cleaned = ('' + P).replace(/\D/g, '');
     
-    //Check if the input is of correct length
-    let match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+//     //Check if the input is of correct length
+//     let match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
   
-    if (match) {
-      return '(' + match[1] + ') ' + match[2] + '-' + match[3]
-    }; 
-    return " "
-  };
+//     if (match) {
+//       return '(' + match[1] + ') ' + match[2] + '-' + match[3]
+//     }; 
+//     return " "
+//   };
 
 //---------------------------------------//
 //-------------SAVE/PUT UPDATE-----------//
@@ -31,7 +31,7 @@ const ValidateEmail = function(E) {
     alert("invalid email provided");
     return email;
     }
-    }
+}
 
 const ValidatePhone = function(P) {
     let cleaned = ('' + P).replace(/\D/g, '');
@@ -41,11 +41,11 @@ const ValidatePhone = function(P) {
             return cleaned;
               }
         else if (P == ""){
-                return "";
+                return '1000000000';
             }
         else {
               alert("not a valid phone number");
-              return "";
+              return '1000000000';
               }
     }
 
@@ -56,14 +56,14 @@ const ValidateState = function(S) {
         return theState;
     }
     else {
-        alert("Invalid State - Please use initials");
-        return state;
+        alert("Please Enter Your State in XX form");
+        return "";
     }
 }
 
   //------------------------------------------------PUT
-  $("#save-rev-btn").on("click", function() {
-    console.log("click happend")
+  $(document).on("click","#save-rev-btn",function() {
+    console.log("click happened")
         //collect text
         FN = $("#first-name").val()
         LN = $("#last-name").val()
@@ -78,7 +78,6 @@ const ValidateState = function(S) {
         let validE = ValidateEmail(E)
         let validP = ValidatePhone(P)
         let validS = ValidateState(S)
-        console.log(userId + "THIS IS THE ID")
 
     var userinfo = {
         first_name: FN,
@@ -93,73 +92,10 @@ const ValidateState = function(S) {
 
     $.ajax({
         method: "PUT",
-        url: "/volunteer/:id",
+        url: "/user/:id",
         data: {userinfo},
         success: function(data){
             console.log("Update Ok")
         }
     })
 })
-
-
-
-//   //------------------------------------------------PUT 2
-//   $("#save-new").on("click", function() {
-//     console.log("click happend")
-//         //collect text
-//         FN = $("#first-name").val()
-//         LN = $("#last-name").val()
-//         E = $("#email").val()
-//         P = $("#phone").val()
-//         I = $("#info").val()
-//         //C = $("#contact").val()
-//         Ci = $("#city").val()
-//         S = $("#state").val()
-//         Ps = $("#password")
-//         let validE = ValidateEmail(E)
-
-
-//     var userinfo = {
-//         first_name: FN,
-//         last_name: LN,
-//         email: validE,
-//         password: Ps
-//     }
-
-
-
-
-
-//     $.put("/api/users/:id", {userinfo}.then(function(data) {
-//             console.log("Data Saved")
-//     }))
-// })
-
-
-
-//---------------------------------------------//
-//-------------POST/ CREATE NEW USER-----------//
-//---------------------------------------------//
-
-//   //------------------------------------------------PUT
-//   $("#save").on("click", function() {
-//     console.log("click happend")
-//         //collect text
-//         FN = $("#first-name").val()
-//         LN = $("#last-name").val()
-//         E = $("#email").val()
-//         Ps = $("#password").val()
-    
-//         let validE = ValidateEmail(E)
-
-//     var userinfo = {
-//         first_name: FN,
-//         last_name: LN,
-//         email: validE,
-//         password: Ps
-//     }
-
-//     $.post("/api/users", {userinfo}.then(function(data) {
-//         //load/userpage html route
-//     }))
-// })

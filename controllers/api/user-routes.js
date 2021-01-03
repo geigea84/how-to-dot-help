@@ -1,12 +1,12 @@
 const router = require('express').Router();
-const { Volunteer } = require('../../models');
+const { User } = require('../../models');
 
 
 
 // may need an authorization application before searching through API
 router.get('/', (req, res) => {
-    Volunteer.findAll({
-        //attributes: { exclude: ['password'] }
+    User.findAll({
+        attributes: { exclude: ['password'] }
     })
         .then(dbUserData => res.json(dbUserData))
         .catch(err => {
@@ -17,11 +17,10 @@ router.get('/', (req, res) => {
 
 //  /api/users/:id
 router.get('/:id', (req, res) => {
-    console.log("WE HIT IT HARAY!!")
-    Volunteer.findOne({
+    User.findOne({
         attributes: { exclude: ['password'] },
         where: {
-            id: req.params.id
+            id: req.session.user_id
         },
         include: [
             'first_name',
@@ -39,8 +38,9 @@ router.get('/:id', (req, res) => {
                 res.status(404).json({ message: 'No user found with this id' });
                 return;
             }
-           // res.json(dbUserData);
-            res.render("volunteers", dbUserData)
+            //ds this was commented out >>
+            res.json(dbUserData);
+            res.render("user", dbUserData)
         })
         .catch(err => {
             console.log(err);
@@ -49,9 +49,9 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    Volunteer.create({
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
+    User.create({
+        first_name: req.body.firstName,
+        last_name: req.body.lastName,
         city: req.body.city,
         state: req.body.state,
         bio: req.body.bio,
@@ -60,6 +60,9 @@ router.post('/', (req, res) => {
         password: req.body.password
     })
         .then(dbUserData => {
+            req.session.user_id = dbUserData.id;
+            req.session.loggedIn = true;
+
             res.json(dbUserData);
             })
         .catch(err => {
@@ -68,41 +71,66 @@ router.post('/', (req, res) => {
         });
 });
 
+//DS
+// router.put('/:id', (req, res) => {
+// User.findOne(
+//      {  first_name: req.body.userinfo.first_name,
+//         last_name: req.body.userinfo.last_name,
+//         email: req.body.userinfo.email,
+//         phone_number: req.body.userinfo.phone_number,
+//         bio: req.body.userinfo.bio,
+//         state: req.body.userinfo.state,
+//         city: req.body.userinfo.city,
+//         id: req.body.userinfo.id
+
+//     },
+//     {
+//       individualHooks: true,  
+//         where: {
+//             id: req.body.userinfo.id
+//       }}
+//     )
+//       .then(dbPostData => {
+//         if (!dbPostData) {
+//           res.status(404).json({ message: 'No user found with this id' });
+//           return;
+//         }
+//         console.log(dbPostData)
+
+//       })
+//       .catch(err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//       });
+//   });
+
 router.put('/:id', (req, res) => {
-    Volunteer.update(
-        {
-            first_name: req.body.first_name,
-            last_name: req.body.last_name,
-            city: req.body.city,
-            state: req.body.state,
-            bio: req.body.bio,
-            phone_number: req.body.phone_number,
-            email: req.body.email,
-            password: req.body.password
-        },
-        {
-        where: {
-            id: req.params.id
+    // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
+  
+    // pass in req.body instead to only update what's passed through
+    User.update(req.body, {
+      individualHooks: true,
+      where: {
+        id: req.session.user_id
+      }
+    })
+      .then(dbUserData => {
+        if (!dbUserData) {
+          res.status(404).json({ message: 'No user found with this id' });
+          return;
         }
-        }
-        )
-        .then(dbUserData => {
-            if(!dbUserData[0]) {
-                res.status(404).json({ message: 'No user found with this id' });
-                return;
-            }
-            res.json(dbUserData);
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        })
-})
+        res.json(dbUserData);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
 
 router.delete('/:id', (req, res) => {
-    Volunteer.destroy({
+    User.destroy({
         where: {
-            id: req.params.id
+            id: req.session.user_id
         }
     })
         .then(dbUserData => {
@@ -121,7 +149,7 @@ router.delete('/:id', (req, res) => {
 //login DS
 
 router.post('/login', (req, res) => {
-    Volunteer.findOne({
+    User.findOne({
       where: {
         email: req.body.email
       }
@@ -140,7 +168,6 @@ router.post('/login', (req, res) => {
   
       req.session.save(() => {
         req.session.user_id = dbUserData.id;
-        //req.session.username = dbUserData.username;
         req.session.loggedIn = true;
   
         res.json({ user: dbUserData, message: 'You are now logged in!' });
@@ -157,5 +184,6 @@ router.post('/login', (req, res) => {
       res.status(404).end();
     }
   });
+
 
 module.exports = router;
