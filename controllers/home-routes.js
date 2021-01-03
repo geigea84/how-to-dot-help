@@ -227,28 +227,31 @@ router.get('/admin', (req, res) => {
 router.get('/partners', (req, res) => {
   NFP.findAll({
     attributes: [
-      'id',
-      'nfp_name',
-      'url',
-      'cause',
-      'tags',
-      'description',
-      'size',
-      'founding_year',
-      'reported_net_assets',
-      'city',
-      'state',
-      'zip',
-      'phone_number',
-      'email',
-      'image_url'
-    ]
-  })
-    .then((dbPostData) => {
-      const nfps = dbPostData.map((npf) => npf.get({ plain: true }));
-      console.log(nfps)
-      res.render('partner-nfp', { nfps });
+        'id',
+        'nfp_name',
+        'url',
+        'cause',
+        'tags',
+        'description',
+        'size',
+        'founding_year',
+        'reported_net_assets',
+        'city',
+        'state',
+        'zip',
+        'phone_number',
+        'email',
+        'image_url'
+    ]   
+})
+  .then((dbPostData) => {
+     const nfps = dbPostData.map((npf) => npf.get({ plain: true }));
+    console.log(nfps)
+    res.render('partner-nfp', {
+      nfps,
+      loggedIn: req.session.loggedIn
     })
+  })
     .catch((err) => {
       res.status(500).json(err);
     });

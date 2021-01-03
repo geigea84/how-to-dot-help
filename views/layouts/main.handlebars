@@ -20,21 +20,22 @@
     </div>
     <div class="hide navbody">
       <h4>
-        <a href="/login">Volunteer Login</a>
-        <a href="/signup">Join</a>
 
         {{#if loggedIn}}
-        <a href="/user/">Your Information</a>
+        <a href="/login" style="display: none">Volunteer Login</a>
+        <a href="/signup" style="display: none">Join</a>
+        <a href="/user/">My Information</a>
         <a href="/admin">Admin</a>
-        <a href="/usernfps">Your Contacted NFPs</a>
+        <a href="/usernfps">My NFP Partners</a>
         <a href="/partners">All NFP Partners</a>
         <a id="logout" href="/">Logout</a>
 
         {{else}}
-        
-        <a href="/user" style="display: none">Your Information</a>
+        <a href="/login">Volunteer Login</a>
+        <a href="/signup">Join</a>
+        <a href="/user" style="display: none">My Information</a>
         <a href="/admin" style="display: none">Admin</a>
-        <a href="/usernfps" style="display: none">Your Contacted NFPs</a>
+        <a href="/usernfps" style="display: none">My NFP Partners</a>
         <a href="/partners" style="display: none">All NFP Partners</a>
         <a id="logout" href="/" style="display: none">Logout</a>
         {{/if}}
@@ -59,7 +60,7 @@
   crossorigin="anonymous"></script>
   {{!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> --}}
   <script src="/javascript/nonRoutes.js"></script>
-  <script src="/javascript/volApiCalls.js"></script>
+  <script src="/javascript/user.js"></script>
   <script src="/javascript/partner.js"></script>
   <script src="/javascript/userpartnerpull.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

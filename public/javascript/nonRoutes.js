@@ -33,6 +33,7 @@ const hideVolunteerForm = document.getElementById("hide-vinfo")
 hideVolunteerForm.addEventListener("click", hideVForm);
 //end caryover
 
+<<<<<<< HEAD
 //Reach out button on HP
 //---------------------------------------------------------------------
 function reachOutJoin() {
@@ -42,3 +43,5 @@ function reachOutJoin() {
 }
 
 $(document).on("click", ".sign-up", reachOutJoin)
+=======
+>>>>>>> 92bfd1a5ae5be4a65e8ed4a621bf22be74a7eb7d
