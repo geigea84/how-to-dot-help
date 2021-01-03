@@ -1,31 +1,38 @@
-<div class="col-12 flex-row align-center">
-            <div id="form-v">
-                <div class="form flex-row">
-                    <p class=" col-12">
-                        Create & Edit your information to send to orginizations you want to work with!
-                    </p>
-                    <h4>First Name*</h4>
-                    <textarea id="first-name" class="formbox-sl">{{user.first_name}}</textarea>
-                    <h4>Last Name*</h4>
-                    <textarea id="last-name" class="formbox-sl">{{user.last_name}}</textarea>
-                    <h4>Email*</h4>
-                    <textarea id="email" class="formbox-sl">{{user.email}}</textarea>
-                    <h4>Phone</h4>
-                    <textarea id="phone" class="formbox-sl">{{user.phone_number}}</textarea>
-                    <h4>City</h4>
-                    <textarea id="city" class="formbox-sl">{{user.city}}</textarea>
-                    <h4>State (Please use initials)*</h4>
-                    <textarea id="state" class="formbox-sl">{{user.state}}</textarea>
-                    <textarea id="divId" class="hide">{{user.id}}</textarea>
-                    <!-- <h4>Prefered contact method</h4>
-                    <textarea id="password" class="formbox-sl">
-                        Email
-                    </textarea> -->
-                    <h4>Tell NFPs a little about yourself. What are your interests and skills?</h4>
-                    <textarea id="info" class="formbox-lg">{{user.bio}}</textarea>
-                    <div class="col-12 center pad-t">
-                        <button id="save-rev-btn">Save</button>
-                    </div>
-                </div>
-            </div>    
-    </div>
+<section class="center pad">
+    <h2>Below is where you can fill out information to send to the non-for-profits of your choice. </h2>
+    <p>
+        The more compleate and accurate your information, the more it helps the NFP know how to best reach out and work with you! When you update your information, the information sent to any NFPs you have already reached out to will be updated as well!
+    </p>
+</section>
+
+<div class="bg-horizon col-12 flex-row align-center">
+    <div id="form-v">
+        <div class="form flex-row">
+            <p class=" col-12">
+                Create & Edit your information to send to orginizations you want to work with!
+            </p>
+            <h4>First Name*</h4>
+            <textarea id="first-name" class="formbox-sl">{{user.first_name}}</textarea>
+            <h4>Last Name*</h4>
+            <textarea id="last-name" class="formbox-sl">{{user.last_name}}</textarea>
+            <h4>Email*</h4>
+            <textarea id="email" class="formbox-sl">{{user.email}}</textarea>
+            <h4>Phone</h4>
+            <textarea id="phone" class="formbox-sl">{{user.phone_number}}</textarea>
+            <h4>City</h4>
+            <textarea id="city" class="formbox-sl">{{user.city}}</textarea>
+            <h4>State (Please use initials)*</h4>
+            <textarea id="state" class="formbox-sl">{{user.state}}</textarea>
+            <textarea id="divId" class="hide">{{user.id}}</textarea>
+            <!-- <h4>Prefered contact method</h4>
+            <textarea id="password" class="formbox-sl">
+                Email
+            </textarea> -->
+            <h4>Tell NFPs a little about yourself. What are your interests and skills?</h4>
+            <textarea id="info" class="formbox-lg">{{user.bio}}</textarea>
+            <div class="col-12 center pad-t">
+                <button id="save-rev-btn">Save</button>
+            </div>
+        </div>
+    </div>    
+</div>

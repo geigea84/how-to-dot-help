@@ -1,13 +1,21 @@
-<div class="col-12 flex-row align-center">
-         {{!--NFP list--}}
-            <div class="pad hide ghost-in">
-                <h2 class="center pad-t"> Below are the NFPs you have reached out to. Feel free to call or email them as well! </h2>       
-                <div class=" justify-center pad-lr">
-                    <div class=" flex-row ">
-                        {{#each nfpMe as |volnfps|}}
-                            {{> my-nfps volnfps }}
-                        {{/each}}
-                    </div> 
-                </div>
+<section class="center pad">
+        <h2>Below are the NFPs you have reached out to. </h2>
+        <p>
+            The non-for-profits below, should reach out to you within a week of your Reach Out. If you need to reach them more urgently, or have any questions, please reach out via the email/phone numbers provided.
+            Thank you for your dedication to server! We are excited to help you find the non-for-profit(s) that are right for you!
+        </p>
+</section>
+
+<div class=" bg-scrabble col-12 flex-row align-center">
+        {{!--NFP list--}}
+        <div class="pad hide ghost-in">
+            <h2 class="center pad-t"> Below are the NFPs you have reached out to. </h2>       
+            <div class=" justify-center pad-lr">
+                <div class=" flex-row ">
+                    {{#each nfpMe as |volnfps|}}
+                        {{> my-nfps volnfps }}
+                    {{/each}}
+                </div> 
             </div>
+        </div>
 </div>
