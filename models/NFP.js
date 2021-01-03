@@ -1,7 +1,7 @@
-const {Model, DataTypes} = require("sequelize");
+const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class NFP extends Model {}
+class NFP extends Model { }
 
 NFP.init(
     {

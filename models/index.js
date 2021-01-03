@@ -1,7 +1,7 @@
-const User      = require("./User");
-const Admin     = require("./Admin");
-const NFP       = require("./NFP");
-const VolNFPs   = require("./VolNFPs");
+const User = require("./User");
+const Admin = require("./Admin");
+const NFP = require("./NFP");
+const VolNFPs = require("./VolNFPs");
 
 User.belongsToMany(NFP, {
     through: VolNFPs,
@@ -15,4 +15,12 @@ NFP.belongsToMany(User, {
     foreignKey: "nfp_id"
 });
 
-module.exports = {User, Admin, NFP, VolNFPs};
+VolNFPs.belongsTo(User, {
+    foreignKey: 'user_id',
+});
+
+VolNFPs.belongsTo(NFP, {
+    foreignKey: "nfp_id"
+})
+
+module.exports = { User, Admin, NFP, VolNFPs };

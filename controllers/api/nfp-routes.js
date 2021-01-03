@@ -19,13 +19,13 @@ router.get('/', (req, res) => {
             'phone_number',
             'email',
             'image_url'
-        ]   
+        ]
     })
-    .then(dbUserData => res.json(dbUserData))
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    })
+        .then(dbUserData => res.json(dbUserData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        })
 });
 
 router.get('/:id', (req, res) => {
@@ -51,22 +51,22 @@ router.get('/:id', (req, res) => {
             'image_url'
         ]
     })
-    .then(dbPostData => {
-        if(!dbPostData) {
-            res.status(404).json({ message: 'No NFP found with this id' });
-            return;
-        }
-        res.json(dbPostData)
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    })
+        .then(dbPostData => {
+            if (!dbPostData) {
+                res.status(404).json({ message: 'No NFP found with this id' });
+                return;
+            }
+            res.json(dbPostData)
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        })
 });
 
 router.post('/', (req, res) => {
     console.log("activated router.post");
-    
+
     NFP.create({
         nfp_name: req.body.nfp_name,
         url: req.body.url,
@@ -83,13 +83,13 @@ router.post('/', (req, res) => {
         email: req.body.email,
         image_url: req.body.image_url
     })
-    .then(dbPostData => { 
-        res.json(dbPostData);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .then(dbPostData => {
+            res.json(dbPostData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 router.put('/interest', (req, res) => {
@@ -107,17 +107,17 @@ router.put('/:id', (req, res) => {
             id: req.params.id
         }
     })
-    .then(dbUserData => {
-        if(!dbUserData[0]) {
-            res.status(404).json({ message: 'No user found with this id' });
-            return;
-        }
-        res.json(dbUserData);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .then(dbUserData => {
+            if (!dbUserData[0]) {
+                res.status(404).json({ message: 'No user found with this id' });
+                return;
+            }
+            res.json(dbUserData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 router.delete('/:id', (req, res) => {
@@ -127,7 +127,7 @@ router.delete('/:id', (req, res) => {
         }
     })
         .then(dbUserData => {
-            if(!dbUserData) {
+            if (!dbUserData) {
                 res.status(404).json({ message: 'No user found with this id' });
                 return;
             }
