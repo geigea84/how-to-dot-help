@@ -39,15 +39,36 @@ router.get('/nfpinterest', (req, res) => {
         })
 })
 
-router.post('/interest', (req, res) => {
-    if(req.session) {
-        VolNFPs.interest({ ...req.body, user_id: req.session.user_id}, { User, NFP, VolNFPs })
-            .then(updatedInterest => res.json(updatedInterest))
-            .catch(err => {
-                console.log(err);
-                res.status(500).json(err);
-            });
-    }
+router.get('/userapis/:id', (req, res) => {
+    VolNFPs.findAll({
+        where: {
+            user_id: req.params.id
+        },
+        include: [
+            {
+                model: NFP,
+                attributes: ['id', 'nfp_name', 'url', 'cause', 'tags', 'description', 'size', 'founding_year', 'reported_net_assets', 'city', 'state', 'zip', 'phone_number', 'email', 'image_url']
+            }
+        ]
+    })
+        .then(dbUserData => res.json(dbUserData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
+
+
+router.post('/interest', (req, res) => {
+    VolNFPs.create({
+        user_id: req.session.user_id,
+        nfp_id: req.body.nfp_id
+      })
+        .then(dbUserData => res.json(dbUserData))
+        .catch(err => {
+          console.log("You have already reached out!");
+          res.status(400).json(err);
+        });
+    });
 
 module.exports = router;

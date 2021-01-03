@@ -197,66 +197,45 @@ async function addNFP(event) {
 document.getElementById("nfp-save-btn").addEventListener("click", addNFP);
 
 //search for volunteer
-$("#search-btn").on("click", () => {
-    console.log("search btn clicked");
-    //include php file
+async function searchUsers(event) {
+    event.preventDefault();
+
+    console.log("volunteer search btn clicked");
     
-    //get value of input
-    let query = document.getElementById("search-User").value;
-    let resultsContainer = document.getElementById("results-container");
+    let searchUser = document.querySelector("#search-User").value.trim();
+
+    console.log(searchUser);
+
+    $.ajax({
+        method: "GET",
+        url: "/adminvolunteers",
+        data: {searchUser},
+        success: function(data) {
+            console.log("Triggered volunteer search request");
+        }
+    })
+}
+
+document.getElementById("search-users-btn").addEventListener("click", searchUsers);
+
+//search for nfp
+async function searchNFPs(event) {
+    event.preventDefault();
+
+    console.log("nfp search btn clicked");
     
-    console.log(query);
+    let searchNFP = document.querySelector("#search-NFP").value.trim();
 
-    //create XMLHttp object
-    const xmlhttp = new XMLHttpRequest();
+    console.log(searchNFP);
 
-    console.log(xmlhttp);
+    $.ajax({
+        method: "GET",
+        url: "/adminnfps",
+        data: {searchNFP},
+        success: function(data) {
+            console.log("Triggered NFP search request");
+        }
+    })
+}
 
-    //function called on button click
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-            //fetch response text
-            let response = xmlhttp.responseText;
-            let outputPosts;
-
-            //parse response if valid JSON
-            try {
-                outputPosts = JSON.parse(response);
-            }
-            catch(err) {
-                alert("No matches");
-                return;
-            }
-
-            //iterate over results
-            for (let i = 0; i < outputPosts.length; i++) {
-                resultsContainer.innerHTML += "<div id=result-" + i + ">" 
-                + outputPosts[i].first_name + "\n" 
-                + outputPosts[i].last_name + "\n"
-                + outputPosts[i].city + "\n"
-                + outputPosts[i].state + "\n"
-                + outputPosts[i].bio + "\n"
-                + outputPosts[i].phone_number + "\n"
-                + outputPosts[i].email +
-                "</div>"
-                
-                //generate edit and delete buttons
-                let editButton = document.createElement("button");
-                editButton.textContent = "Edit";
-                //editButton.className = 
-                editButton.setAttribute("id", outputPosts[i]);
-                resultsContainer.appendChild(editButton);
-
-                let deleteButton = document.createElement("button");
-                deleteButton.textContent = "Delete";
-                //deleteButton.className =
-                deleteButton.setAttribute("id", outputPosts[i]);
-                resultsContainer.appendChild(deleteButton);
-            };
-        };
-    };
-
-    //send request to fetch searchDB.php (is file at right level?)
-    xmlhttp.open("GET", "searchDB.php?search=" + query, true);
-    xmlhttp.send();
-});
+document.getElementById("search-nfps-btn").addEventListener("click", searchNFPs);

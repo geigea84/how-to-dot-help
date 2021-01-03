@@ -18,7 +18,7 @@
                 <input id="nfp-tags" class="nfp-input formbox-sl"></input>
             <h4>Description/Mission Statement</h4>
                 <!--change back to textarea?-->
-                <input id="nfp-mission-statement" class="nfp-input formbox-lg"></input>
+                <textarea id="nfp-mission-statement" class="nfp-input formbox-lg"></textarea>
             <h4>Size</h4>
                 <input id="nfp-size" class="nfp-input formbox-sl"></input>
             <h4>Founding Year</h4>
@@ -46,26 +46,32 @@
 </div> 
 <div class="col-12">
     <div class="bg-scrabble hide ghost-in">
-        <h2 class="center pad-t">Search Volunteers</h2>
         <div class="form flex-row">
-            <!--<form action="" method="POST">-->
+            <form class="form flex-row" method="post">
+                <h2 class="center pad-t">Search Volunteers</h2>
                 <input id="search-User" class="formbox-sl" type="text" name="search" placeholder="Search volunteers by first or last name"></input>
+                <div class="col-12 pad">
+                    <div class="center">
+                        <button id="search-users-btn">Search</button>
+                    </div>
+                </div>
+                <h2 class="center pad-t">Search NFPs</h2>
                 <input id="search-NFP" class="formbox-sl" placeholder="Search NFPs by name"></input>
                 <div class="col-12 pad">
                     <div class="center">
-                        <button type="submit" id="search-btn">Search</button>
+                        <button id="search-nfps-btn">Search</button>
                     </div>
                 </div>
-            <!--</form>-->
+            </form>
             <div id="results-container" class=" justify-center">
                 <div class="flex-row ">
-                    <form action="../public/php/searchDB.php" class="flex-row">
-                        {{#each nfp as |nfp|}}
-                            {{> volunteer-mod nfp }}
-                        {{/each}}
-                    </form>
+                    {{#each users as |user|}}
+                        {{> nfp-no-btn user}}
+                    {{/each}}
                 </div> 
             </div>
         </div>
     </div>
 </div>
+
+<script src="/javascript/adminApiCalls.js"></script>
