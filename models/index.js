@@ -16,8 +16,8 @@ NFP.belongsToMany(User, {
 });
 
 VolNFPs.belongsTo(User, {
-    foreignKey: "user_id"
-});
+    foreignKey: 'user_id',
+  });
 
 VolNFPs.belongsTo(NFP, {
     foreignKey: "nfp_id"

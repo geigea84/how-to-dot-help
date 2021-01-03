@@ -1,20 +1,4 @@
 //AJAX - REQUEST- as far back as front end goes
-//---------------------------------//
-//-------------LOAD----------------//
-//---------------------------------//
-//------------------------------------------------reformat phone
-// let formatPhoneNumber = (P) => {
-//     //Filter only numbers from the input
-//     let cleaned = ('' + P).replace(/\D/g, '');
-    
-//     //Check if the input is of correct length
-//     let match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
-  
-//     if (match) {
-//       return '(' + match[1] + ') ' + match[2] + '-' + match[3]
-//     }; 
-//     return " "
-//   };
 
 //---------------------------------------//
 //-------------SAVE/PUT UPDATE-----------//
@@ -99,3 +83,43 @@ const ValidateState = function(S) {
         }
     })
 })
+
+
+
+
+
+
+// //------------------------------------------------------------------//
+// //nfp call on click
+// //------------------------------------------------------------------//
+// async function reachOut(i) {
+//     event.preventDefault();
+//     nfp_id = i;
+//     console.log(nfp_id);
+
+//     if (i) {
+//         const response = await fetch('/api/volnfp/interest', {
+//             method: 'post',
+//             body: JSON.stringify({
+//             nfp_id
+//             }),
+//             headers: { 'Content-Type': 'application/json' }
+//         });
+    
+//         if (response.ok) {
+//             console.log("reach out sucessful")
+//         } else {
+//             alert(response.statusText);
+//         }
+//      }
+//   }
+
+
+//  const reachOutResponse = function() {
+//     console.log("clicked btn")
+//     var nfp_id = $(this).attr("id");
+//     $(this).fadeOut(3000);
+//       reachOut(nfp_id)
+//   }
+
+// $(document).on("click", ".reach-out", reachOutResponse)
