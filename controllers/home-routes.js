@@ -32,7 +32,8 @@ router.get("/", (req, res) => {
          const nfps = dbPostData.map((npf) => npf.get({ plain: true }));
         res.render('homepage', {
           nfps,
-          loggedIn: req.session.loggedIn
+          loggedIn: req.session.loggedIn,
+          isAdmin: req.session.isAdmin
         })
       })
       .catch((err) => {
@@ -67,7 +68,8 @@ router.get('/usernfps', (req, res) => {
       console.log(nfpMe)
       res.render('usernfps', {
         nfpMe,
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
+        isAdmin: req.session.isAdmin
       })
     })
 
@@ -130,7 +132,8 @@ router.get('/user', (req, res) => {
       user.id = req.session.user_id;
       res.render('user', {
         user,
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
+        isAdmin: req.session.isAdmin
       });
     })
     .catch(err => {
@@ -208,7 +211,8 @@ router.post('/logout', (req, res) => {
 
 router.get('/signup', (req, res) => {
   res.render('join', {
-    loggedIn: req.session.loggedIn
+    loggedIn: req.session.loggedIn,
+    isAdmin: req.session.isAdmin
   });
 });
 
@@ -217,7 +221,8 @@ router.get('/signup', (req, res) => {
 
 router.get('/admin', (req, res) => {
   res.render('admin', {
-    loggedIn: req.session.loggedIn
+    loggedIn: req.session.loggedIn,
+    isAdmin: req.session.isAdmin
   });
 })
 
@@ -250,7 +255,9 @@ router.get('/partners', (req, res) => {
     console.log(nfps)
     res.render('partner-nfp', { 
       nfps,
-      loggedIn: req.session.loggedIn});
+      loggedIn: req.session.loggedIn,
+      isAdmin: req.session.isAdmin
+    });
   })
     .catch((err) => {
       res.status(500).json(err);
@@ -301,7 +308,8 @@ router.get("/adminvolunteers", (req, res) => {
       console.log(users)
       res.render('adminvolunteers', {
         users,
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
+        isAdmin: req.session.isAdmin
       })
     })
 
