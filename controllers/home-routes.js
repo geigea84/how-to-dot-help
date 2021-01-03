@@ -1,8 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
+const { Admin, NFP, User, VolNFPs } = require('../models')
 
-
-const { VolNFPs, NFP, User } = require('../models')//VolNFPs
 
 //------------------------------------------------------------------------//
 //Home Page
@@ -260,6 +259,106 @@ router.get('/partners', (req, res) => {
   });
 });
 
+//------------------------------------------------------------------------//
+//Admin Search Results
+//------------------------------------------------------------------------//
+
+//search volunteers
+router.get("/adminvolunteers", (req, res) => {
+  console.log(req);
+    VolNFPs.findAll({
+        where: {
+          first_name: req.params.user_id,
+          last_name: req.params.user_id
+        },
+        attributes: [
+            'id',
+            'user_id',
+            'nfp_id'
+        ],
+        include: [
+            {
+              model: User,
+              attributes: [
+                'id',
+                'first_name',
+                'last_name',
+                'city',
+                'state',
+                'bio',
+                'phone_number',
+                'email'
+              ]
+            },
+            {
+              model: NFP,
+              attributes: [
+                'first_name'
+              ]
+            }
+        ]   
+    })
+      .then((dbPostData) => {
+         const users = dbPostData.map((user) => user.get({ plain: true }));
+          console.log(users)
+        res.render('adminvolunteers', {
+          users,
+          loggedIn: req.session.loggedIn
+        })
+      })
+      
+      .catch((err) => {
+        res.status(500).json(err);
+      });
+  });
+
+//search nfps  
+router.get("/adminnfps", (req, res) => {
+  console.log(req);
+    VolNFPs.findAll({
+        where: {
+          nfp_name: req.params.nfp_id
+        },
+        attributes: [
+            'id',
+            'user_id',
+            'nfp_id'
+        ],
+        include: [
+            {
+              model: User,
+              attributes: [
+                'id',
+                'first_name',
+                'last_name',
+                'city',
+                'state',
+                'bio',
+                'phone_number',
+                'email'
+              ]
+            },
+            {
+              model: NFP,
+              attributes: [
+                'first_name'
+              ]
+            }
+        ]   
+    })
+      .then((dbPostData) => {
+         const nfps = dbPostData.map((nfp) => nfp.get({ plain: true }));
+          console.log(users)
+        res.render('adminnfps', {
+          nfps,
+          loggedIn: req.session.loggedIn
+        })
+      })
+      
+      .catch((err) => {
+        res.status(500).json(err);
+      });
+  });
 
 
 module.exports = router;
