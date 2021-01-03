@@ -20,17 +20,18 @@
     </div>
     <div class="hide navbody">
       <h4>
-        <a href="/login">Volunteer Login</a>
-        <a href="/signup">Join</a>
 
         {{#if loggedIn}}
+        <a href="/login" style="display: none">Volunteer Login</a>
+        <a href="/signup" style="display: none">Join</a>
         <a href="/user/">Your Information</a>
         <a href="/admin">Admin</a>
         <a href="/partners">NFP Partners</a>
         <a id="logout" href="/">Logout</a>
 
         {{else}}
-        
+        <a href="/login">Volunteer Login</a>
+        <a href="/signup">Join</a>
         <a href="/user" style="display: none">Your Information</a>
         <a href="/admin" style="display: none">Admin</a>
         <a href="/partners" style="display: none">NFP Partners</a>
