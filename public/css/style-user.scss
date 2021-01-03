@@ -26,7 +26,6 @@
     border-radius:5px 5px 0px 0px;
     align-items: flex-end;
     background: var(--accent);
-    //background-image: url('../images/shanti.png');
     background-size: cover;
     background-position: top;
     overflow: hidden;
@@ -81,10 +80,6 @@
 .user-c:hover .img-ctnt h3, .user-c:hover .img-ctnt h4 {
   transform: translateY(-200px);
 }
-
-// .user-c-bg {
-//   background-image: url('../images/shanti.png');
-// }
 
 /* 2.2 - removed float and width */
 .user-bod {

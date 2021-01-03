@@ -63,12 +63,12 @@ router.post('/interest', (req, res) => {
     VolNFPs.create({
         user_id: req.session.user_id,
         nfp_id: req.body.nfp_id
-      })
+    })
         .then(dbUserData => res.json(dbUserData))
         .catch(err => {
-          console.log("You have already reached out!");
-          res.status(400).json(err);
+            console.log("You have already reached out!");
+            res.status(400).json(err);
         });
-    });
+});
 
 module.exports = router;
