@@ -1,26 +1,24 @@
 async function reachOut(i) {
     event.preventDefault();
-    console.log(i)
-  
+    nfp_id = i;
+    console.log(nfp_id);
+
     if (i) {
-      const response = await fetch('/api/users/login', {
-        method: 'post',
-        body: JSON.stringify({
-          nfp_id,
-          user_id
-        }),
-        headers: { 'Content-Type': 'application/json' }
-      });
-  
-      if (response.ok) {
-        document.location.replace('/user/:id');
-      } else {
-        alert(response.statusText);
-      }
-    }
+        const response = await fetch('/api/volnfp/interest', {
+            method: 'post',
+            body: JSON.stringify({
+            nfp_id
+            }),
+            headers: { 'Content-Type': 'application/json' }
+        });
+    
+        if (response.ok) {
+            console.log("reach out sucessful")
+        } else {
+            alert(response.statusText);
+        }
+     }
   }
-
-
 
 
  const reachOutResponse = function() {
@@ -30,4 +28,6 @@ async function reachOut(i) {
       reachOut(nfp_id)
   }
 
-$(document).on("click", ".reach-out", reachOutResponse)
+$(document).on("click", ".reach-out", reachOutResponse);
+
+
