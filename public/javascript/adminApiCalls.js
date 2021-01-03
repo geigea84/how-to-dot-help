@@ -2,7 +2,6 @@
 
 //prevent input of incorrect characters in phone number
 let checkPhoneNumber = (nfpPhone) => {
-    //console.log("number called");
     //filter out non-numeric characters
     let cleaned = ("" + nfpPhone).replace(/\D/g, "");
 
@@ -12,16 +11,14 @@ let checkPhoneNumber = (nfpPhone) => {
     if (match) {
         return "(" + match[1] + ") " + match[2] + "-" + match[3];
     }
-    else{
+    else {
         return;
     }
 };
 
 //replace with arrow functions?
-const validateEmail = function(nfpEmail) {
-    //console.log("email called");
+const validateEmail = function (nfpEmail) {
     if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(nfpEmail)) {
-        //console.log("valid email address");
         return nfpEmail;
     }
     else {
@@ -30,12 +27,10 @@ const validateEmail = function(nfpEmail) {
     }
 };
 
-const validatePhone = function(nfpPhone) {
-    //console.log("phone called");
+const validatePhone = function (nfpPhone) {
     let cleaned = ("" + nfpPhone).replace(/\D/g, "");
-    
+
     if (/^\d{10}$/.test(cleaned)) {
-        //console.log("valid phone number");
         return cleaned;
     }
     else {
@@ -45,67 +40,66 @@ const validatePhone = function(nfpPhone) {
 };
 
 //eliminate issues with DRY-test to see if the || can drop theState between each one
-const validateState = function(nfpState) {
-    //console.log("state called");
+const validateState = function (nfpState) {
     let theState = nfpState.toUpperCase();
-    if (theState == "AL" || 
-        theState == "AK" || 
-        theState == "AZ" || 
-        theState == "AR" || 
-        theState == "CA" || 
-        theState == "CO" || 
-        theState == "CT" || 
-        theState == "DE" || 
-        theState == "FL" || 
-        theState == "GA" || 
-        theState == "HI" || 
-        theState == "ID" || 
-        theState == "IL" || 
-        theState == "IN" || 
-        theState == "IA" || 
-        theState == "KS" || 
-        theState == "KY" || 
-        theState == "LA" || 
-        theState == "ME" || 
-        theState == "MD" || 
-        theState == "MA" || 
-        theState == "MI" || 
-        theState == "MN" || 
-        theState == "MS" || 
-        theState == "MO" || 
-        theState == "MT" || 
-        theState == "NE" || 
-        theState == "NV" || 
-        theState == "NH" || 
-        theState == "NJ" || 
-        theState == "NM" || 
-        theState == "NY" || 
-        theState == "NC" || 
-        theState == "ND" || 
-        theState == "OH" || 
-        theState == "OK" || 
-        theState == "OR" || 
-        theState == "PA" || 
-        theState == "RI" || 
-        theState == "SC" || 
-        theState == "SD" || 
-        theState == "TN" || 
-        theState == "TX" || 
-        theState == "UT" || 
-        theState == "VT" || 
-        theState == "VA" || 
-        theState == "WA" || 
-        theState == "WV" || 
-        theState == "WI" || 
-        theState == "WY" || 
-        theState == "AS" || 
-        theState == "DC" || 
-        theState == "FM" || 
-        theState == "GU" || 
-        theState == "MH" || 
-        theState == "MP" || 
-        theState == "PW" || 
-        theState == "PR" || 
+    if (theState == "AL" ||
+        theState == "AK" ||
+        theState == "AZ" ||
+        theState == "AR" ||
+        theState == "CA" ||
+        theState == "CO" ||
+        theState == "CT" ||
+        theState == "DE" ||
+        theState == "FL" ||
+        theState == "GA" ||
+        theState == "HI" ||
+        theState == "ID" ||
+        theState == "IL" ||
+        theState == "IN" ||
+        theState == "IA" ||
+        theState == "KS" ||
+        theState == "KY" ||
+        theState == "LA" ||
+        theState == "ME" ||
+        theState == "MD" ||
+        theState == "MA" ||
+        theState == "MI" ||
+        theState == "MN" ||
+        theState == "MS" ||
+        theState == "MO" ||
+        theState == "MT" ||
+        theState == "NE" ||
+        theState == "NV" ||
+        theState == "NH" ||
+        theState == "NJ" ||
+        theState == "NM" ||
+        theState == "NY" ||
+        theState == "NC" ||
+        theState == "ND" ||
+        theState == "OH" ||
+        theState == "OK" ||
+        theState == "OR" ||
+        theState == "PA" ||
+        theState == "RI" ||
+        theState == "SC" ||
+        theState == "SD" ||
+        theState == "TN" ||
+        theState == "TX" ||
+        theState == "UT" ||
+        theState == "VT" ||
+        theState == "VA" ||
+        theState == "WA" ||
+        theState == "WV" ||
+        theState == "WI" ||
+        theState == "WY" ||
+        theState == "AS" ||
+        theState == "DC" ||
+        theState == "FM" ||
+        theState == "GU" ||
+        theState == "MH" ||
+        theState == "MP" ||
+        theState == "PW" ||
+        theState == "PR" ||
         theState == "VI") {
         return theState;
     }
@@ -119,26 +113,26 @@ const validateState = function(nfpState) {
 async function addNFP(event) {
     event.preventDefault();
 
-    let nfpName    = document.querySelector("#nfp-name").value.trim();
+    let nfpName = document.querySelector("#nfp-name").value.trim();
     let nfpWebsite = document.querySelector("#nfp-website").value.trim();
-    let nfpCause   = document.querySelector("#nfp-cause").value.trim();
-    let nfpTags    = document.querySelector("#nfp-tags").value.trim();
-    let nfpMS      = document.querySelector("#nfp-mission-statement").value.trim();
-    let nfpSize    = document.querySelector("#nfp-size").value.trim();
-    let nfpFY      = document.querySelector("#nfp-founding-year").value.trim();
-    let nfpRNA     = document.querySelector("#nfp-rna").value.trim();
-    let nfpCity    = document.querySelector("#nfp-city").value.trim();
-    let nfpState   = document.querySelector("#nfp-state").value.trim();
-    let nfpZip     = document.querySelector("#nfp-zip").value.trim();
-    let nfpEmail   = document.querySelector("#nfp-email").value.trim();
-    let nfpPhone   = document.querySelector("#nfp-phone").value.trim();
-    let nfpImage   = document.querySelector("#nfp-image").value.trim();
+    let nfpCause = document.querySelector("#nfp-cause").value.trim();
+    let nfpTags = document.querySelector("#nfp-tags").value.trim();
+    let nfpMS = document.querySelector("#nfp-mission-statement").value.trim();
+    let nfpSize = document.querySelector("#nfp-size").value.trim();
+    let nfpFY = document.querySelector("#nfp-founding-year").value.trim();
+    let nfpRNA = document.querySelector("#nfp-rna").value.trim();
+    let nfpCity = document.querySelector("#nfp-city").value.trim();
+    let nfpState = document.querySelector("#nfp-state").value.trim();
+    let nfpZip = document.querySelector("#nfp-zip").value.trim();
+    let nfpEmail = document.querySelector("#nfp-email").value.trim();
+    let nfpPhone = document.querySelector("#nfp-phone").value.trim();
+    let nfpImage = document.querySelector("#nfp-image").value.trim();
 
     let validEmail = validateEmail(nfpEmail);
     let validPhone = validatePhone(nfpPhone);
     let validState = validateState(nfpState);
-    
-    if(
+
+    if (
         nfpName &&
         nfpWebsite &&
         nfpCause &&
@@ -172,7 +166,7 @@ async function addNFP(event) {
                 email: validEmail,
                 image_url: nfpImage
             }),
-            headers: {'Content-Type': 'application/json'}
+            headers: { 'Content-Type': 'application/json' }
         });
         //add switch statement for different empty issues?
         if (response.ok) {
@@ -180,12 +174,6 @@ async function addNFP(event) {
             alert(`${nfpName} added as new NFP`);
             document.querySelector("#nfp-form").reset();
         }
-        /*
-        else if (response.ok == false) {
-            console.log(response.statusText);
-
-        }
-        */
         else {
             console.log(response.statusText);
         }

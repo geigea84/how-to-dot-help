@@ -19,12 +19,14 @@ How-To-Dot-Help is a website portal connecting potential volunteers with smaller
     *[Contact](#contact-us)
         *[Creators](#creators)
 
+</details>
+
 </br>
 </br>
 </br>
 
 ## Installation
-Hosting for the application will be located at /HEROKU LINK HERE/. If copying the files directly, a list of the packages and applications used are listed below.
+Hosting for the application will be located at [Heroku](https://how-to-dot-help.herokuapp.com). If copying the files directly, a list of the packages and applications used are listed below.
 
 </br>
 </br>
@@ -61,9 +63,18 @@ Hosting for the application will be located at /HEROKU LINK HERE/. If copying th
 </br>
 
 ## License
+We are operating with an MIT license, for more information [see the full language](https://choosealicense.com/licenses/mit)
 
+</br>
+</br>
+</br>
 
 ## Contributing
+  Please follow the standard Contributor Covenant when looking to make any additions to this project. The Standard Contributor Covenant can be found at [https://www.contributor-covenant.org/](https://www.contributor-covenant.org/)
+
+</br>
+</br>
+</br>
 
 ## Creators
 </br>

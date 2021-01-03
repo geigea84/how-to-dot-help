@@ -1,4 +1,4 @@
-const {Model, DataTypes} = require("sequelize");
+const { Model, DataTypes } = require("sequelize");
 const bcrypt = require('bcrypt');
 const sequelize = require("../config/connection");
 
@@ -71,6 +71,10 @@ User.init(
             validate: {
                 isUrl: true
             }
+        },
+        isAdmin: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false
         }
     },
     {

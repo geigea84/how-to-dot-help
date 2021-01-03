@@ -7,26 +7,26 @@ async function reachOut(i) {
         const response = await fetch('/api/volnfp/interest', {
             method: 'post',
             body: JSON.stringify({
-            nfp_id
+                nfp_id
             }),
             headers: { 'Content-Type': 'application/json' }
         });
-    
+
         if (response.ok) {
             console.log("reach out sucessful")
         } else {
             alert("You have already reached out! For more ways to reach out view your NFPs page." + response.statusText);
         }
-     }
-  }
+    }
+}
 
 
- const reachOutResponse = function() {
+const reachOutResponse = function () {
     console.log("clicked btn")
     var nfp_id = $(this).attr("id");
     $(this).fadeOut(3000);
-      reachOut(nfp_id)
-  }
+    reachOut(nfp_id)
+}
 
 $(document).on("click", ".reach-out", reachOutResponse);
 

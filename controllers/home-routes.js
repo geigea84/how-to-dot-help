@@ -2,9 +2,8 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Admin, NFP, User, VolNFPs } = require('../models')
 
-
 //------------------------------------------------------------------------//
-//Home Page
+//////////////////////////////Home Page/////////////////////////////////////
 //------------------------------------------------------------------------//
 router.get("/", (req, res) => {
   console.log(req.session.user_id);
@@ -31,18 +30,15 @@ router.get("/", (req, res) => {
     })
       .then((dbPostData) => {
          const nfps = dbPostData.map((npf) => npf.get({ plain: true }));
-        // console.log(nfps)
-        //res.render('homepage', { nfps });
         res.render('homepage', {
           nfps,
           loggedIn: req.session.loggedIn
         })
       })
-      
       .catch((err) => {
         res.status(500).json(err);
       });
-  });
+});
 
 
 //------------------------------------------------------------------------//
@@ -66,84 +62,83 @@ router.get('/usernfps', (req, res) => {
     ]
   })
 
-  .then((dbPostData) => {
-    const nfpMe = dbPostData.map((nfp) => nfp.get({ plain: true }));
-    console.log(nfpMe)
-   res.render('usernfps', {
-     nfpMe,
-     loggedIn: req.session.loggedIn
-   })
- })
- 
- .catch((err) => {
-   res.status(500).json(err);
- });
+    .then((dbPostData) => {
+      const nfpMe = dbPostData.map((nfp) => nfp.get({ plain: true }));
+      console.log(nfpMe)
+      res.render('usernfps', {
+        nfpMe,
+        loggedIn: req.session.loggedIn
+      })
+    })
+
+    .catch((err) => {
+      res.status(500).json(err);
+    });
 });
 
 //////////////////////////////--------------------------------------------
 let formatPhoneNumber = (P) => {
-    //Filter only numbers from the input
-    let cleaned = ('' + P).replace(/\D/g, '');
-    
-    //Check if the input is of correct length
-    let match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
- 
-    if (match == 1000000000){
-      return " "
-    }    
-    else if (match) {
-      return '(' + match[1] + ') ' + match[2] + '-' + match[3]
-    }; 
-    return " "
-  };
+  //Filter only numbers from the input
+  let cleaned = ('' + P).replace(/\D/g, '');
 
+  //Check if the input is of correct length
+  let match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+
+  if (match == 1000000000) {
+    return " "
+  }
+  else if (match) {
+    return '(' + match[1] + ') ' + match[2] + '-' + match[3]
+  };
+  return " "
+};
+
+//------------------------------------------------------------------------//
+/////////////////////////// personal page //////////////////////////////////
+//------------------------------------------------------------------------//
 
 // personal page //
 router.get('/user', (req, res) => {
+  User.findOne({
+    where: {
+      id: req.session.user_id
+    },
+    attributes: [
+      'id',
+      'first_name',
+      'last_name',
+      'email',
+      'phone_number',
+      'bio',
+      'city',
+      'state'
+    ]
 
-    let newTableOfVol = {}
+  })
+    .then(dbPostData => {
+      if (!dbPostData) {
+        res.status(404).json({ message: 'No user found with this id' });
+        return;
+      }
 
-    //console.log('HOMEROUTES')
-    User.findOne({
-      where: {
-        id: req.session.user_id
-      },
-      attributes: [
-        'id',
-        'first_name',
-        'last_name',
-        'email',
-        'phone_number',
-        'bio',
-        'city',
-        'state'
-      ]
+      const user = dbPostData.get({ plain: true });
+      console.log(dbPostData)
 
-    })    
-      .then(dbPostData => {
-        if (!dbPostData) {
-          res.status(404).json({ message: 'No user found with this id' });
-          return;
-        }
-
-        const user = dbPostData.get({ plain: true });
-       console.log(dbPostData)
-       
-        var num = formatPhoneNumber(user.phone_number)
-        console.log(num)
-        user.phone_number = num;
-        user.id =  req.session.user_id;
-        res.render('user', {
-          user,
-          loggedIn: req.session.loggedIn
-        });
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
+      var num = formatPhoneNumber(user.phone_number)
+      console.log(num)
+      user.phone_number = num;
+      user.id = req.session.user_id;
+      res.render('user', {
+        user,
+        loggedIn: req.session.loggedIn
       });
-  });
-  
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 
 //------------------------------------------------------------------------//
 //////////////////////////USER PUT INFO/////////////////////////////////////
@@ -151,82 +146,96 @@ router.get('/user', (req, res) => {
 
 // personal page //
 router.put('/user', (req, res) => {
-    console.log(req.session.user_id + "is the id")
-    //console.log('put', req.body, req.params)
-    User.update(
-     {  first_name: req.body.userinfo.first_name,
-        last_name: req.body.userinfo.last_name,
-        email: req.body.userinfo.email,
-        phone_number: req.body.userinfo.phone_number,
-        bio: req.body.userinfo.bio,
-        state: req.body.userinfo.state,
-        city: req.body.userinfo.city,
-        id: req.session.user_id
+  console.log(req.session.user_id + "is the id")
+  User.update(
+    {
+      first_name: req.body.userinfo.first_name,
+      last_name: req.body.userinfo.last_name,
+      email: req.body.userinfo.email,
+      phone_number: req.body.userinfo.phone_number,
+      bio: req.body.userinfo.bio,
+      state: req.body.userinfo.state,
+      city: req.body.userinfo.city,
+      id: req.session.user_id
     },
     {
-      individualHooks: true,  
-        where: {
-            id: req.session.user_id
-      }}
-    )
-      .then(dbPostData => {
-        if (!dbPostData) {
-          res.status(404).json({ message: 'No user found with this id' });
-          return;
-        }
-        console.log(dbPostData)
-
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  });
-
-
-
-  ////////////////////////////////////////////////////////
-  router.get('/login', (req, res) => {
-    if (req.session.loggedIn) {
-      res.redirect('/');
-      return;
+      individualHooks: true,
+      where: {
+        id: req.session.user_id
+      }
     }
-  
-    res.render('login');
-  });
+  )
+    .then(dbPostData => {
+      if (!dbPostData) {
+        res.status(404).json({ message: 'No user found with this id' });
+        return;
+      }
+      console.log(dbPostData)
 
-  router.post('/logout', (req, res) => {
-    if (req.session.loggedIn) {
-      req.session.destroy(() => {
-        res.status(204).end();
-      });
-    }
-    else {
-      res.status(404).end();
-    }
-  });
-
-//------------------------------------------------------------------------//
-//admin
-//------------------------------------------------------------------------//
-
-  router.get('/signup', (req, res) => {
-    res.render('join', {
-      loggedIn: req.session.loggedIn
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
     });
+});
+
+
+
+////////////////////////////////////////////////////////
+router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('login');
+});
+
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  }
+  else {
+    res.status(404).end();
+  }
+});
+
+//------------------------------------------------------------------------//
+//////////////////////////////Admin/////////////////////////////////////////
+//------------------------------------------------------------------------//
+
+router.get('/signup', (req, res) => {
+  res.render('join', {
+    loggedIn: req.session.loggedIn
+  });
 });
 
 
 /////////////////////////////////////////////////////////////////////////////
 
 router.get('/admin', (req, res) => {
-    res.render('admin', {
-      loggedIn: req.session.loggedIn
+  NFP.findAll({
+    attributes: [
+        'id',
+        'nfp_name'
+    ]   
+})
+  .then((dbPostData) => {
+     const nfps = dbPostData.map((npf) => npf.get({ plain: true }));
+    console.log(nfps)
+    res.render('admin', { 
+      nfps,
+      loggedIn: req.session.loggedIn});
+  })
+    .catch((err) => {
+      res.status(500).json(err);
     });
 })
 
 //------------------------------------------------------------------------//
-//partners
+////////////////////////////partners////////////////////////////////////////
 //------------------------------------------------------------------------//
 
 router.get('/partners', (req, res) => {
@@ -252,19 +261,19 @@ router.get('/partners', (req, res) => {
   .then((dbPostData) => {
      const nfps = dbPostData.map((npf) => npf.get({ plain: true }));
     console.log(nfps)
-    res.render('partner-nfp', {
+    res.render('partner-nfp', { 
       nfps,
-      loggedIn: req.session.loggedIn
-    })
+      loggedIn: req.session.loggedIn});
   })
-  .catch((err) => {
-    res.status(500).json(err);
-  });
+    .catch((err) => {
+      res.status(500).json(err);
+    });
 });
 
 //------------------------------------------------------------------------//
 //Admin Search Results
 //------------------------------------------------------------------------//
+
 
 //search nfps
 router.get("/adminsearch/:search", (req, res) => {
@@ -299,16 +308,16 @@ router.get("/adminsearch/:search", (req, res) => {
       }
     ]
   })
-  .then((dbPostData) => {
-    const searchedUser = dbPostData.map((user) => user.get({plain: true}));
-    res.render("adminsearch", {
-      searchedUser,
-      loggedIn: req.session.loggedIn
+    .then((dbPostData) => {
+      const searchedUser = dbPostData.map((user) => user.get({plain: true}));
+      res.render("adminsearch", {
+        searchedUser,
+        loggedIn: req.session.loggedIn
+      })
     })
-  })
-  .catch((err) => {
-    res.status(500).json(err);
-  });
+    .catch((err) => {
+      res.status(500).json(err);
+    });
 });
 
 module.exports = router;
