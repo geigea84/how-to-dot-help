@@ -1,0 +1,12 @@
+<div class="col-12 flex-row align-center">
+    <div class="bg-scrabble hide ghost-in">
+        <h2 class="center pad-t"> Reach Out to a NFP! </h2>
+        <div class=" justify-center pad-lr">
+            <div class=" flex-row ">
+                {{#each users as |user|}}
+                    {{> volunteer-mod user }}
+                {{/each}}
+            </div> 
+        </div>
+    </div>
+</div>
