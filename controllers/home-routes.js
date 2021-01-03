@@ -120,7 +120,7 @@ let formatPhoneNumber = (P) => {
 
 
 // personal page //
-router.get('/user/:id', (req, res) => {
+router.get('/user', (req, res) => {
 
     let newTableOfVol = {}
 
@@ -171,7 +171,7 @@ router.get('/user/:id', (req, res) => {
 //------------------------------------------------------------------------//
 
 // personal page //
-router.put('/user/:id', (req, res) => {
+router.put('/user', (req, res) => {
     console.log(req.session.user_id + "is the id")
     //console.log('put', req.body, req.params)
     User.update(
