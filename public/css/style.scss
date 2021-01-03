@@ -87,10 +87,10 @@
   
     header {
       background-color: var(--primary);
-    //   background-image: url('../images/paperp.jpg');
-    //   background-attachment: fixed;
-    //   background-position: top; 
+<<<<<<< HEAD
+=======
       display: flex;
+>>>>>>> develop
       justify-content: center;
       align-items: center;
       min-height: 70px;
@@ -190,6 +190,14 @@
       margin-left: 200px;
     }
     
+    .bg-primary {
+      background-color: var(--primary);
+    }
+    
+    .bg-horizon {
+      background-color: var(--horizon);
+    }
+
   /*NAV*/
   .navbar {
       background-color: var(--secondary);
@@ -509,7 +517,4 @@
         .col-12 {
           flex: 0 0 100%;
       }
-      }    
-       
-
-      
+      }

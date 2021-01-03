@@ -1,4 +1,4 @@
-const {Model, DataTypes} = require("sequelize");
+const { Model, DataTypes } = require("sequelize");
 const bcrypt = require('bcrypt');
 const sequelize = require("../config/connection");
 
@@ -9,7 +9,6 @@ class Admin extends Model {
     }
 }
 
-//anticipating more requests for input from HTDH
 Admin.init(
     {
         id: {
