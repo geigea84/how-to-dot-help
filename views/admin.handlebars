@@ -65,8 +65,8 @@
             </form>
             <div id="results-container" class=" justify-center">
                 <div class="flex-row ">
-                    {{#each users as |user|}}
-                        {{> nfp-no-btn user}}
+                    {{#each nfps as |nfp|}}
+                        {{> nfp}}
                     {{/each}}
                 </div> 
             </div>
