@@ -1,8 +1,4 @@
-//AJAX - REQUEST- as far back as front end goes
-
-//---------------------------------------//
-//-------------SAVE/PUT UPDATE-----------//
-//---------------------------------------//
+//AJAX - REQUEST- as far back as front end normally goes
 //------------------------------------------------validate/reformat
 const ValidateEmail = function (E) {
     if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(E)) {
@@ -17,6 +13,7 @@ const ValidateEmail = function (E) {
 
 const ValidatePhone = function (P) {
     let cleaned = ('' + P).replace(/\D/g, '');
+<<<<<<< HEAD:public/javascript/volApiCalls.js
     if (/^\d{10}$/.test(cleaned)) {
         console.log("valid phone")
         return cleaned;
@@ -27,6 +24,20 @@ const ValidatePhone = function (P) {
     else {
         alert("not a valid phone number");
         return '1000000000';
+=======
+        if(/^\d{10}$/.test(cleaned))
+              {
+            console.log("valid phone")      
+            return cleaned;
+              }
+        else if (!P || P == " "){
+                return '1000000000';
+            }
+        else {
+              alert("not a valid phone number");
+              return '1000000000';
+              }
+>>>>>>> 92bfd1a5ae5be4a65e8ed4a621bf22be74a7eb7d:public/javascript/user.js
     }
 }
 
@@ -73,9 +84,15 @@ $(document).on("click", "#save-rev-btn", function () {
 
     $.ajax({
         method: "PUT",
+<<<<<<< HEAD:public/javascript/volApiCalls.js
         url: "/user/:id",
         data: { userinfo },
         success: function (data) {
+=======
+        url: "/user",
+        data: {userinfo},
+        success: function(data){
+>>>>>>> 92bfd1a5ae5be4a65e8ed4a621bf22be74a7eb7d:public/javascript/user.js
             console.log("Update Ok")
         }
     })
@@ -84,6 +101,7 @@ $(document).on("click", "#save-rev-btn", function () {
 
 
 
+<<<<<<< HEAD:public/javascript/volApiCalls.js
 
 
 // //------------------------------------------------------------------//
@@ -120,3 +138,14 @@ $(document).on("click", "#save-rev-btn", function () {
 //   }
 
 // $(document).on("click", ".reach-out", reachOutResponse)
+=======
+//Reach out button on HP
+//---------------------------------------------------------------------
+function reachOutJoin() {
+    console.log("signup clicked btn")
+    $(this).fadeOut(3000);
+    location.href = "/signup"
+  }
+  
+  $(document).on("click", ".sign-up", reachOutJoin)
+>>>>>>> 92bfd1a5ae5be4a65e8ed4a621bf22be74a7eb7d:public/javascript/user.js

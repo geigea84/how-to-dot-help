@@ -10,7 +10,7 @@
 }
 /*-- must be in normal css so can have bg transarency--*/
 .bg-faded {
-  background-color: rgb(250, 230, 220, 0.8);
+  background-color: rgba(245, 245, 245, 0.8);
   width:100%;
   padding:20px;
   height: 100%;
