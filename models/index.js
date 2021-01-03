@@ -15,4 +15,12 @@ NFP.belongsToMany(User, {
     foreignKey: "nfp_id"
 });
 
+VolNFPs.belongsTo(User, {
+    foreignKey: 'user_id',
+  });
+  
+VolNFPs.belongsTo(NFP, {
+    foreignKey: 'nfp_id',
+  });
+
 module.exports = {User, Admin, NFP, VolNFPs};

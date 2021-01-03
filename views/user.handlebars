@@ -35,12 +35,16 @@
          {{!--NFP list--}}
             <div class="bg-scrabble hide ghost-in">
                 <h2 class="center pad-t"> See Your NFP! </h2>
+                    <div class="col-12 center pad-t">
+                        <button class="get-nfp-now" type="button">My NFPs</button>
+                    </div>
+{{!--                 
                 <div class=" justify-center pad-lr">
                     <div class=" flex-row ">
-                        {{#each nfp as |nfp|}}
-                            {{> nfp-btn nfp }}
+                        {{#each volnfps as |volnfps.nfp|}}
+                            {{> my-nfps volnfps.nfp }}
                         {{/each}}
                     </div> 
-                </div>
+                </div> --}}
             </div>
     </div>

@@ -1,0 +1,13 @@
+<div class="col-12 flex-row align-center">
+         {{!--NFP list--}}
+            <div class="bg-scrabble hide ghost-in">
+                <h2 class="center pad-t"> Below are the NFPs you have reached out to. Feel free to call or email them as well! </h2>       
+                <div class=" justify-center pad-lr">
+                    <div class=" flex-row ">
+                        {{#each nfpMe as |volnfps|}}
+                            {{> my-nfps volnfps }}
+                        {{/each}}
+                    </div> 
+                </div>
+            </div>
+</div>
