@@ -15,7 +15,7 @@ async function reachOut(i) {
         if (response.ok) {
             console.log("reach out sucessful")
         } else {
-            alert(response.statusText);
+            alert("You have already reached out! For more ways to reach out view your NFPs page." + response.statusText);
         }
      }
   }
