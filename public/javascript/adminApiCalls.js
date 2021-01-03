@@ -230,7 +230,7 @@ async function searchNFPs(event) {
 
     $.ajax({
         method: "GET",
-        url: "/adminnfps",
+        url: "/adminnfps/search",
         data: {searchNFP},
         success: function(data) {
             console.log("Triggered NFP search request");
