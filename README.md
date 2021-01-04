@@ -57,10 +57,10 @@ Hosting for the application will be located at [Heroku](https://how-to-dot-help.
 
 ## Pictures
 
-   ! [ScreenShot1of4](public/assets/images/homepage-view.png)
-   ! [ScreenShot2of4](public/assets/images/volunteer-view.png)
-   ! [ScreenShot3of4](public/assets/images/server-code-view.png)
-   ! [ScreenShot4of4](public/assets/images/routes-view.png)
+   ![ScreenShot1of4](public/assets/images/homepage-view.png)
+   ![ScreenShot2of4](public/assets/images/volunteer-view.png)
+   ![ScreenShot3of4](public/assets/images/server-code-view.png)
+   ![ScreenShot4of4](public/assets/images/routes-view.png)
 
 </br>
 </br>
