@@ -32,7 +32,8 @@ router.get("/", (req, res) => {
          const nfps = dbPostData.map((npf) => npf.get({ plain: true }));
         res.render('homepage', {
           nfps,
-          loggedIn: req.session.loggedIn
+          loggedIn: req.session.loggedIn,
+          isAdmin: req.session.isAdmin
         })
       })
       .catch((err) => {
@@ -67,7 +68,8 @@ router.get('/usernfps', (req, res) => {
       console.log(nfpMe)
       res.render('usernfps', {
         nfpMe,
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
+        isAdmin: req.session.isAdmin
       })
     })
 
@@ -130,7 +132,8 @@ router.get('/user', (req, res) => {
       user.id = req.session.user_id;
       res.render('user', {
         user,
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
+        isAdmin: req.session.isAdmin
       });
     })
     .catch(err => {
@@ -208,7 +211,8 @@ router.post('/logout', (req, res) => {
 
 router.get('/signup', (req, res) => {
   res.render('join', {
-    loggedIn: req.session.loggedIn
+    loggedIn: req.session.loggedIn,
+    isAdmin: req.session.isAdmin
   });
 });
 
@@ -216,9 +220,24 @@ router.get('/signup', (req, res) => {
 /////////////////////////////////////////////////////////////////////////////
 
 router.get('/admin', (req, res) => {
-  res.render('admin', {
-    loggedIn: req.session.loggedIn
-  });
+  NFP.findAll({
+    attributes: [
+        'id',
+        'nfp_name'
+    ]   
+})
+  .then((dbPostData) => {
+     const nfps = dbPostData.map((npf) => npf.get({ plain: true }));
+    console.log(nfps)
+    res.render('admin', { 
+      nfps,
+      loggedIn: req.session.loggedIn,
+      isAdmin: req.session.isAdmin
+    });
+  })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
 })
 
 //------------------------------------------------------------------------//
@@ -246,11 +265,13 @@ router.get('/partners', (req, res) => {
     ]   
 })
   .then((dbPostData) => {
-     const nfps = dbPostData.map((npf) => npf.get({ plain: true }));
+    const nfps = dbPostData.map((npf) => npf.get({ plain: true }));
     console.log(nfps)
-    res.render('partner-nfp', { 
+    res.render('partner-nfp', {
       nfps,
-      loggedIn: req.session.loggedIn});
+      loggedIn: req.session.loggedIn,
+      isAdmin: req.session.isAdmin
+    });
   })
     .catch((err) => {
       res.status(500).json(err);
@@ -261,18 +282,18 @@ router.get('/partners', (req, res) => {
 //Admin Search Results
 //------------------------------------------------------------------------//
 
-//search volunteers
-router.get("/adminvolunteers", (req, res) => {
-  console.log(req);
+
+//search nfps
+router.get("/adminsearch/:search", (req, res) => {
+  console.log(req.params.search + "==================================================")
   VolNFPs.findAll({
     where: {
-      first_name: req.params.user_id,
-      last_name: req.params.user_id
+      nfp_id: req.params.search
     },
     attributes: [
-      'id',
-      'user_id',
-      'nfp_id'
+      "id",
+      "user_id",
+      "nfp_id"
     ],
     include: [
       {
@@ -281,89 +302,33 @@ router.get("/adminvolunteers", (req, res) => {
           'id',
           'first_name',
           'last_name',
-          'city',
-          'state',
-          'bio',
+          'email',
           'phone_number',
-          'email'
+          'bio',
+          'city',
+          'state'
         ]
       },
       {
         model: NFP,
         attributes: [
-          'first_name'
+          'nfp_name'
         ]
       }
     ]
   })
     .then((dbPostData) => {
-      const users = dbPostData.map((user) => user.get({ plain: true }));
-      console.log(users)
-      res.render('adminvolunteers', {
-        users,
-        loggedIn: req.session.loggedIn
+      const searchedUser = dbPostData.map((user) => user.get({plain: true}));
+      console.log(searchedUser)
+      res.render("adminsearch", {
+        searchedUser,
+        loggedIn: req.session.loggedIn,
+        isAdmin: req.session.isAdmin
       })
     })
-
     .catch((err) => {
       res.status(500).json(err);
     });
-});
-
-/*
-//search nfps  
-router.get("/adminnfps", (req, res) => {
-  console.log(req.query);
-    VolNFPs.findAll({
-        where: {
-          attributes: [
-            [sequelize.literal("(SELECT (*) FROM NFP WHERE NFP.nfp_name = Mike)")]
-          ]
-        },
-        attributes: [
-            'id',
-            'user_id',
-            'nfp_id'
-        ],
-        include: [
-            {
-              model: User,
-              attributes: [
-                'id',
-                'first_name',
-                'last_name',
-                'city',
-                'state',
-                'bio',
-                'phone_number',
-                'email'
-              ]
-            },
-            {
-              model: NFP,
-              attributes: [
-                'first_name'
-              ]
-            }
-        ]   
-    })
-      .then((dbPostData) => {
-         const nfps = dbPostData.map((nfp) => nfp.get({ plain: true }));
-          console.log(users)
-        res.render('adminnfps', {
-          nfps,
-          loggedIn: req.session.loggedIn
-        })
-      })
-      
-      .catch((err) => {
-        res.status(500).json(err);
-      });
-  });
-*/
-
-router.get("/adminnfps", (req, res) => {
-  res.render("adminnfps");
 });
 
 module.exports = router;

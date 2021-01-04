@@ -7,6 +7,7 @@
   <title>howto.help</title>
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/NFP-style.css">
+  <link rel="stylesheet" href="/css/modal.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway:ital,wght@0,200;0,300;0,500;0,800;1,500;1,600&display=swap" rel="stylesheet">    
 </head>
@@ -21,17 +22,28 @@
     <div class="hide navbody">
       <h4>
 
-        {{#if loggedIn}}
-        <a href="/login" style="display: none">Volunteer Login</a>
+        {{#if isAdmin}}
+        <a href="/login" style="display: none">Login</a>
         <a href="/signup" style="display: none">Join</a>
-        <a href="/user/">My Information</a>
+        <a href="/user/" style="display: none">My Information</a>
         <a href="/admin">Admin</a>
-        <a href="/usernfps">My NFP Partners</a>
+        <a href="/usernfps" style="display: none">My NFP Partners</a>
         <a href="/partners">All NFP Partners</a>
         <a id="logout" href="/">Logout</a>
 
         {{else}}
-        <a href="/login">Volunteer Login</a>
+        {{#if loggedIn}}
+        <a href="/login" style="display: none">Login</a>
+        <a href="/signup" style="display: none">Join</a>
+        <a href="/user/" >My Information</a>
+        <a href="/admin" style="display: none">Admin</a>
+        <a href="/usernfps">My NFP Partners</a>
+        <a href="/partners">All NFP Partners</a>
+        <a id="logout" href="/">Logout</a>
+
+
+        {{else}}
+        <a href="/login">Login</a>
         <a href="/signup">Join</a>
         <a href="/user" style="display: none">My Information</a>
         <a href="/admin" style="display: none">Admin</a>
@@ -39,8 +51,8 @@
         <a href="/partners" style="display: none">All NFP Partners</a>
         <a id="logout" href="/" style="display: none">Logout</a>
         {{/if}}
+        {{/if}}
 
-      
       </h4>
     </div>
   </div>
@@ -61,6 +73,7 @@
   integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
   crossorigin="anonymous"></script>
   <script src="/javascript/nonRoutes.js"></script>
+  <script src="/javascript/adminsearch.js"></script>
   <script src="/javascript/user.js"></script>
   <script src="/javascript/partner.js"></script>
   <script src="/javascript/userpartnerpull.js"></script>

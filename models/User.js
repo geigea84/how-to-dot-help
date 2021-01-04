@@ -71,6 +71,11 @@ User.init(
             validate: {
                 isUrl: true
             }
+        },
+        isAdmin: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+            allowNull: true
         }
     },
     {

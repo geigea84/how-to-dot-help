@@ -184,46 +184,13 @@ async function addNFP(event) {
 }
 document.getElementById("nfp-save-btn").addEventListener("click", addNFP);
 
-//search for volunteer
-async function searchUsers(event) {
-    event.preventDefault();
-
-    console.log("volunteer search btn clicked");
-
-    let searchUser = document.querySelector("#search-User").value.trim();
-
-    console.log(searchUser);
-
-    $.ajax({
-        method: "GET",
-        url: "/adminvolunteers",
-        data: { searchUser },
-        success: function (data) {
-            console.log("Triggered volunteer search request");
-        }
-    })
+function adminSearchUser() {
+    let searchParam = $(this).attr("id")
+    let user_id = "adminsearch/" + searchParam
+    console.log(user_id)
+    $(this).fadeOut(3000);
+    location.href = user_id
 }
 
-document.getElementById("search-users-btn").addEventListener("click", searchUsers);
-
-//search for nfp
-async function searchNFPs(event) {
-    event.preventDefault();
-
-    console.log("nfp search btn clicked");
-
-    let searchNFP = document.querySelector("#search-NFP").value.trim();
-
-    console.log(searchNFP);
-
-    $.ajax({
-        method: "GET",
-        url: "/adminnfps",
-        data: { searchNFP },
-        success: function (data) {
-            console.log("Triggered NFP search request");
-        }
-    })
-}
-
-document.getElementById("search-nfps-btn").addEventListener("click", searchNFPs);
+// $(document).on("click", ".admin-search", adminSearchUser)
+document.querySelector(".admin-search").addEventListener("click", adminSearchUser);

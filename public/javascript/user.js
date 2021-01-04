@@ -13,18 +13,6 @@ const ValidateEmail = function (E) {
 
 const ValidatePhone = function (P) {
     let cleaned = ('' + P).replace(/\D/g, '');
-<<<<<<< HEAD:public/javascript/volApiCalls.js
-    if (/^\d{10}$/.test(cleaned)) {
-        console.log("valid phone")
-        return cleaned;
-    }
-    else if (P == "") {
-        return '1000000000';
-    }
-    else {
-        alert("not a valid phone number");
-        return '1000000000';
-=======
         if(/^\d{10}$/.test(cleaned))
               {
             console.log("valid phone")      
@@ -37,9 +25,7 @@ const ValidatePhone = function (P) {
               alert("not a valid phone number");
               return '1000000000';
               }
->>>>>>> 92bfd1a5ae5be4a65e8ed4a621bf22be74a7eb7d:public/javascript/user.js
     }
-}
 
 //below function from https://gist.github.com/jacobstein2015/582d214b3f3c34b59368
 const ValidateState = function (S) {
@@ -84,15 +70,9 @@ $(document).on("click", "#save-rev-btn", function () {
 
     $.ajax({
         method: "PUT",
-<<<<<<< HEAD:public/javascript/volApiCalls.js
-        url: "/user/:id",
-        data: { userinfo },
-        success: function (data) {
-=======
         url: "/user",
         data: {userinfo},
         success: function(data){
->>>>>>> 92bfd1a5ae5be4a65e8ed4a621bf22be74a7eb7d:public/javascript/user.js
             console.log("Update Ok")
         }
     })
@@ -101,44 +81,6 @@ $(document).on("click", "#save-rev-btn", function () {
 
 
 
-<<<<<<< HEAD:public/javascript/volApiCalls.js
-
-
-// //------------------------------------------------------------------//
-// //nfp call on click
-// //------------------------------------------------------------------//
-// async function reachOut(i) {
-//     event.preventDefault();
-//     nfp_id = i;
-//     console.log(nfp_id);
-
-//     if (i) {
-//         const response = await fetch('/api/volnfp/interest', {
-//             method: 'post',
-//             body: JSON.stringify({
-//             nfp_id
-//             }),
-//             headers: { 'Content-Type': 'application/json' }
-//         });
-
-//         if (response.ok) {
-//             console.log("reach out sucessful")
-//         } else {
-//             alert(response.statusText);
-//         }
-//      }
-//   }
-
-
-//  const reachOutResponse = function() {
-//     console.log("clicked btn")
-//     var nfp_id = $(this).attr("id");
-//     $(this).fadeOut(3000);
-//       reachOut(nfp_id)
-//   }
-
-// $(document).on("click", ".reach-out", reachOutResponse)
-=======
 //Reach out button on HP
 //---------------------------------------------------------------------
 function reachOutJoin() {
@@ -148,4 +90,3 @@ function reachOutJoin() {
   }
   
   $(document).on("click", ".sign-up", reachOutJoin)
->>>>>>> 92bfd1a5ae5be4a65e8ed4a621bf22be74a7eb7d:public/javascript/user.js

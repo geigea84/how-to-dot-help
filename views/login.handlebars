@@ -1,15 +1,15 @@
         <!--LOGIN FORM-->
         <form class="login-form">
         <div class="col-12 flex-row align-center pad-lr">
-            <div id="form-v">
+            <div id="form-v" >
                 <div class="form flex-row">
-                    <p class=" col-12">
+                    <p class="col-12" >
                         Login to your account
                     </p>
                     <h4>Email</h4>
-                    <textarea id="email-login" class="formbox-sl"></textarea>
+                    <input id="email-login" class="formbox-sl" placeholder="Enter a Valid Email"></input>
                     <h4>Password</h4>
-                    <textarea id="password-login" class="formbox-sl"></textarea>
+                    <input id="password-login" type="password" class="formbox-sl" placeholder="Enter Password"></input>
                     <div class="col-12 center pad-t">
                         <button type="submit" id="login-btn">Login</button>
                     </div>
@@ -17,5 +17,24 @@
             </div>
         </div> 
         </form>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2 class="center">Check Your information!</h2>
+                </div>
+                <div class="modal-body center">
+                    <p>Please make sure email is in correct format</p>
+                    <p>Make sure Password Correct</p>
+                </div>
+                <div class="modal-footer">
+                    <h3></h3>
+                </div>
+            </div>
+        
+        </div>
 
         <script src="/javascript/login.js"></script>  
