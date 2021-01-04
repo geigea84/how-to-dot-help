@@ -285,6 +285,7 @@ router.get('/partners', (req, res) => {
 
 //search nfps
 router.get("/adminsearch/:search", (req, res) => {
+  console.log(req.params.search + "==================================================")
   VolNFPs.findAll({
     where: {
       nfp_id: req.params.search
@@ -318,6 +319,7 @@ router.get("/adminsearch/:search", (req, res) => {
   })
     .then((dbPostData) => {
       const searchedUser = dbPostData.map((user) => user.get({plain: true}));
+      console.log(searchedUser)
       res.render("adminsearch", {
         searchedUser,
         loggedIn: req.session.loggedIn,
