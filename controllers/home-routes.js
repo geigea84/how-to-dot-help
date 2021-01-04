@@ -32,7 +32,8 @@ router.get("/", (req, res) => {
          const nfps = dbPostData.map((npf) => npf.get({ plain: true }));
         res.render('homepage', {
           nfps,
-          loggedIn: req.session.loggedIn
+          loggedIn: req.session.loggedIn,
+          isAdmin: req.session.isAdmin
         })
       })
       .catch((err) => {
@@ -67,7 +68,8 @@ router.get('/usernfps', (req, res) => {
       console.log(nfpMe)
       res.render('usernfps', {
         nfpMe,
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
+        isAdmin: req.session.isAdmin
       })
     })
 
@@ -130,7 +132,8 @@ router.get('/user', (req, res) => {
       user.id = req.session.user_id;
       res.render('user', {
         user,
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
+        isAdmin: req.session.isAdmin
       });
     })
     .catch(err => {
@@ -208,7 +211,8 @@ router.post('/logout', (req, res) => {
 
 router.get('/signup', (req, res) => {
   res.render('join', {
-    loggedIn: req.session.loggedIn
+    loggedIn: req.session.loggedIn,
+    isAdmin: req.session.isAdmin
   });
 });
 
@@ -227,7 +231,9 @@ router.get('/admin', (req, res) => {
     console.log(nfps)
     res.render('admin', { 
       nfps,
-      loggedIn: req.session.loggedIn});
+      loggedIn: req.session.loggedIn,
+      isAdmin: req.session.isAdmin
+    });
   })
     .catch((err) => {
       res.status(500).json(err);
@@ -263,8 +269,9 @@ router.get('/partners', (req, res) => {
     console.log(nfps)
     res.render('partner-nfp', {
       nfps,
-      loggedIn: req.session.loggedIn
-    })
+      loggedIn: req.session.loggedIn,
+      isAdmin: req.session.isAdmin
+    });
   })
     .catch((err) => {
       res.status(500).json(err);
@@ -313,7 +320,8 @@ router.get("/adminsearch/:search", (req, res) => {
       const searchedUser = dbPostData.map((user) => user.get({plain: true}));
       res.render("adminsearch", {
         searchedUser,
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
+        isAdmin: req.session.isAdmin
       })
     })
     .catch((err) => {

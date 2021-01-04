@@ -87,10 +87,7 @@
   
     header {
       background-color: var(--primary);
-<<<<<<< HEAD
-=======
       display: flex;
->>>>>>> develop
       justify-content: center;
       align-items: center;
       min-height: 70px;
@@ -301,6 +298,7 @@
       padding:20px;
       display: flex;
       width: 100%;
+      margin: auto;
   }
   
   .formbox-sl {

@@ -36,7 +36,21 @@ const userData = [
         password: "echoFoxtrot",
         image_url: "https://static.clubs.nfl.com/image/private/t_editorial_landscape_8_desktop_mobile/f_png/chargers/gdj4hxdx3mw2tbjg8kuo.png",
         isAdmin: false
+    },
+    {
+        first_name: "Admin",
+        last_name: "Pserson",
+        city: "Los Angeles",
+        state: "CA",
+        bio: "Go back to San Diego and St. Louis",
+        phone_number: "6666666666",
+        email: "Admin@admin.com",
+        password: "adminadmin",
+        image_url: "https://static.clubs.nfl.com/image/private/t_editorial_landscape_8_desktop_mobile/f_png/chargers/gdj4hxdx3mw2tbjg8kuo.png",
+        isAdmin: false
+
     }
+
 ];
 
 const seedUsers = () => User.bulkCreate(userData);

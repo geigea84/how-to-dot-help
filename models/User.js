@@ -74,7 +74,8 @@ User.init(
         },
         isAdmin: {
             type: DataTypes.BOOLEAN,
-            allowNull: false
+            defaultValue: false,
+            allowNull: true
         }
     },
     {
