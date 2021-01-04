@@ -8,7 +8,6 @@
   --horizon: #C7D5D2;
 }
 
-/* 2.2 - added flex */
 .user-c {
   flex: 1;
   margin:30px;
@@ -26,7 +25,6 @@
     border-radius:5px 5px 0px 0px;
     align-items: flex-end;
     background: var(--accent);
-    //background-image: url('../images/shanti.png');
     background-size: cover;
     background-position: top;
     overflow: hidden;
@@ -82,10 +80,10 @@
   transform: translateY(-200px);
 }
 
-// .user-c-bg {
-//   background-image: url('../images/shanti.png');
-// }
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop
 /* 2.2 - removed float and width */
 .user-bod {
   padding: 15px;
@@ -106,4 +104,3 @@
     }
 }
 }
-/* TRAINER STYLES END */

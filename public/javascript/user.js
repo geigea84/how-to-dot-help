@@ -1,19 +1,17 @@
 //AJAX - REQUEST- as far back as front end normally goes
 //------------------------------------------------validate/reformat
-const ValidateEmail = function(E) {
-    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(E))
-    {
-    console.log("Valid email address!");
-    return E;
+const ValidateEmail = function (E) {
+    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(E)) {
+        console.log("Valid email address!");
+        return E;
     }
-    else
-    {
-    alert("invalid email provided");
-    return email;
+    else {
+        alert("invalid email provided");
+        return email;
     }
 }
 
-const ValidatePhone = function(P) {
+const ValidatePhone = function (P) {
     let cleaned = ('' + P).replace(/\D/g, '');
         if(/^\d{10}$/.test(cleaned))
               {
@@ -30,9 +28,9 @@ const ValidatePhone = function(P) {
     }
 
 //below function from https://gist.github.com/jacobstein2015/582d214b3f3c34b59368
-const ValidateState = function(S) {
-   let theState = S.toUpperCase();
-    if   (  theState == "AL" || theState == " AK" || theState == " AZ" || theState == "AR" || theState == "CA" || theState == "CO" || theState == "CT" || theState == "DE" || theState ==  "FL" || theState == "GA" || theState == "HI" || theState == "ID" || theState == "IL" || theState == "IN" || theState == "IA" || theState == "KS" || theState == "KY" || theState == "LA" || theState ==  "ME" || theState == "MD" || theState == "MA" || theState == "MI" || theState == "MN" || theState == "MS" || theState == "MO" || theState == "MT" || theState == "NE" || theState == "NV" || theState == "NH" || theState == "NJ" || theState == "NM" || theState == "NY" || theState == "NC" || theState == "ND" || theState == "OH" || theState == "OK" || theState == "OR" || theState == "PA" || theState == "RI" || theState == "SC" || theState == "SD" || theState == "TN" || theState == "TX" || theState == "UT" || theState == "VT" || theState == "VA" || theState == "WA" || theState == "WV" || theState == "WI" || theState == "WY" || theState == "AS" || theState == "DC" || theState == "FM" || theState == "GU" || theState == "MH" || theState == "MP" || theState == "PW" || theState == "PR" || theState == "VI" ){
+const ValidateState = function (S) {
+    let theState = S.toUpperCase();
+    if (theState == "AL" || theState == " AK" || theState == " AZ" || theState == "AR" || theState == "CA" || theState == "CO" || theState == "CT" || theState == "DE" || theState == "FL" || theState == "GA" || theState == "HI" || theState == "ID" || theState == "IL" || theState == "IN" || theState == "IA" || theState == "KS" || theState == "KY" || theState == "LA" || theState == "ME" || theState == "MD" || theState == "MA" || theState == "MI" || theState == "MN" || theState == "MS" || theState == "MO" || theState == "MT" || theState == "NE" || theState == "NV" || theState == "NH" || theState == "NJ" || theState == "NM" || theState == "NY" || theState == "NC" || theState == "ND" || theState == "OH" || theState == "OK" || theState == "OR" || theState == "PA" || theState == "RI" || theState == "SC" || theState == "SD" || theState == "TN" || theState == "TX" || theState == "UT" || theState == "VT" || theState == "VA" || theState == "WA" || theState == "WV" || theState == "WI" || theState == "WY" || theState == "AS" || theState == "DC" || theState == "FM" || theState == "GU" || theState == "MH" || theState == "MP" || theState == "PW" || theState == "PR" || theState == "VI") {
         return theState;
     }
     else {
@@ -41,23 +39,23 @@ const ValidateState = function(S) {
     }
 }
 
-  //------------------------------------------------PUT
-  $(document).on("click","#save-rev-btn",function() {
+//------------------------------------------------PUT
+$(document).on("click", "#save-rev-btn", function () {
     console.log("click happened")
-        //collect text
-        FN = $("#first-name").val()
-        LN = $("#last-name").val()
-        E = $("#email").val()
-        P = $("#phone").val()
-        I = $("#info").val()
-        //C = $("#contact").val()
-        Ci = $("#city").val()
-        S = $("#state").val()
-        userId = $("#divId").val()
-    
-        let validE = ValidateEmail(E)
-        let validP = ValidatePhone(P)
-        let validS = ValidateState(S)
+    //collect text
+    FN = $("#first-name").val()
+    LN = $("#last-name").val()
+    E = $("#email").val()
+    P = $("#phone").val()
+    I = $("#info").val()
+    //C = $("#contact").val()
+    Ci = $("#city").val()
+    S = $("#state").val()
+    userId = $("#divId").val()
+
+    let validE = ValidateEmail(E)
+    let validP = ValidatePhone(P)
+    let validS = ValidateState(S)
 
     var userinfo = {
         first_name: FN,
