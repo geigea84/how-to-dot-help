@@ -1,13 +1,13 @@
 <section class="center pad">
-        <h2>Below are the users who have farovited the NFP, {{nfp.nfp_name}}, you selected. </h2>
+        <h2>Below are the users who have favorited the NFP. </h2>
 </section>
 
 <div class=" bg-scrabble col-12 flex-row align-center">
         {{!--NFP list--}}
         <div class="pad hide ghost-in">
             <div class="justify-center pad-lr">
-                <div class="flex-row">
-                    {{#each volnfps as |user|}}
+                <div class="flex-row justify-space-around">
+                    {{#each searchedUser as |user|}}
                         {{> volunteer-mod user }}
                     {{/each}}
                 </div> 
