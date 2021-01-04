@@ -48,6 +48,7 @@ const userData = [
         password: "adminadmin",
         image_url: "https://static.clubs.nfl.com/image/private/t_editorial_landscape_8_desktop_mobile/f_png/chargers/gdj4hxdx3mw2tbjg8kuo.png",
         isAdmin: false
+
     }
 
 ];
