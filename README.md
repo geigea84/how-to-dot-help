@@ -3,6 +3,19 @@
 ## Description
 How-To-Dot-Help is a website portal connecting potential volunteers with smaller organizations that are looking for the additional help. On this website, users will be able to create an account protected by modern security features and indicate which organizations they may be interested in volunteering for. On the other side of the platform the staff of How To Dot Help will connect these prospective volunteers with the organization via phone, email, or text message depending on the method selected by the volunteer.
 
+## Website Features: 
+   * Volunteers can:
+      * Join 
+      * login 
+      * Edit, and expand their personal information to send to non-for-profits of their choice
+      * View participating non-for-profits
+      * Send their information to non-for-profits of their choice 
+      * View non-for-profits they have reached out to 
+   * Admins can:
+      * Add new non-for-profits
+      * Select non-for-profits by name 
+      * view which users have reached-out to any given non-for-profit so they can consolidate/ review the users information to send on the correct non-for-profits partner
+
 ## Table of Contents
 
 <details>
