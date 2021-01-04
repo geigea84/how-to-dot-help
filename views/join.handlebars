@@ -7,19 +7,39 @@
                 Create your account
             </p>
                 <h4>First Name</h4>
-                <input id="first-name" class="formbox-sl"></input>
+                <input id="first-name" class="formbox-sl" placeholder="First Name">
                 <h4>Last Name</h4>
-                <input id="last-name" class="formbox-sl"></input>
+                <input id="last-name" class="formbox-sl" placeholder="Last Name">
                 <h4>Email</h4>
-                <input id="email-signup" class="formbox-sl"></input>
+                <input id="email-signup" class="formbox-sl" placeholder="Enter Valid Email">
                 <h4>Password</h4>
-                <input id="password-login" type="password" class="formbox-sl"></input>input
+                <input id="password-signup" type="password" class="formbox-sl" placeholder="Enter Password (min. 8 characters)">
             <div class="col-12 center pad-t">
                 <button id="save-new">Sign Up!</button>
             </div>
         </div>
     </div>
-</div>   
+</div> 
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2 class="center">Something's Wrong!</h2>
+    </div>
+    <div class="modal-body center">
+            <p>Please make sure email is in correct format</p>
+            <p>Make sure Password is at least 8 characters</p>
+    </div>
+    <div class="modal-footer">
+      <h3></h3>
+    </div>
+  </div>
+
+</div>
 </form>
+
 
 <script src="/javascript/login.js"></script>   
