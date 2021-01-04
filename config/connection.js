@@ -13,7 +13,7 @@ else {
         process.env.DB_USER,
         process.env.DB_PW,
         {
-            host: "localhost",
+            host: "z3iruaadbwo0iyfp.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
             dialect: "mysql",
             port: 3306
         }
