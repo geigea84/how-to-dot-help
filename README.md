@@ -7,20 +7,21 @@ How-To-Dot-Help is a website portal connecting potential volunteers with smaller
 
 <details>
 <summary> Table of Contents </summary>
-
-    *[Installation](#Installation)
-    
-    *[Built With](#built-with)
-
-    *[Pictures](#pictures)
-
-    *[License](#license)
-
-    *[Contact](#contact-us)
-        *[Creators](#creators)
+   
+   * [Installation](#installation)
+   
+   * [Built With](#built-with)
+   
+   * [Pictures](#pictures)
+   
+   * [License](#license)
+   
+   * [Contributing](#contributing)
+      * [Creators](#creators)
 
 </details>
 
+</br>
 </br>
 </br>
 </br>
@@ -33,30 +34,33 @@ Hosting for the application will be located at [Heroku](https://how-to-dot-help.
 </br>
 
 ## Built With
-    * HTML
-    * CSS
-    * JavaScript
-    * [jQuery](https://jquery.com/)
-    * [NPM](https://www.npmjs.com/)
-        *[bcrypt](https://www.npmjs.com/package/bcrypt)
-        *[connect-session-sequelize](https://www.npmjs.com/package/connect-session-sequelize)
-        *[dotenv](https://www.npmjs.com/package/dotenv)
-        *[express](https://www.npmjs.com/package/express)
-        *[express-handlebars](https://www.npmjs.com/package/express-handlebars)
-        *[express-session](https://www.npmjs.com/package/express-session)
-        *[handlebars](https://www.npmjs.com/package/handlebars)
-        *[sequelize](https://www.npmjs.com/package/sequelize)
-        *[mysql2](https://www.npmjs.com/package/mysql2)
+
+   * HTML
+   * CSS
+   * JavaScript
+   * [jQuery](https://jquery.com)
+   * [NPM](https://www.npmjs.com/)
+      * [bcrypt](https://www.npmjs.com/package/bcrypt)
+      * [connect-session-sequelize](https://www.npmjs.com/package/connect-session-sequelize)
+      * [dotenv](https://www.npmjs.com/package/dotenv)
+      * [express](https://www.npmjs.com/package/express)
+      * [express-handlebars](https://www.npmjs.com/package/express-handlebars)
+      * [express-session](https://www.npmjs.com/package/express-session)
+      * [handlebars](https://www.npmjs.com/package/handlebars)
+      * [sequelize](https://www.npmjs.com/package/sequelize)
+      * [mysql2](https://www.npmjs.com/package/mysql2)
+
 
 </br>
 </br>
 </br>
 
-## Usage
-    ![ScreenShot1of4](public/assets/images/homepage-view.png)
-    ![ScreenShot2of4](public/assets/images/volunteer-view.png)
-    ![ScreenShot3of4](public/assets/images/server-code-view.png)
-    ![ScreenShot4of4](public/assets/images/routes-view.png)
+## Pictures
+
+   ! [ScreenShot1of4](public/assets/images/homepage-view.png)
+   ! [ScreenShot2of4](public/assets/images/volunteer-view.png)
+   ! [ScreenShot3of4](public/assets/images/server-code-view.png)
+   ! [ScreenShot4of4](public/assets/images/routes-view.png)
 
 </br>
 </br>
