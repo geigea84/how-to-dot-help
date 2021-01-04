@@ -27,7 +27,6 @@ const ValidatePhone = function (P) {
               }
     }
 
-
 //below function from https://gist.github.com/jacobstein2015/582d214b3f3c34b59368
 const ValidateState = function (S) {
     let theState = S.toUpperCase();

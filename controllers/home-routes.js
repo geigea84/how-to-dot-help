@@ -259,11 +259,12 @@ router.get('/partners', (req, res) => {
     ]   
 })
   .then((dbPostData) => {
-     const nfps = dbPostData.map((npf) => npf.get({ plain: true }));
+    const nfps = dbPostData.map((npf) => npf.get({ plain: true }));
     console.log(nfps)
-    res.render('partner-nfp', { 
+    res.render('partner-nfp', {
       nfps,
-      loggedIn: req.session.loggedIn});
+      loggedIn: req.session.loggedIn
+    })
   })
     .catch((err) => {
       res.status(500).json(err);
