@@ -42,6 +42,16 @@ const ValidateState = function (S) {
 //------------------------------------------------PUT
 $(document).on("click", "#save-rev-btn", function () {
     console.log("click happened")
+        //btn change effect
+    var Button = document.getElementById("save-rev-btn");
+    var ButtonText = Button.innerHTML
+    console.log(ButtonText)
+    if (ButtonText == "Resave") {
+      Button.innerHTML = "Save"
+    }
+    else {
+      Button.innerHTML = "Resave"
+    }
     //collect text
     FN = $("#first-name").val()
     LN = $("#last-name").val()
